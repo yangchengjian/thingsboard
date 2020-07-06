@@ -570,7 +570,7 @@
         "invalid-aliases-config": "无法找到与某些别名过滤器匹配的任何设备。<br/>请联系您的管理员以解决此问题。",
         "select-devices": "选择设备",
         "assignedToCustomer": "分配给客户",
-        "assignedToCustomers": "分配给客户们",
+        "assignedToCustomers": "已分配的客户",
         "public": "公共",
         "public-link": "公共链接",
         "copy-public-link": "复制公共链接",
@@ -1419,7 +1419,7 @@
         "relation-filters": "关联过滤器",
         "additional-info": "附加信息 (JSON)",
         "invalid-additional-info": "无法解析附加信息json。",
-        "no-relations-text": "No relations found"
+        "no-relations-text": "未找到关联"
     },
     "rulechain": {
         "rulechain": "规则链",
@@ -1460,7 +1460,10 @@
         "no-rulechains-matching": "没有发现匹配'{{entity}}'的规则链。",
         "rulechain-required": "规则链必填",
         "management": "规则集管理",
-        "debug-mode": "调试模式"
+        "debug-mode": "调试模式",
+        "search": "搜索规则链",
+        "selected-rulechains": "{ count, plural, 1 {1 rule 规则链} other {# 规则链} } 被选中",
+        "open-rulechain": "打开规则链"
     },
     "rulenode": {
         "details": "详情",
@@ -1489,7 +1492,12 @@
         "link-label": "链接标签",
         "link-label-required": "链接标签必填",
         "custom-link-label": "自定义链接标签",
-        "custom-link-label-required": "自定义链接标签必填",
+        "custom-link-label-required": "自定义链接标签必填。",
+        "link-labels": "链接标签",
+        "link-labels-required": "链接标签必填。",
+        "no-link-labels-found": "未找到链接标签",
+        "no-link-label-matching": "'{{label}}' 未找到。",
+        "create-new-link-label": "新创建一个!",
         "type-filter": "滤波器",
         "type-filter-details": "使用配置条件过滤传入消息",
         "type-enrichment": "属性集",
@@ -1504,19 +1512,28 @@
         "type-rule-chain-details": "将传入消息转发到指定的规则链",
         "type-input": "输入",
         "type-input-details": "规则链的逻辑输入，将传入消息转发到下一个相关规则节点",
+        "type-unknown": "未知",
+        "type-unknown-details": "不能解析规则节点",
         "directive-is-not-loaded": "定义的配置指令 '{{directiveName}}' 不可用。",
         "ui-resources-load-error": "加载配置UI资源失败。",
         "invalid-target-rulechain": "无法解析目标规则链！",
         "test-script-function": "测试脚本功能",
         "message": "消息",
         "message-type": "消息类型",
+        "select-message-type": "选择消息类型",
         "message-type-required": "消息类型必填",
         "metadata": "元数据",
         "metadata-required": "元数据项不能为空。",
         "output": "输出",
         "test": "测试",
-        "help": "帮助"
+        "help": "帮助",
+        "reset-debug-mode": "所有节点重置调试模式"
     },
+    "queue": {
+        "select_name": "选择队列名称",
+        "name": "队列名称",
+        "name_required": "队列名称必填!"
+      },
     "tenant": {
         "tenant": "租户",
         "tenants": "租户",
@@ -1542,7 +1559,13 @@
         "idCopiedMessage": "租户ID已经复制到粘贴板",
         "select-tenant": "选择租户",
         "no-tenants-matching": "没有找到符合 '{{entity}}' 的租户",
-        "tenant-required": "租户必填"
+        "tenant-required": "租户必填",
+        "search": "搜索租户",
+        "selected-tenants": "{ count, plural, 1 {1 租户} other {# 租户} } 被选中",
+        "isolated-tb-core": "Processing in isolated ThingsBoard Core container",
+        "isolated-tb-rule-engine": "Processing in isolated ThingsBoard Rule Engine container",
+        "isolated-tb-core-details": "Requires separate microservice(s) per isolated Tenant",
+        "isolated-tb-rule-engine-details": "Requires separate microservice(s) per isolated Tenant"
     },
     "timeinterval": {
         "seconds-interval": "{ seconds, plural, 1 {1 秒} other {# 秒} }",
@@ -1567,7 +1590,8 @@
         "edit": "编辑时间窗口",
         "date-range": "日期范围",
         "last": "最后",
-        "time-period": "时间段"
+        "time-period": "时间段",
+        "hide": "Hide"
     },
     "user": {
         "user": "用户",
@@ -1608,22 +1632,37 @@
         "activation-link-text": "使用该链接 <a href='{{activationLink}}' target='_blank'>激活</a> 激活用户:",
         "copy-activation-link": "复制用户激活链接",
         "activation-link-copied-message": "用户激活链接已经复制到粘贴板",
-        "details": "详细信息"
+        "details": "详细信息",
+        "login-as-tenant-admin": "以租户身份登录",
+        "login-as-customer-user": "以客户身份登录",
+        "search": "搜索用户",
+        "selected-users": "{ count, plural, 1 {1 用户} other {# 用户} } 被选中",
+        "disable-account": "禁用用户账号",
+        "enable-account": "启用用户账号",
+        "enable-account-message": "用户账号启用成功!",
+        "disable-account-message": "用户账号禁用成功!"
     },
     "value": {
         "type": "值类型",
         "string": "字符串",
         "string-value": "字符串值",
+        "string-value-required": "字符串值必填",
         "integer": "数字",
         "integer-value": "数字值",
+        "integer-value-required": "整数值必填",
         "invalid-integer-value": "整数值无效",
         "double": "双精度小数",
         "double-value": "双精度小数值",
+        "double-value-required": "双精度小数值必填",
         "boolean": "布尔",
         "boolean-value": "布尔值",
         "false": "假",
         "true": "真",
-        "long": "Long"
+        "long": "长整型",
+        "json": "JSON",
+        "json-value": "JSON值",
+        "json-value-invalid": "JSON值格式错误",
+        "json-value-required": "JSON值必填。"
     },
     "widget": {
         "widget-library": "部件库",
@@ -1667,6 +1706,7 @@
         "settings-schema": "设置模式",
         "datakey-settings-schema": "数据键设置模式",
         "javascript": "Javascript",
+        "js": "JS",
         "remove-widget-type-title": "您确定要删除部件类型 '{{widgetName}}'吗？",
         "remove-widget-type-text": "确认后，窗口部件类型和所有相关数据将不可恢复。",
         "remove-widget-type": "删除部件类型",
@@ -1683,6 +1723,7 @@
         "update-dashboard-state": "更新当前仪表板状态",
         "open-dashboard": "切换到另一个仪表板",
         "custom": "自定义动作",
+        "custom-pretty": "自定义动作 (使用HTML模板)",
         "target-dashboard-state": "目标仪表板状态",
         "target-dashboard-state-required": "目标仪表板状态必填",
         "set-entity-from-widget": "从部件中设置实体",
@@ -1714,13 +1755,17 @@
         "export-failed-error": "无法导出部件包： {{error}}",
         "create-new-widgets-bundle": "创建新的部件包",
         "widgets-bundle-file": "部件包文件",
-        "invalid-widgets-bundle-file-error": "无法导入部件包：无效的部件包数据结构。"
+        "invalid-widgets-bundle-file-error": "无法导入部件包：无效的部件包数据结构。",
+        "search": "搜索部件库",
+        "selected-widgets-bundles": "{ count, plural, 1 {1 部件库} other {# 部件库} } 被选中",
+        "open-widgets-bundle": "打开部件库"
     },
     "widget-config": {
         "data": "数据",
         "settings": "设置",
         "advanced": "高级",
         "title": "标题",
+        "title-tooltip": "标题提示",
         "general-settings": "常规设置",
         "display-title": "显示标题",
         "drop-shadow": "阴影",
@@ -1738,6 +1783,7 @@
         "decimals": "浮点数后的位数",
         "timewindow": "时间窗口",
         "use-dashboard-timewindow": "使用仪表板的时间窗口",
+        "display-timewindow": "显示时间窗口",
         "display-legend": "显示图例",
         "datasources": "数据源",
         "maximum-datasources": "最大允许 { count, plural, 1 {1 数据} other {# 数据} }",
@@ -1751,6 +1797,7 @@
         "action": "动作",
         "add-action": "添加动作",
         "search-actions": "动作检索",
+        "no-actions-text": "未找到动作",
         "action-source": "动作源",
         "action-source-required": "动作源必填",
         "action-name": "动作名称",
@@ -1762,7 +1809,10 @@
         "edit-action": "编辑动作",
         "delete-action": "删除动作",
         "delete-action-title": "删除部件动作",
-        "delete-action-text": "确定要删除部件动作 '{{actionName}}' 吗?"
+        "delete-action-text": "确定要删除部件动作 '{{actionName}}' 吗?",
+        "display-icon": "Display title icon",
+        "icon-color": "Icon color",
+        "icon-size": "Icon size"
     },
     "widget-type": {
         "import": "导入部件类型",
@@ -1829,6 +1879,46 @@
                 "Step size": "步长",
                 "Ok": "Ok"
             }
+        },
+        "input-widgets": {
+            "attribute-not-allowed": "Attribute parameter cannot be used in this widget",
+            "blocked-location": "Geolocation is blocked in your browser",
+            "claim-device": "Claim device",
+            "claim-failed": "Failed to claim the device!",
+            "claim-not-found": "Device not found!",
+            "claim-successful": "Device was successfully claimed!",
+            "date": "Date",
+            "device-name": "Device name",
+            "device-name-required": "Device name is required",
+            "discard-changes": "Discard changes",
+            "entity-attribute-required": "Entity attribute is required",
+            "entity-coordinate-required": "Both fields, latitude and longitude, are required",
+            "entity-timeseries-required": "Entity timeseries is required",
+            "get-location": "Get current location",
+            "latitude": "Latitude",
+            "longitude": "Longitude",
+            "not-allowed-entity": "Selected entity cannot have shared attributes",
+            "no-attribute-selected": "No attribute is selected",
+            "no-datakey-selected": "No datakey is selected",
+            "no-coordinate-specified": "Datakey for latitude/longitude doesn't specified",
+            "no-entity-selected": "No entity selected",
+            "no-image": "No image",
+            "no-support-geolocation": "Your browser doesn't support geolocation",
+            "no-support-web-camera": "No supported web camera",
+            "no-timeseries-selected": "No timeseries selected",
+            "secret-key": "Secret key",
+            "secret-key-required": "Secret key is required",
+            "switch-attribute-value": "Switch entity attribute value",
+            "switch-camera": "Switch camera",
+            "switch-timeseries-value": "Switch entity timeseries value",
+            "take-photo": "Take photo",
+            "time": "Time",
+            "timeseries-not-allowed": "Timeseries parameter cannot be used in this widget",
+            "update-failed": "Update failed",
+            "update-successful": "Update successful",
+            "update-attribute": "Update attribute",
+            "update-timeseries": "Update timeseries",
+            "value": "Value"
         }
     },
     "icon": {
@@ -1841,12 +1931,36 @@
         "widget-action": {
             "action-cell-button": "动作单元格按钮",
             "row-click": "点击行",
-            "marker-click": "点击标记",
             "polygon-click": "单击多边形",
-            "tooltip-tag-action": "提示标签动作"
+            "marker-click": "点击标记",
+            "tooltip-tag-action": "提示标签动作",
+            "node-selected": "节点已选择",
+            "element-click": "点击HTML元素",
+            "pie-slice-click": "On slice click",
+            "row-double-click": "双击行"
         }
     },
     "language": {
-        "language": "语言"
+        "language": "语言",
+        "locales": {
+            "de_DE": "Deutsch",
+            "fr_FR": "Français",
+            "zh_CN": "简体中文",
+            "zh_TW": "繁體中文",
+            "en_US": "English",
+            "it_IT": "Italiano",
+            "ko_KR": "한글",
+            "ru_RU": "Русский",
+            "es_ES": "Español",
+            "ja_JA": "日本語",
+            "tr_TR": "Türkçe",
+            "fa_IR": "فارسي",
+            "uk_UA": "Українська",
+            "cs_CZ": "Česky",
+            "el_GR": "Ελληνικά",
+            "ro_RO": "Română",
+            "lv_LV": "Latviešu",
+            "ka_GE": "ქართული"
+        }
     }
 }

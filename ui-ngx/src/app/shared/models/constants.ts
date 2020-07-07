@@ -52,7 +52,7 @@ export const MediaBreakpoints = {
   'gt-xl': 'screen and (min-width: 5001px)'
 };
 
-const helpBaseUrl = 'https://thingsboard.io';
+const helpBaseUrl = 'https://www.dgrow.shop';
 
 export const HelpLinks = {
   linksMap: {

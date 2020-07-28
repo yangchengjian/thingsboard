@@ -15,8 +15,12 @@
  */
 package org.thingsboard.server.dao.sql.query;
 
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.type.PostgresUUIDType;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.thingsboard.server.common.data.EntityType;
+import org.thingsboard.server.common.data.id.CustomerId;
+import org.thingsboard.server.common.data.id.TenantId;
 
 import java.sql.Types;
 import java.util.HashMap;
@@ -24,21 +28,28 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+@Slf4j
 public class QueryContext implements SqlParameterSource {
     private static final PostgresUUIDType UUID_TYPE = new PostgresUUIDType();
 
+    private final QuerySecurityContext securityCtx;
     private final StringBuilder query;
     private final Map<String, Parameter> params;
 
-    public QueryContext() {
+    public QueryContext(QuerySecurityContext securityCtx) {
+        this.securityCtx = securityCtx;
         query = new StringBuilder();
         params = new HashMap<>();
     }
 
     void addParameter(String name, Object value, int type, String typeName) {
-        Parameter existing = params.put(name, new Parameter(value, type, typeName));
-        if (existing != null) {
+        Parameter newParam = new Parameter(value, type, typeName);
+        Parameter oldParam = params.put(name, newParam);
+        if (oldParam != null && oldParam.value != null && !oldParam.value.equals(newParam.value)) {
             throw new RuntimeException("Parameter with name: " + name + " was already registered!");
+        }
+        if(value == null){
+            log.warn("[{}][{}][{}] Trying to set null value", getTenantId(), getCustomerId(), name);
         }
     }
 
@@ -122,5 +133,17 @@ public class QueryContext implements SqlParameterSource {
             this.type = type;
             this.name = name;
         }
+    }
+
+    public TenantId getTenantId() {
+        return securityCtx.getTenantId();
+    }
+
+    public CustomerId getCustomerId() {
+        return securityCtx.getCustomerId();
+    }
+
+    public EntityType getEntityType() {
+        return securityCtx.getEntityType();
     }
 }

@@ -159,7 +159,7 @@ function parseTemplate(template: string, data: { $datasource?: Datasource, [key:
     }
     template = createLabelFromDatasource(data.$datasource, template);
 
-    let match = varsRegex.exec(template);
+    let match = /\${([^}]*)}/g.exec(template);
     while (match !== null) {
       const variable = match[0];
       let label = match[1];
@@ -186,7 +186,7 @@ function parseTemplate(template: string, data: { $datasource?: Datasource, [key:
         textValue = value;
       }
       template = template.split(variable).join(textValue);
-      match = varsRegex.exec(template);
+      match = /\${([^}]*)}/g.exec(template);
     }
 
     let actionTags: string;
@@ -249,8 +249,8 @@ export function parseData(input: DatasourceData[]): FormattedData[] {
         deviceType: null
       };
       entityArray.filter(el => el.data.length).forEach(el => {
-        obj[el?.dataKey?.label] = el?.data[0][1];
-        obj[el?.dataKey?.label + '|ts'] = el?.data[0][0];
+        obj[el?.dataKey?.label] = el?.data[0][0] ? el?.data[0][1] : null;
+        obj[el?.dataKey?.label + '|ts'] = el?.data[0][0] || null;
         if (el?.dataKey?.label === 'type') {
           obj.deviceType = el?.data[0][1];
         }

@@ -142,7 +142,8 @@ CREATE TABLE IF NOT EXISTS device_credentials (
     credentials_type varchar(255),
     credentials_value varchar,
     device_id uuid,
-    CONSTRAINT device_credentials_id_unq_key UNIQUE (credentials_id)
+    CONSTRAINT device_credentials_id_unq_key UNIQUE (credentials_id),
+    CONSTRAINT device_credentials_device_id_unq_key UNIQUE (device_id)
 );
 
 CREATE TABLE IF NOT EXISTS event (
@@ -167,13 +168,14 @@ CREATE TABLE IF NOT EXISTS relation (
     relation_type varchar(255),
     additional_info varchar,
     CONSTRAINT relation_pkey PRIMARY KEY (from_id, from_type, relation_type_group, relation_type, to_id, to_type)
-) PARTITION BY LIST (relation_type_group);
-
-CREATE TABLE other_relations PARTITION OF relation DEFAULT;
-CREATE TABLE common_relations PARTITION OF relation FOR VALUES IN ('COMMON');
-CREATE TABLE alarm_relations PARTITION OF relation FOR VALUES IN ('ALARM');
-CREATE TABLE dashboard_relations PARTITION OF relation FOR VALUES IN ('DASHBOARD');
-CREATE TABLE rule_relations PARTITION OF relation FOR VALUES IN ('RULE_CHAIN', 'RULE_NODE');
+);
+-- ) PARTITION BY LIST (relation_type_group);
+--
+-- CREATE TABLE other_relations PARTITION OF relation DEFAULT;
+-- CREATE TABLE common_relations PARTITION OF relation FOR VALUES IN ('COMMON');
+-- CREATE TABLE alarm_relations PARTITION OF relation FOR VALUES IN ('ALARM');
+-- CREATE TABLE dashboard_relations PARTITION OF relation FOR VALUES IN ('DASHBOARD');
+-- CREATE TABLE rule_relations PARTITION OF relation FOR VALUES IN ('RULE_CHAIN', 'RULE_NODE');
 
 CREATE TABLE IF NOT EXISTS tb_user (
     id uuid NOT NULL CONSTRAINT tb_user_pkey PRIMARY KEY,

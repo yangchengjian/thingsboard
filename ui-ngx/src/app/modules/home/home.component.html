@@ -37,7 +37,7 @@
       <mat-toolbar fxLayout="row" color="primary" class="mat-elevation-z1 tb-primary-toolbar">
         <button [fxShow]="!forceFullscreen" mat-icon-button id="main"
                 [ngClass]="{'tb-invisible': displaySearchMode()}"
-                fxHide.gt-sm (click)="sidenav.toggle()">
+                (click)="sidenav.toggle()">
           <mat-icon class="material-icons">menu</mat-icon>
         </button>
         <button [fxShow]="forceFullscreen" mat-icon-button

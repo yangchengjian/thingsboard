@@ -726,6 +726,7 @@
                             <exclude>docker/haproxy/**</exclude>
                             <exclude>docker/tb-node/**</exclude>
                             <exclude>ui/**</exclude>
+                            <exclude>**/*.html</exclude>
                             <exclude>src/browserslist</exclude>
                             <exclude>**/*.raw</exclude>
                         </excludes>

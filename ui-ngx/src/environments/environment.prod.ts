@@ -15,7 +15,7 @@
 ///
 
 export const environment = {
-  appTitle: 'DGrow',
+  appTitle: '店官儿',
   production: true,
 // @ts-ignore
   tbVersion: TB_VERSION,

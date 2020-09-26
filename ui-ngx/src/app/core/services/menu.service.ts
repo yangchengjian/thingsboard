@@ -234,38 +234,23 @@ export class MenuService {
     const homeSections: Array<HomeSection> = [];
     homeSections.push(
       {
-        name: 'rulechain.management',
-        places: [
-          {
-            name: 'rulechain.rulechains',
-            icon: 'settings_ethernet',
-            path: '/ruleChains'
-          }
-        ]
-      },
-      {
         name: 'customer.management',
         places: [
           {
             name: 'customer.customers',
             icon: 'supervisor_account',
             path: '/customers'
-          }
-        ]
-      },
-      {
-        name: 'asset.management',
-        places: [
+          },
           {
             name: 'asset.assets',
             icon: 'domain',
             path: '/assets'
-          }
-        ]
-      },
-      {
-        name: 'device.management',
-        places: [
+          },
+          {
+            name: 'entity-view.entity-views',
+            icon: 'view_quilt',
+            path: '/entityViews'
+          },
           {
             name: 'device.devices',
             icon: 'devices_other',
@@ -274,18 +259,13 @@ export class MenuService {
         ]
       },
       {
-        name: 'entity-view.management',
-        places: [
-          {
-            name: 'entity-view.entity-views',
-            icon: 'view_quilt',
-            path: '/entityViews'
-          }
-        ]
-      },
-      {
         name: 'dashboard.management',
         places: [
+          {
+            name: 'rulechain.rulechains',
+            icon: 'settings_ethernet',
+            path: '/ruleChains'
+          },
           {
             name: 'widget.widget-library',
             icon: 'now_widgets',

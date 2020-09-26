@@ -43,12 +43,12 @@ export class HomeLinksComponent implements OnInit {
   }
 
   private updateColumnCount() {
-    this.cols = 2;
+    this.cols = 3;
     if (this.breakpointObserver.isMatched(MediaBreakpoints.lg)) {
-      this.cols = 3;
+      this.cols = 4;
     }
     if (this.breakpointObserver.isMatched(MediaBreakpoints['gt-lg'])) {
-      this.cols = 4;
+      this.cols = 6;
     }
   }
 
@@ -60,7 +60,7 @@ export class HomeLinksComponent implements OnInit {
       }
       return colspan;
     } else {
-      return 2;
+      return 3;
     }
   }
 }

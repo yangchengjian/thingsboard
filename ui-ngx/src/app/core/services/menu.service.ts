@@ -237,14 +237,9 @@ export class MenuService {
         name: 'customer.management',
         places: [
           {
-            name: 'customer.customers',
-            icon: 'supervisor_account',
-            path: '/customers'
-          },
-          {
-            name: 'asset.assets',
-            icon: 'domain',
-            path: '/assets'
+            name: 'device.devices',
+            icon: 'devices_other',
+            path: '/devices'
           },
           {
             name: 'entity-view.entity-views',
@@ -252,10 +247,15 @@ export class MenuService {
             path: '/entityViews'
           },
           {
-            name: 'device.devices',
-            icon: 'devices_other',
-            path: '/devices'
-          }
+            name: 'asset.assets',
+            icon: 'domain',
+            path: '/assets'
+          },  
+          {
+            name: 'customer.customers',
+            icon: 'supervisor_account',
+            path: '/customers'
+          }       
         ]
       },
       {
@@ -332,16 +332,6 @@ export class MenuService {
   private buildCustomerUserHome(authUser: any): Array<HomeSection> {
     const homeSections: Array<HomeSection> = [
       {
-        name: 'asset.view-assets',
-        places: [
-          {
-            name: 'asset.assets',
-            icon: 'domain',
-            path: '/assets'
-          }
-        ]
-      },
-      {
         name: 'device.view-devices',
         places: [
           {
@@ -352,12 +342,22 @@ export class MenuService {
         ]
       },
       {
-        name: 'entity-view.management',
+        name: 'entity-view.view-entity-views',
         places: [
           {
             name: 'entity-view.entity-views',
             icon: 'view_quilt',
             path: '/entityViews'
+          }
+        ]
+      },
+      {
+        name: 'asset.view-assets',
+        places: [
+          {
+            name: 'asset.assets',
+            icon: 'domain',
+            path: '/assets'
           }
         ]
       },

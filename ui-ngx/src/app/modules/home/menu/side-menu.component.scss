@@ -27,11 +27,12 @@
     list-style: none;
   }
 
-  .tb-side-menu > li {
-    border-bottom: 1px solid rgba(0, 0, 0, .12);
-  }
+  // .tb-side-menu > li {
+  //   border-bottom: 1px solid rgba(0, 0, 0, .12);
+  // }
 
   a.mat-button {
+    font-weight: 300;
     text-transform: uppercase;
     display: flex;
     overflow: hidden;
@@ -39,14 +40,14 @@
     border-radius: 0;
     &:hover {
       border-bottom: none;
-      background-color: rgba(255,255,255,0.08);
+      background-color: rgba(255,255,255,0.15);
     }
     &:focus {
       border-bottom: none;
     }
     &.tb-active {
-      font-weight: 500;
-      background-color: rgba(255, 255, 255, .15);
+      font-weight: 400;
+      background-color: rgba(255, 255, 255, .08);
     }
 
     .mat-button-wrapper {

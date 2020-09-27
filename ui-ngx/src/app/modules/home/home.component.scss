@@ -26,30 +26,9 @@
     flex: 1;
   }
   mat-sidenav.tb-site-sidenav {
-    width: 250px;
+    width: 150px;
     @media (max-width:456px) {
       width: calc(100% - 56px);
-    }
-    .tb-nav-header {
-      z-index: 2;
-      flex-shrink: 0;
-      white-space: nowrap;
-      .tb-nav-header-toolbar {
-        min-height: 64px;
-        height: inherit;
-        z-index: 2;
-        flex-shrink: 0;
-        white-space: nowrap;
-        border-bottom: 1px solid rgba(0, 0, 0, .12);
-        & > div {
-          height: 64px;
-          .tb-logo-title {
-            width: auto;
-            height: 36px;
-            margin: auto;
-          }
-        }
-      }
     }
     .tb-side-menu-toolbar {
       overflow-y: auto;
@@ -59,13 +38,25 @@
   }
   .tb-primary-toolbar {
     z-index: 2;
+    height: 40px;
     h1 {
-      font-size: 24px !important;
+      font-size: 18px !important;
       font-weight: 400 !important;
     }
-  }
-  .tb-main-content {
-    overflow: auto;
-    position: relative;
+    .tb-nav-header-toolbar {
+      min-height: 36px;
+      height: inherit;
+      z-index: 2;
+      flex-shrink: 0;
+      white-space: nowrap;
+      & > div {
+        height: 36px;
+        .tb-logo-title {
+          width: auto;
+          height: 36px;
+          margin: auto;
+        }
+      }
+    }
   }
 }

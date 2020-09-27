@@ -48,7 +48,7 @@ export class HomeComponent extends PageComponent implements AfterViewInit, OnIni
   searchableComponent: ISearchableComponent;
 
   sidenavMode: 'over' | 'push' | 'side' = 'side';
-  sidenavOpened = true;
+  sidenavOpened = false;
 
   logo = require('../../../assets/logo_title_white.svg').default;
 
@@ -83,14 +83,14 @@ export class HomeComponent extends PageComponent implements AfterViewInit, OnIni
 
     const isGtSm = this.breakpointObserver.isMatched(MediaBreakpoints['gt-sm']);
     this.sidenavMode = isGtSm ? 'side' : 'over';
-    this.sidenavOpened = isGtSm;
+    this.sidenavOpened = false;
 
     this.breakpointObserver
       .observe(MediaBreakpoints['gt-sm'])
       .subscribe((state: BreakpointState) => {
           if (state.matches) {
             this.sidenavMode = 'side';
-            this.sidenavOpened = true;
+            this.sidenavOpened = false;
           } else {
             this.sidenavMode = 'over';
             this.sidenavOpened = false;

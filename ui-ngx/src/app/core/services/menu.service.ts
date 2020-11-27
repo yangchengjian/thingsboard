@@ -309,12 +309,7 @@ export class MenuService {
             icon: 'mdi:alpha-d-box',
             isMdiIcon: true,
             path: '/deviceProfiles'
-          }
-        ]
-      },
-      {
-        name: 'entity-view.management',
-        places: [
+          },
           {
             name: 'entity-view.entity-views',
             icon: 'view_quilt',

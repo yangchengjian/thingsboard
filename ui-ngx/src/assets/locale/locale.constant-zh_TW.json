@@ -312,7 +312,7 @@
   "contact": {
     "country": "國家",
     "city": "城市",
-    "state": "州",
+    "state": "州/省",
     "postal-code": "郵政編碼",
     "postal-code-invalid": "只允許數字。",
     "address": "地址",

@@ -69,7 +69,9 @@
       </mat-toolbar>
     </mat-sidenav>
     <mat-sidenav-content>
-      <router-outlet (activate)="activeComponentChanged($event)"></router-outlet>
+      <div fxLayout="column" role="main" style="height: 100%;">
+        <router-outlet (activate)="activeComponentChanged($event)"></router-outlet>
+      </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
 

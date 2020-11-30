@@ -305,7 +305,7 @@ export class MenuService {
     const homeSections: Array<HomeSection> = [];
     homeSections.push(
       {
-        name: 'customer.management',
+        name: 'device.management',
         places: [
           {
             name: 'device.devices',
@@ -317,7 +317,11 @@ export class MenuService {
             icon: 'mdi:alpha-d-box',
             isMdiIcon: true,
             path: '/deviceProfiles'
-          },
+          }]
+        },
+        {
+          name: 'customer.management',
+          places: [
           {
             name: 'entity-view.entity-views',
             icon: 'view_quilt',

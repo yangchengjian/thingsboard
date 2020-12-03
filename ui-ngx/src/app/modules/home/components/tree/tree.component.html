@@ -1,0 +1,73 @@
+<!--
+
+    Copyright © 2016-2020 The Thingsboard Authors
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+
+<div fxLayout="column" class="mat-elevation-z1 tb-organization-tree-content">
+  <mat-toolbar class="mat-table-toolbar" [fxShow]="true">
+    <div class="mat-toolbar-tools">
+      <div fxLayout="row" fxLayoutAlign="start center" fxLayout.xs="column" fxLayoutAlign.xs="center start"
+        class="title-container">
+        <span class="tb-organization-tree-title">组织架构</span>
+      </div>
+    </div>
+    <div fxLayout="row">
+      <!-- <button mat-raised-button color="primary" (click)="deleteTree()">删除</button> -->
+      <span fxFlex></span>
+      <button mat-raised-button color="primary" (click)="saveTree()">保存</button>
+    </div>
+  </mat-toolbar>
+
+  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+      <button mat-icon-button disabled></button>
+      <!-- <mat-checkbox class="checklist-leaf-node" [checked]="checklistSelection.isSelected(node)"
+        (change)="todoLeafItemSelectionToggle(node)">{{node.item}}</mat-checkbox> -->
+        {{node.item}}
+        <button mat-icon-button (click)="addNewItem(node)">
+          <mat-icon>add</mat-icon>
+        </button>
+        <button mat-icon-button (click)="deleteItem(node)">
+          <mat-icon>delete</mat-icon>
+        </button>
+    </mat-tree-node>
+
+    <mat-tree-node *matTreeNodeDef="let node; when: hasNoContent" matTreeNodePadding>
+      <button mat-icon-button disabled></button>
+      <mat-form-field>
+        <input matInput #itemValue placeholder="名称">
+      </mat-form-field>
+      <button mat-button (click)="checkItem(node, itemValue.value)">确认</button>
+    </mat-tree-node>
+
+    <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+      <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.filename">
+        <mat-icon class="mat-icon-rtl-mirror">
+          {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+        </mat-icon>
+      </button>
+      <!-- <mat-checkbox [checked]="descendantsAllSelected(node)" [indeterminate]="descendantsPartiallySelected(node)"
+        (change)="todoItemSelectionToggle(node)">{{node.item}}</mat-checkbox> -->
+        {{node.item}}
+      <button mat-icon-button (click)="addNewItem(node)">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button mat-icon-button (click)="deleteItem(node)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-tree-node>
+  </mat-tree>
+</div>

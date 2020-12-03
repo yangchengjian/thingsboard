@@ -318,10 +318,10 @@ export class MenuService {
             isMdiIcon: true,
             path: '/deviceProfiles'
           }]
-        },
-        {
-          name: 'customer.management',
-          places: [
+      },
+      {
+        name: 'customer.management',
+        places: [
           {
             name: 'entity-view.entity-views',
             icon: 'view_quilt',
@@ -331,12 +331,22 @@ export class MenuService {
             name: 'asset.assets',
             icon: 'domain',
             path: '/assets'
-          },  
+          },
           {
             name: 'customer.customers',
             icon: 'supervisor_account',
             path: '/customers'
-          }       
+          }
+        ]
+      },
+      {
+        name: 'group.management',
+        places: [
+          {
+            name: 'entity-view.entity-views',
+            icon: 'view_quilt',
+            path: '/organization'
+          }
         ]
       },
       {

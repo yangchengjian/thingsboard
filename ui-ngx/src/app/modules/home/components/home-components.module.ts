@@ -16,6 +16,7 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatTreeModule } from '@angular/material/tree';
 import { SharedModule } from '@app/shared/shared.module';
 import { AddEntityDialogComponent } from '@home/components/entity/add-entity-dialog.component';
 import { EntitiesTableComponent } from '@home/components/entity/entities-table.component';
@@ -119,6 +120,7 @@ import { SmsProviderConfigurationComponent } from '@home/components/sms/sms-prov
 import { AwsSnsProviderConfigurationComponent } from '@home/components/sms/aws-sns-provider-configuration.component';
 import { TwilioSmsProviderConfigurationComponent } from '@home/components/sms/twilio-sms-provider-configuration.component';
 import { CopyDeviceCredentialsComponent } from '@home/components/device/copy-device-credentials.component';
+import { TreeComponent } from '@home/components/tree/tree.component';
 
 @NgModule({
   declarations:
@@ -220,10 +222,12 @@ import { CopyDeviceCredentialsComponent } from '@home/components/device/copy-dev
       EditAlarmDetailsDialogComponent,
       SmsProviderConfigurationComponent,
       AwsSnsProviderConfigurationComponent,
-      TwilioSmsProviderConfigurationComponent
+      TwilioSmsProviderConfigurationComponent,
+      TreeComponent
     ],
   imports: [
     CommonModule,
+    MatTreeModule,
     SharedModule,
     SharedHomeComponentsModule
   ],
@@ -309,7 +313,8 @@ import { CopyDeviceCredentialsComponent } from '@home/components/device/copy-dev
     DeviceProfileProvisionConfigurationComponent,
     SmsProviderConfigurationComponent,
     AwsSnsProviderConfigurationComponent,
-    TwilioSmsProviderConfigurationComponent
+    TwilioSmsProviderConfigurationComponent,
+    TreeComponent
   ],
   providers: [
     WidgetComponentService,

@@ -525,6 +525,7 @@
         "public-entity-views": "Public Entity Views",
         "add": "Add Customer",
         "delete": "Delete customer",
+        "manage-customes": "Manage customers",
         "manage-customer-users": "Manage customer users",
         "manage-customer-devices": "Manage customer devices",
         "manage-customer-dashboards": "Manage customer dashboards",

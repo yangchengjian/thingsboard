@@ -305,6 +305,16 @@ export class MenuService {
     const homeSections: Array<HomeSection> = [];
     homeSections.push(
       {
+        name: 'customer.management',
+        places: [
+          {
+            name: 'customer.customers',
+            icon: 'device_hub',
+            path: '/customers'
+          }
+        ]
+      },
+      {
         name: 'dashboard.management',
         places: [
           {
@@ -321,16 +331,6 @@ export class MenuService {
             name: 'dashboard.dashboards',
             icon: 'dashboard',
             path: '/dashboards'
-          }
-        ]
-      },
-      {
-        name: 'customer.management',
-        places: [
-          {
-            name: 'customer.customers',
-            icon: 'device_hub',
-            path: '/customers'
           }
         ]
       },
@@ -424,6 +424,16 @@ export class MenuService {
   private buildCustomerUserHome(authUser: any): Array<HomeSection> {
     const homeSections: Array<HomeSection> = [
       {
+        name: 'customer.management',
+        places: [
+          {
+            name: 'customer.customers',
+            icon: 'device_hub',
+            path: '/customers'
+          }
+        ]
+      },
+      {
         name: 'device.view-devices',
         places: [
           {
@@ -460,16 +470,6 @@ export class MenuService {
             name: 'dashboard.dashboards',
             icon: 'dashboard',
             path: '/dashboards'
-          }
-        ]
-      },
-      {
-        name: 'customer.management',
-        places: [
-          {
-            name: 'customer.customers',
-            icon: 'device_hub',
-            path: '/customers'
           }
         ]
       },

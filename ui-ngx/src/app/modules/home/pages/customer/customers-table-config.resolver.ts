@@ -69,7 +69,7 @@ export class CustomersTableConfigResolver implements Resolve<EntityTableConfig<C
 
     this.config.cellActionDescriptors.push(
       {
-        name: this.translate.instant('customer.manage-customer-users'),
+        name: this.translate.instant('customer.manage-customers'),
         icon: 'device_hub',
         isEnabled: (customer) => !customer.additionalInfo || !customer.additionalInfo.isPublic,
         onAction: ($event, entity) => this.manageCustomers($event, entity)

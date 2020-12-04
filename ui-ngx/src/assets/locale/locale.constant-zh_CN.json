@@ -525,6 +525,7 @@
         "public-entity-views": "公共视图",
         "add": "添加组织",
         "delete": "删除组织",
+        "manage-customers": "管理下级组织",
         "manage-customer-users": "管理组织用户",
         "manage-customer-devices": "管理组织设备",
         "manage-customer-dashboards": "管理组织应用",

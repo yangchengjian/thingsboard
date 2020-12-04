@@ -86,7 +86,7 @@ export class MenuService {
         name: 'tenant.tenants',
         type: 'link',
         path: '/tenants',
-        icon: 'supervisor_account'
+        icon: 'device_hub'
       },
       {
         id: guid(),
@@ -160,7 +160,7 @@ export class MenuService {
         places: [
           {
             name: 'tenant.tenants',
-            icon: 'supervisor_account',
+            icon: 'device_hub',
             path: '/tenants'
           },
           {
@@ -237,7 +237,7 @@ export class MenuService {
         name: 'customer.customers',
         type: 'link',
         path: '/customers',
-        icon: 'supervisor_account'
+        icon: 'device_hub'
       },
       {
         id: guid(),
@@ -305,41 +305,6 @@ export class MenuService {
     const homeSections: Array<HomeSection> = [];
     homeSections.push(
       {
-        name: 'device.management',
-        places: [
-          {
-            name: 'device.devices',
-            icon: 'devices_other',
-            path: '/devices'
-          },
-          {
-            name: 'device-profile.device-profiles',
-            icon: 'mdi:alpha-d-box',
-            isMdiIcon: true,
-            path: '/deviceProfiles'
-          }]
-        },
-        {
-          name: 'customer.management',
-          places: [
-          {
-            name: 'entity-view.entity-views',
-            icon: 'view_quilt',
-            path: '/entityViews'
-          },
-          {
-            name: 'asset.assets',
-            icon: 'domain',
-            path: '/assets'
-          },  
-          {
-            name: 'customer.customers',
-            icon: 'supervisor_account',
-            path: '/customers'
-          }       
-        ]
-      },
-      {
         name: 'dashboard.management',
         places: [
           {
@@ -356,6 +321,42 @@ export class MenuService {
             name: 'dashboard.dashboards',
             icon: 'dashboard',
             path: '/dashboards'
+          }
+        ]
+      },
+      {
+        name: 'customer.management',
+        places: [
+          {
+            name: 'customer.customers',
+            icon: 'device_hub',
+            path: '/customers'
+          }
+        ]
+      },
+      {
+        name: 'device.management',
+        places: [
+          {
+            name: 'device.devices',
+            icon: 'devices_other',
+            path: '/devices'
+          },
+          {
+            name: 'device-profile.device-profiles',
+            icon: 'mdi:alpha-d-box',
+            isMdiIcon: true,
+            path: '/deviceProfiles'
+          },
+          {
+            name: 'entity-view.entity-views',
+            icon: 'view_quilt',
+            path: '/entityViews'
+          },
+          {
+            name: 'asset.assets',
+            icon: 'domain',
+            path: '/assets'
           }
         ]
       },
@@ -461,7 +462,17 @@ export class MenuService {
             path: '/dashboards'
           }
         ]
-      }
+      },
+      {
+        name: 'customer.management',
+        places: [
+          {
+            name: 'customer.customers',
+            icon: 'device_hub',
+            path: '/customers'
+          }
+        ]
+      },
     ];
     return homeSections;
   }

@@ -124,10 +124,10 @@ export const defaultNodeIconFunction: NodeIconFunction = nodeCtx => {
         materialIcon = 'domain';
         break;
       case EntityType.TENANT:
-        materialIcon = 'supervisor_account';
+        materialIcon = 'device_hub';
         break;
       case EntityType.CUSTOMER:
-        materialIcon = 'supervisor_account';
+        materialIcon = 'device_hub';
         break;
       case EntityType.USER:
         materialIcon = 'account_circle';

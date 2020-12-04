@@ -206,11 +206,11 @@ public class CustomerServiceImpl extends AbstractEntityService implements Custom
                     }
                     if (customer.getTenantId() == null) {
                         throw new DataValidationException("Customer should be assigned to tenant!");
-                    } else {
-                        Tenant tenant = tenantDao.findById(tenantId, customer.getTenantId().getId());
-                        if (tenant == null) {
-                            throw new DataValidationException("Customer is referencing to non-existent tenant!");
-                        }
+                    // } else {
+                    //     Tenant tenant = tenantDao.findById(tenantId, customer.getTenantId().getId());
+                    //     if (tenant == null) {
+                    //         throw new DataValidationException("Customer is referencing to non-existent tenant!");
+                    //     }
                     }
                 }
             };

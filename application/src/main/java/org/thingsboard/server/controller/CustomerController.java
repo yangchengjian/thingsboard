@@ -105,7 +105,7 @@ public class CustomerController extends BaseController {
 
             // checkEntity(customer.getId(), customer, Resource.CUSTOMER);
 
-            log.debug("customer: [{}]", customer);
+            log.info("customer: [{}]", customer);
 
             Customer savedCustomer = checkNotNull(customerService.saveCustomer(customer));
 

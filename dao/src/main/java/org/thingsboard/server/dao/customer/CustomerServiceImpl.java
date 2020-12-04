@@ -170,11 +170,11 @@ public class CustomerServiceImpl extends AbstractEntityService implements Custom
 
                 @Override
                 protected void validateCreate(TenantId tenantId, Customer customer) {
-                    DefaultTenantProfileConfiguration profileConfiguration =
-                            (DefaultTenantProfileConfiguration)tenantProfileCache.get(tenantId).getProfileData().getConfiguration();
-                    long maxCustomers = profileConfiguration.getMaxCustomers();
+                    // DefaultTenantProfileConfiguration profileConfiguration =
+                    //         (DefaultTenantProfileConfiguration)tenantProfileCache.get(tenantId).getProfileData().getConfiguration();
+                    // long maxCustomers = profileConfiguration.getMaxCustomers();
 
-                    validateNumberOfEntitiesPerTenant(tenantId, customerDao, maxCustomers, EntityType.CUSTOMER);
+                    // validateNumberOfEntitiesPerTenant(tenantId, customerDao, maxCustomers, EntityType.CUSTOMER);
                     customerDao.findCustomersByTenantIdAndTitle(customer.getTenantId().getId(), customer.getTitle()).ifPresent(
                             c -> {
                                 throw new DataValidationException("Customer with such title already exists!");

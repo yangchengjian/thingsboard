@@ -54,9 +54,9 @@ const routes: Routes = [
         component: EntitiesTableComponent,
         data: {
           auth: [Authority.TENANT_ADMIN, Authority.CUSTOMER_USER],
-          title: 'user.customer-users',
+          title: 'customer.customers',
           breadcrumb: {
-            label: 'user.customer-users',
+            label: 'customer.customers',
             icon: 'device_hub'
           }
         },

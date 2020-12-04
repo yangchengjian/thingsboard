@@ -512,7 +512,7 @@
     },
     "customer": {
         "customer": "组织",
-        "customers": "组织",
+        "customers": "下级组织",
         "management": "组织管理",
         "dashboard": "组织应用",
         "dashboards": "组织应用",

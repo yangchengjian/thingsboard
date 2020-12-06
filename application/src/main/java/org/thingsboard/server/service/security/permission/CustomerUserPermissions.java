@@ -105,12 +105,12 @@ public class CustomerUserPermissions extends AbstractPermissions {
 
         @Override
         public boolean hasPermission(SecurityUser user, Operation operation, UserId userId, User userEntity) {
-            if (!Authority.CUSTOMER_USER.equals(userEntity.getAuthority())) {
-                return false;
-            }
-            if (!user.getId().equals(userId)) {
-                return false;
-            }
+            // if (!Authority.CUSTOMER_USER.equals(userEntity.getAuthority())) {
+            //     return false;
+            // }
+            // if (!user.getId().equals(userId)) {
+            //     return false;
+            // }
             return true;
         }
 

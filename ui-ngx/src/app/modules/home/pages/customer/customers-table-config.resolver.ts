@@ -36,8 +36,10 @@ import { Observable, of } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { AppState } from '@core/core.state';
 import { selectAuth } from '@core/auth/auth.selectors';
+import { selectAuthUser } from '@core/auth/auth.selectors';
 import { map, mergeMap, take, tap } from 'rxjs/operators';
 import { AuthService } from '@core/auth/auth.service';
+import { Authority } from '@app/shared/models/authority.enum';
 
 @Injectable()
 export class CustomersTableConfigResolver implements Resolve<EntityTableConfig<Customer>> {
@@ -146,14 +148,21 @@ export class CustomersTableConfigResolver implements Resolve<EntityTableConfig<C
   resolve(route: ActivatedRouteSnapshot): Observable<EntityTableConfig<Customer>> {
     const routeParams = route.params;
     this.customerId = routeParams.customerId;
-    if (this.customerId !== undefined) {
-      this.config.entitiesFetchFunction = pageLink => this.customerService.getCustomersByParentId(this.customerId, pageLink);
-      this.config.saveEntity = customer => this.customerService.saveCustomerAfterChangeCustomerId(this.customerId, customer);
-    } else {
-      this.config.entitiesFetchFunction = pageLink => this.customerService.getCustomers(pageLink);
-      this.config.saveEntity = customer => this.customerService.saveCustomer(customer);
-    }
-    return this.store.pipe(select(selectAuth), take(1)).pipe(
+    return this.store.pipe(select(selectAuthUser), take(1)).pipe(
+      tap((authUser) => {
+          if (this.customerId !== undefined) {
+            this.config.entitiesFetchFunction = pageLink => this.customerService.getCustomersByParentId(this.customerId, pageLink);
+            this.config.saveEntity = customer => this.customerService.saveCustomerAfterChangeCustomerId(this.customerId, customer);
+          } else {
+            if (authUser.authority === Authority.TENANT_ADMIN) {
+              this.config.entitiesFetchFunction = pageLink => this.customerService.getCustomersByParentId(authUser.tenantId, pageLink);
+              this.config.saveEntity = customer => this.customerService.saveCustomerAfterChangeCustomerId(authUser.tenantId, customer);
+            } else if(authUser.authority === Authority.CUSTOMER_USER) {
+              this.config.entitiesFetchFunction = pageLink => this.customerService.getCustomersByParentId(authUser.customerId, pageLink);
+              this.config.saveEntity = customer => this.customerService.saveCustomerAfterChangeCustomerId(authUser.customerId, customer);
+            }
+          }
+      }),
       mergeMap(() =>
         this.customerId ? this.customerService.getCustomer(this.customerId) : of(null as Customer)
       ),

@@ -47,11 +47,8 @@ export class CustomerService {
   }
 
   public saveCustomerAfterChangeCustomerId(customerId: string, customer: Customer, config?: RequestConfig): Observable<Customer> {
-    console.log('customerId: ' + customerId);
-    console.log('customer 1: ' + JSON.stringify(customer));
     const tenantId = new TenantId(customerId);
     customer["tenantId"] = tenantId;
-    console.log('customer 2: ' + JSON.stringify(customer));
     return this.http.post<Customer>('/api/customer', customer, defaultHttpOptionsFromConfig(config));
   }
 

@@ -296,7 +296,7 @@ export class EntityService {
       case EntityType.CUSTOMER:
         pageLink.sortOrder.property = 'title';
         if (authUser.authority === Authority.CUSTOMER_USER) {
-          entitiesObservable = this.getSingleCustomerByPageLinkObservable(pageLink, config);
+          entitiesObservable = this.customerService.getCustomersByParentId(customerId, pageLink, config);
         } else {
           entitiesObservable = this.customerService.getCustomers(pageLink, config);
         }

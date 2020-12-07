@@ -28,6 +28,7 @@ public class Customer extends ContactBased<CustomerId> implements HasTenantId {
     private static final long serialVersionUID = -1599722990298929275L;
     
     private String title;
+    private TenantId parentId;
     private TenantId tenantId;
 
     public Customer() {
@@ -42,6 +43,14 @@ public class Customer extends ContactBased<CustomerId> implements HasTenantId {
         super(customer);
         this.tenantId = customer.getTenantId();
         this.title = customer.getTitle();
+    }
+
+    public TenantId getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(TenantId tenantId) {
+        this.parentId = tenantId;
     }
 
     public TenantId getTenantId() {
@@ -121,6 +130,8 @@ public class Customer extends ContactBased<CustomerId> implements HasTenantId {
         StringBuilder builder = new StringBuilder();
         builder.append("Customer [title=");
         builder.append(title);
+        builder.append(", parentId=");
+        builder.append(parentId);
         builder.append(", tenantId=");
         builder.append(tenantId);
         builder.append(", additionalInfo=");

@@ -51,6 +51,14 @@ public class JpaCustomerDao extends JpaAbstractSearchTextDao<CustomerEntity, Cus
     }
 
     @Override
+    public PageData<Customer> findCustomersByParentId(UUID tenantId, PageLink pageLink) {
+        return DaoUtil.toPageData(customerRepository.findByParentId(
+                tenantId,
+                Objects.toString(pageLink.getTextSearch(), ""),
+                DaoUtil.toPageable(pageLink)));
+    }
+
+    @Override
     public PageData<Customer> findCustomersByTenantId(UUID tenantId, PageLink pageLink) {
         return DaoUtil.toPageData(customerRepository.findByTenantId(
                 tenantId,

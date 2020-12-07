@@ -141,7 +141,7 @@ export class CustomersTableConfigResolver implements Resolve<EntityTableConfig<C
   //     this.config.saveEntity = customer => this.customerService.saveCustomer(customer);
   //   } else {
   //     this.config.entitiesFetchFunction = pageLink => this.customerService.getCustomersByParentId(this.customerId, pageLink);
-  //     this.config.saveEntity = customer => this.customerService.saveCustomerAfterChangeCustomerId(this.customerId, customer);
+  //     this.config.saveEntity = customer => this.customerService.saveCustomerAfterAddParentId(this.customerId, customer);
   //   }
   //   return this.config;
   // }
@@ -152,14 +152,14 @@ export class CustomersTableConfigResolver implements Resolve<EntityTableConfig<C
       tap((authUser) => {
           if (this.customerId !== undefined) {
             this.config.entitiesFetchFunction = pageLink => this.customerService.getCustomersByParentId(this.customerId, pageLink);
-            this.config.saveEntity = customer => this.customerService.saveCustomerAfterChangeCustomerId(this.customerId, customer);
+            this.config.saveEntity = customer => this.customerService.saveCustomerAfterAddParentId(this.customerId, customer);
           } else {
             if (authUser.authority === Authority.TENANT_ADMIN) {
               this.config.entitiesFetchFunction = pageLink => this.customerService.getCustomersByParentId(authUser.tenantId, pageLink);
-              this.config.saveEntity = customer => this.customerService.saveCustomerAfterChangeCustomerId(authUser.tenantId, customer);
+              this.config.saveEntity = customer => this.customerService.saveCustomerAfterAddParentId(authUser.tenantId, customer);
             } else if(authUser.authority === Authority.CUSTOMER_USER) {
               this.config.entitiesFetchFunction = pageLink => this.customerService.getCustomersByParentId(authUser.customerId, pageLink);
-              this.config.saveEntity = customer => this.customerService.saveCustomerAfterChangeCustomerId(authUser.customerId, customer);
+              this.config.saveEntity = customer => this.customerService.saveCustomerAfterAddParentId(authUser.customerId, customer);
             }
           }
       }),

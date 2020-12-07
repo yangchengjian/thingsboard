@@ -102,6 +102,7 @@ public class CustomerController extends BaseController {
     @ResponseBody
     public Customer saveCustomer(@RequestBody Customer customer) throws ThingsboardException {
         try {
+            customer.setTenantId(getCurrentUser().getTenantId());
 
             // checkEntity(customer.getId(), customer, Resource.CUSTOMER);
 
@@ -182,7 +183,7 @@ public class CustomerController extends BaseController {
         try {
             PageLink pageLink = createPageLink(pageSize, page, textSearch, sortProperty, sortOrder);
             TenantId tenantId = new TenantId(toUUID(strCustomerId)); // 把上传的CustomerId转成TenantId搜索
-            return checkNotNull(customerService.findCustomersByTenantId(tenantId, pageLink));
+            return checkNotNull(customerService.findCustomersByParentId(tenantId, pageLink));
         } catch (Exception e) {
             throw handleException(e);
         }

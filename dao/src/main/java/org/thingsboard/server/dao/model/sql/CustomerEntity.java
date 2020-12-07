@@ -40,6 +40,9 @@ import java.util.UUID;
 @Table(name = ModelConstants.CUSTOMER_COLUMN_FAMILY_NAME)
 public final class CustomerEntity extends BaseSqlEntity<Customer> implements SearchTextEntity<Customer> {
 
+    @Column(name = ModelConstants.CUSTOMER_PARENT_ID_PROPERTY)
+    private UUID parentId;
+
     @Column(name = ModelConstants.CUSTOMER_TENANT_ID_PROPERTY)
     private UUID tenantId;
     
@@ -86,6 +89,7 @@ public final class CustomerEntity extends BaseSqlEntity<Customer> implements Sea
             this.setUuid(customer.getId().getId());
         }
         this.setCreatedTime(customer.getCreatedTime());
+        this.parentId = customer.getParentId().getId();
         this.tenantId = customer.getTenantId().getId();
         this.title = customer.getTitle();
         this.country = customer.getCountry();
@@ -113,6 +117,7 @@ public final class CustomerEntity extends BaseSqlEntity<Customer> implements Sea
     public Customer toData() {
         Customer customer = new Customer(new CustomerId(this.getUuid()));
         customer.setCreatedTime(createdTime);
+        customer.setParentId(new TenantId(parentId));
         customer.setTenantId(new TenantId(tenantId));
         customer.setTitle(title);
         customer.setCountry(country);

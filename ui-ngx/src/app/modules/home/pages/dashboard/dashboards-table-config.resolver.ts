@@ -230,12 +230,12 @@ export class DashboardsTableConfigResolver implements Resolve<EntityTableConfig<
           icon: 'assignment_ind',
           isEnabled: () => true,
           onAction: ($event, entity) => this.manageAssignedCustomers($event, entity)
-        },
-        {
-          name: this.translate.instant('dashboard.unassign-from-customer'),
-          icon: 'assignment_return',
-          isEnabled: (entity) => !isCurrentPublicDashboardCustomer(entity, this.config.componentsData.customerId),
-          onAction: ($event, entity) => this.unassignFromCustomer($event, entity, this.config.componentsData.customerId)
+        // },
+        // {
+        //   name: this.translate.instant('dashboard.unassign-from-customer'),
+        //   icon: 'assignment_return',
+        //   isEnabled: (entity) => !isCurrentPublicDashboardCustomer(entity, this.config.componentsData.customerId),
+        //   onAction: ($event, entity) => this.unassignFromCustomer($event, entity, this.config.componentsData.customerId)
         }
       );
     // }

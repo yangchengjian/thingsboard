@@ -46,9 +46,9 @@ export class CustomerService {
     return this.http.get<Customer>(`/api/customer/${customerId}`, defaultHttpOptionsFromConfig(config));
   }
 
-  public saveCustomerAfterChangeCustomerId(customerId: string, customer: Customer, config?: RequestConfig): Observable<Customer> {
+  public saveCustomerAfterAddParentId(customerId: string, customer: Customer, config?: RequestConfig): Observable<Customer> {
     const tenantId = new TenantId(customerId);
-    customer["tenantId"] = tenantId;
+    customer["parentId"] = tenantId;
     return this.http.post<Customer>('/api/customer', customer, defaultHttpOptionsFromConfig(config));
   }
 

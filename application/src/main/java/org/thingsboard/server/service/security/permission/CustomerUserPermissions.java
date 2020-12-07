@@ -90,12 +90,12 @@ public class CustomerUserPermissions extends AbstractPermissions {
                     // if (!super.hasPermission(user, operation, dashboardId, dashboard)) {
                     //     return false;
                     // }
-                    // if (!user.getTenantId().equals(dashboard.getTenantId())) {
-                    //     return false;
-                    // }
-                    // if (!dashboard.isAssignedToCustomer(user.getCustomerId())) {
-                    //     return false;
-                    // }
+                    if (!user.getTenantId().equals(dashboard.getTenantId())) {
+                        return false;
+                    }
+                    if (!dashboard.isAssignedToCustomer(user.getCustomerId())) {
+                        return false;
+                    }
                     return true;
                 }
 

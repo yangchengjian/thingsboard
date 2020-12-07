@@ -151,6 +151,21 @@ public class CustomerServiceImpl extends AbstractEntityService implements Custom
     }
 
     @Override
+    public PageData<Customer> findCustomersByParentId(TenantId tenantId, PageLink pageLink) {
+        log.trace("Executing findCustomersByParentId, tenantId [{}], pageLink [{}]", tenantId, pageLink);
+        Validator.validateId(tenantId, "Incorrect tenantId " + tenantId);
+        Validator.validatePageLink(pageLink);
+        return customerDao.findCustomersByParentId(tenantId.getId(), pageLink);
+    }
+
+    @Override
+    public void deleteCustomersByParentId(TenantId tenantId) {
+        log.trace("Executing deleteCustomersByParentId, tenantId [{}]", tenantId);
+        Validator.validateId(tenantId, "Incorrect tenantId " + tenantId);
+        customersByParentRemover.removeEntities(tenantId, tenantId);
+    }
+
+    @Override
     public PageData<Customer> findCustomersByTenantId(TenantId tenantId, PageLink pageLink) {
         log.trace("Executing findCustomersByTenantId, tenantId [{}], pageLink [{}]", tenantId, pageLink);
         Validator.validateId(tenantId, "Incorrect tenantId " + tenantId);
@@ -214,6 +229,20 @@ public class CustomerServiceImpl extends AbstractEntityService implements Custom
                     }
                 }
             };
+
+    private PaginatedRemover<TenantId, Customer> customersByParentRemover =
+            new PaginatedRemover<TenantId, Customer>() {
+
+                @Override
+                protected PageData<Customer> findEntities(TenantId tenantId, TenantId id, PageLink pageLink) {
+                    return customerDao.findCustomersByParentId(id.getId(), pageLink);
+                }
+
+                @Override
+                protected void removeEntity(TenantId tenantId, Customer entity) {
+                    deleteCustomer(tenantId, new CustomerId(entity.getUuidId()));
+                }
+            }; 
 
     private PaginatedRemover<TenantId, Customer> customersByTenantRemover =
             new PaginatedRemover<TenantId, Customer>() {

@@ -133,6 +133,7 @@ public class ModelConstants {
      * Cassandra customer constants.
      */
     public static final String CUSTOMER_COLUMN_FAMILY_NAME = "customer";
+    public static final String CUSTOMER_PARENT_ID_PROPERTY = "parent_id";
     public static final String CUSTOMER_TENANT_ID_PROPERTY = TENANT_ID_PROPERTY;
     public static final String CUSTOMER_TITLE_PROPERTY = TITLE_PROPERTY;
     public static final String CUSTOMER_ADDITIONAL_INFO_PROPERTY = ADDITIONAL_INFO_PROPERTY;

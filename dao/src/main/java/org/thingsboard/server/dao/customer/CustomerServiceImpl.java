@@ -139,6 +139,7 @@ public class CustomerServiceImpl extends AbstractEntityService implements Custom
             return publicCustomerOpt.get();
         } else {
             Customer publicCustomer = new Customer();
+            publicCustomer.setParentId(tenantId);
             publicCustomer.setTenantId(tenantId);
             publicCustomer.setTitle(PUBLIC_CUSTOMER_TITLE);
             try {

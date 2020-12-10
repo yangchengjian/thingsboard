@@ -257,6 +257,20 @@ export class MenuService {
       },
       {
         id: guid(),
+        name: 'asset.assets',
+        type: 'link',
+        path: '/assets',
+        icon: 'domain'
+      },
+      {
+        id: guid(),
+        name: 'entity-view.entity-views',
+        type: 'link',
+        path: '/entityViews',
+        icon: 'view_quilt'
+      },
+      {
+        id: guid(),
         name: 'device.management',
         type: 'toggle',
         path: '/devices',
@@ -276,20 +290,6 @@ export class MenuService {
             path: '/deviceProfiles',
             icon: 'mdi:alpha-d-box',
             isMdiIcon: true
-          },
-          {
-            id: guid(),
-            name: 'entity-view.entity-views',
-            type: 'link',
-            path: '/entityViews',
-            icon: 'view_quilt'
-          },
-          {
-            id: guid(),
-            name: 'asset.assets',
-            type: 'link',
-            path: '/assets',
-            icon: 'domain'
           },
         ]
       },
@@ -346,6 +346,26 @@ export class MenuService {
         ]
       },
       {
+        name: 'asset.management',
+        places: [
+          {
+            name: 'asset.assets',
+            icon: 'domain',
+            path: '/assets'
+          }
+        ]
+      },
+      {
+        name: 'entity-view.management',
+        places: [
+          {
+            name: 'entity-view.entity-views',
+            icon: 'view_quilt',
+            path: '/entityViews'
+          },
+        ]
+      },
+      {
         name: 'device.management',
         places: [
           {
@@ -359,16 +379,6 @@ export class MenuService {
             isMdiIcon: true,
             path: '/deviceProfiles'
           },
-          {
-            name: 'entity-view.entity-views',
-            icon: 'view_quilt',
-            path: '/entityViews'
-          },
-          {
-            name: 'asset.assets',
-            icon: 'domain',
-            path: '/assets'
-          }
         ]
       },
       {

@@ -202,43 +202,47 @@ export class DashboardsTableConfigResolver implements Resolve<EntityTableConfig<
           icon: 'reply',
           isEnabled: (entity) => isPublicDashboard(entity),
           onAction: ($event, entity) => this.makePrivate($event, entity)
-        }
-        // {
-        //   name: this.translate.instant('dashboard.manage-assigned-customers'),
-        //   icon: 'assignment_ind',
-        //   isEnabled: () => true,
-        //   onAction: ($event, entity) => this.manageAssignedCustomers($event, entity)
-        // }
-      );
-    }
-    // if (dashboardScope === 'customer') {
-      actions.push(
-        // {
-        //   name: this.translate.instant('dashboard.export'),
-        //   icon: 'file_download',
-        //   isEnabled: () => true,
-        //   onAction: ($event, entity) => this.exportDashboard($event, entity)
-        // },
-        // {
-        //   name: this.translate.instant('dashboard.make-private'),
-        //   icon: 'reply',
-        //   isEnabled: (entity) => isCurrentPublicDashboardCustomer(entity, this.config.componentsData.customerId),
-        //   onAction: ($event, entity) => this.makePrivate($event, entity)
-        // },
+        },
         {
           name: this.translate.instant('dashboard.manage-assigned-customers'),
           icon: 'assignment_ind',
           isEnabled: () => true,
           onAction: ($event, entity) => this.manageAssignedCustomers($event, entity)
-        // },
-        // {
-        //   name: this.translate.instant('dashboard.unassign-from-customer'),
-        //   icon: 'assignment_return',
-        //   isEnabled: (entity) => !isCurrentPublicDashboardCustomer(entity, this.config.componentsData.customerId),
-        //   onAction: ($event, entity) => this.unassignFromCustomer($event, entity, this.config.componentsData.customerId)
         }
       );
-    // }
+    }
+    if (dashboardScope === 'customer') {
+      actions.push(
+        {
+          name: this.translate.instant('dashboard.export'),
+          icon: 'file_download',
+          isEnabled: () => true,
+          onAction: ($event, entity) => this.exportDashboard($event, entity)
+        },
+        {
+          name: this.translate.instant('dashboard.make-private'),
+          icon: 'reply',
+          isEnabled: (entity) => isCurrentPublicDashboardCustomer(entity, this.config.componentsData.customerId),
+          onAction: ($event, entity) => this.makePrivate($event, entity)
+        },
+        {
+          name: this.translate.instant('dashboard.unassign-from-customer'),
+          icon: 'assignment_return',
+          isEnabled: (entity) => !isCurrentPublicDashboardCustomer(entity, this.config.componentsData.customerId),
+          onAction: ($event, entity) => this.unassignFromCustomer($event, entity, this.config.componentsData.customerId)
+        }
+      );
+    }
+    if (dashboardScope === 'customer_user') {
+      actions.push(
+        {
+          name: this.translate.instant('dashboard.manage-assigned-customers'),
+          icon: 'assignment_ind',
+          isEnabled: () => true,
+          onAction: ($event, entity) => this.manageAssignedCustomers($event, entity)
+        }
+      );
+    }
     return actions;
   }
 

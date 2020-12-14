@@ -31,6 +31,13 @@ export class ExcelService {
     }
     private saveAsExcelFile(buffer: any, fileName: string): void {
         const data: Blob = new Blob([buffer], { type: EXCEL_TYPE });
-        FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
+        FileSaver.saveAs(data, fileName + '_' + this.dateToString(new Date()) + EXCEL_EXTENSION);
+    }
+    private dateToString (date: Date) {
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
+        let year = date.getFullYear();
+        let dateString = `${year}${month}${day}`;
+        return dateString;      
     }
 }

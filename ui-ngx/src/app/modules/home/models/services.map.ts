@@ -22,6 +22,7 @@ import { EntityRelationService } from '@core/http/entity-relation.service';
 import { EntityService } from '@core/http/entity.service';
 import { DialogService } from '@core/services/dialog.service';
 import { CustomDialogService } from '@home/components/widget/dialog/custom-dialog.service';
+import { ExcelService } from '@home/components/widget/excel/excel.service';
 import { DatePipe } from '@angular/common';
 import { UtilsService } from '@core/services/utils.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -47,6 +48,7 @@ export const ServicesMap = new Map<string, Type<any>>(
    ['entityService', EntityService],
    ['dialogs', DialogService],
    ['customDialog', CustomDialogService],
+   ['excelService', ExcelService],
    ['date', DatePipe],
    ['utils', UtilsService],
    ['translate', TranslateService],

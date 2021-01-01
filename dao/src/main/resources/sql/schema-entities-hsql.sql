@@ -106,6 +106,7 @@ CREATE TABLE IF NOT EXISTS customer (
     phone varchar(255),
     search_text varchar(255),
     state varchar(255),
+    parent_id uuid,
     tenant_id uuid,
     title varchar(255),
     zip varchar(255)

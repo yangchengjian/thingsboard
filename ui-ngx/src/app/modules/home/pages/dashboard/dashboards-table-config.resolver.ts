@@ -233,6 +233,16 @@ export class DashboardsTableConfigResolver implements Resolve<EntityTableConfig<
         }
       );
     }
+    if (dashboardScope === 'customer_user') {
+      actions.push(
+        {
+          name: this.translate.instant('dashboard.manage-assigned-customers'),
+          icon: 'assignment_ind',
+          isEnabled: () => true,
+          onAction: ($event, entity) => this.manageAssignedCustomers($event, entity)
+        }
+      );
+    }
     return actions;
   }
 

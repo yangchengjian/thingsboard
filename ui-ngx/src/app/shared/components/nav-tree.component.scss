@@ -107,7 +107,7 @@
 
       &.tb-customer-group {
         &::before {
-          content: "supervisor_account";
+          content: "device_hub";
         }
       }
 
@@ -137,7 +137,7 @@
 
       &.tb-customer {
         &::before {
-          content: "supervisor_account";
+          content: "device_hub";
         }
       }
     }

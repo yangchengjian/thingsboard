@@ -28,7 +28,7 @@ const routes: Routes = [
     data: {
       breadcrumb: {
         label: 'tenant.tenants',
-        icon: 'supervisor_account'
+        icon: 'device_hub'
       }
     },
     children: [

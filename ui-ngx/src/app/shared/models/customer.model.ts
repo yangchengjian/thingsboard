@@ -19,6 +19,7 @@ import { ContactBased } from '@shared/models/contact-based.model';
 import { TenantId } from './id/tenant-id';
 
 export interface Customer extends ContactBased<CustomerId> {
+  parentId: TenantId;
   tenantId: TenantId;
   title: string;
   additionalInfo?: any;

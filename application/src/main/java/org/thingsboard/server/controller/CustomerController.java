@@ -18,6 +18,7 @@ package org.thingsboard.server.controller;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,13 +34,16 @@ import org.thingsboard.server.common.data.EntityType;
 import org.thingsboard.server.common.data.audit.ActionType;
 import org.thingsboard.server.common.data.exception.ThingsboardException;
 import org.thingsboard.server.common.data.id.CustomerId;
+import org.thingsboard.server.common.data.id.EntityId;
 import org.thingsboard.server.common.data.id.TenantId;
 import org.thingsboard.server.common.data.page.PageData;
 import org.thingsboard.server.common.data.page.PageLink;
 import org.thingsboard.server.queue.util.TbCoreComponent;
+import org.thingsboard.server.service.security.model.SecurityUser;
 import org.thingsboard.server.service.security.permission.Operation;
 import org.thingsboard.server.service.security.permission.Resource;
 
+@Slf4j
 @RestController
 @TbCoreComponent
 @RequestMapping("/api")
@@ -93,14 +97,16 @@ public class CustomerController extends BaseController {
         }
     }
 
-    @PreAuthorize("hasAuthority('TENANT_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('TENANT_ADMIN', 'CUSTOMER_USER')")
     @RequestMapping(value = "/customer", method = RequestMethod.POST)
     @ResponseBody
     public Customer saveCustomer(@RequestBody Customer customer) throws ThingsboardException {
         try {
             customer.setTenantId(getCurrentUser().getTenantId());
 
-            checkEntity(customer.getId(), customer, Resource.CUSTOMER);
+            // checkEntity(customer.getId(), customer, Resource.CUSTOMER);
+
+            log.info("customer: [{}]", customer);
 
             Customer savedCustomer = checkNotNull(customerService.saveCustomer(customer));
 
@@ -118,7 +124,7 @@ public class CustomerController extends BaseController {
         }
     }
 
-    @PreAuthorize("hasAuthority('TENANT_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('TENANT_ADMIN', 'CUSTOMER_USER')")
     @RequestMapping(value = "/customer/{customerId}", method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.OK)
     public void deleteCustomer(@PathVariable(CUSTOMER_ID) String strCustomerId) throws ThingsboardException {
@@ -143,7 +149,7 @@ public class CustomerController extends BaseController {
         }
     }
 
-    @PreAuthorize("hasAuthority('TENANT_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('TENANT_ADMIN', 'CUSTOMER_USER')")
     @RequestMapping(value = "/customers", params = {"pageSize", "page"}, method = RequestMethod.GET)
     @ResponseBody
     public PageData<Customer> getCustomers(@RequestParam int pageSize,
@@ -153,8 +159,31 @@ public class CustomerController extends BaseController {
                                            @RequestParam(required = false) String sortOrder) throws ThingsboardException {
         try {
             PageLink pageLink = createPageLink(pageSize, page, textSearch, sortProperty, sortOrder);
-            TenantId tenantId = getCurrentUser().getTenantId();
+            SecurityUser user = getCurrentUser();
+            TenantId tenantId = new TenantId(EntityId.NULL_UUID);
+            if (user != null && user.isTenantAdmin()) {
+                tenantId = user.getTenantId();
+            } else if (user != null && user.isCustomerUser()) {
+                tenantId = new TenantId(user.getCustomerId().getId());
+            }
             return checkNotNull(customerService.findCustomersByTenantId(tenantId, pageLink));
+        } catch (Exception e) {
+            throw handleException(e);
+        }
+    }
+
+    @PreAuthorize("hasAnyAuthority('TENANT_ADMIN', 'CUSTOMER_USER')")
+    @RequestMapping(value = "/customers/{customerId}", params = {"pageSize", "page"}, method = RequestMethod.GET)
+    @ResponseBody
+    public PageData<Customer> getCustomersByParentId(@PathVariable(CUSTOMER_ID) String strCustomerId, @RequestParam int pageSize,
+                                           @RequestParam int page,
+                                           @RequestParam(required = false) String textSearch,
+                                           @RequestParam(required = false) String sortProperty,
+                                           @RequestParam(required = false) String sortOrder) throws ThingsboardException {
+        try {
+            PageLink pageLink = createPageLink(pageSize, page, textSearch, sortProperty, sortOrder);
+            TenantId tenantId = new TenantId(toUUID(strCustomerId)); // 把上传的CustomerId转成TenantId搜索
+            return checkNotNull(customerService.findCustomersByParentId(tenantId, pageLink));
         } catch (Exception e) {
             throw handleException(e);
         }

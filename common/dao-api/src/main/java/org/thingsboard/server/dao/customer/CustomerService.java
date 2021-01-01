@@ -38,7 +38,11 @@ public interface CustomerService {
 
     Customer findOrCreatePublicCustomer(TenantId tenantId);
 
+    PageData<Customer> findCustomersByParentId(TenantId tenantId, PageLink pageLink);
+
     PageData<Customer> findCustomersByTenantId(TenantId tenantId, PageLink pageLink);
+
+    void deleteCustomersByParentId(TenantId tenantId);
 
     void deleteCustomersByTenantId(TenantId tenantId);
 

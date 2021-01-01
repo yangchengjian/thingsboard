@@ -21,6 +21,7 @@ import { HttpClient } from '@angular/common/http';
 import { PageLink } from '@shared/models/page/page-link';
 import { PageData } from '@shared/models/page/page-data';
 import { Customer } from '@shared/models/customer.model';
+import { TenantId } from '@app/shared/public-api';
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +37,19 @@ export class CustomerService {
       defaultHttpOptionsFromConfig(config));
   }
 
+  public getCustomersByParentId(customerId: string, pageLink: PageLink, config?: RequestConfig): Observable<PageData<Customer>> {
+    return this.http.get<PageData<Customer>>(`/api/customers/${customerId}${pageLink.toQuery()}`,
+      defaultHttpOptionsFromConfig(config));
+  }
+
   public getCustomer(customerId: string, config?: RequestConfig): Observable<Customer> {
     return this.http.get<Customer>(`/api/customer/${customerId}`, defaultHttpOptionsFromConfig(config));
+  }
+
+  public saveCustomerAfterAddParentId(customerId: string, customer: Customer, config?: RequestConfig): Observable<Customer> {
+    const tenantId = new TenantId(customerId);
+    customer["parentId"] = tenantId;
+    return this.http.post<Customer>('/api/customer', customer, defaultHttpOptionsFromConfig(config));
   }
 
   public saveCustomer(customer: Customer, config?: RequestConfig): Observable<Customer> {

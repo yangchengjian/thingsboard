@@ -56,6 +56,7 @@ import { CustomActionPrettyResourcesTabsComponent } from '@home/components/widge
 import { CustomActionPrettyEditorComponent } from '@home/components/widget/action/custom-action-pretty-editor.component';
 import { CustomDialogService } from '@home/components/widget/dialog/custom-dialog.service';
 import { CustomDialogContainerComponent } from '@home/components/widget/dialog/custom-dialog-container.component';
+import { ExcelService } from '@home/components/widget/excel/excel.service';
 import { ImportExportService } from '@home/components/import-export/import-export.service';
 import { ImportDialogComponent } from '@home/components/import-export/import-dialog.component';
 import { AddWidgetToDashboardDialogComponent } from '@home/components/attribute/add-widget-to-dashboard-dialog.component';
@@ -314,6 +315,7 @@ import { CopyDeviceCredentialsComponent } from '@home/components/device/copy-dev
   providers: [
     WidgetComponentService,
     CustomDialogService,
+    ExcelService,
     ImportExportService
   ]
 })

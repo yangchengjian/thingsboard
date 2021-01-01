@@ -41,7 +41,7 @@ import { Direction, SortOrder } from '@shared/models/page/sort-order';
 import { forkJoin, fromEvent, merge, Observable, of, Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { BaseData, HasId } from '@shared/models/base-data';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   CellActionDescriptor,
   EntityActionTableColumn,
@@ -116,6 +116,7 @@ export class EntitiesTableComponent extends PageComponent implements AfterViewIn
 
   constructor(protected store: Store<AppState>,
               public route: ActivatedRoute,
+              public router: Router,
               public translate: TranslateService,
               public dialog: MatDialog,
               private dialogService: DialogService,
@@ -123,6 +124,11 @@ export class EntitiesTableComponent extends PageComponent implements AfterViewIn
               private cd: ChangeDetectorRef,
               private componentFactoryResolver: ComponentFactoryResolver) {
     super(store);
+
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+
   }
 
   ngOnInit() {

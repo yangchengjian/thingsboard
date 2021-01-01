@@ -34,7 +34,7 @@ const routes: Routes = [
     data: {
       breadcrumb: {
         label: 'customer.customers',
-        icon: 'supervisor_account'
+        icon: 'device_hub'
       }
     },
     children: [
@@ -42,8 +42,23 @@ const routes: Routes = [
         path: '',
         component: EntitiesTableComponent,
         data: {
-          auth: [Authority.TENANT_ADMIN],
+          auth: [Authority.TENANT_ADMIN, Authority.CUSTOMER_USER],
           title: 'customer.customers'
+        },
+        resolve: {
+          entitiesTableConfig: CustomersTableConfigResolver
+        }
+      },
+      {
+        path: ':customerId/childs',
+        component: EntitiesTableComponent,
+        data: {
+          auth: [Authority.TENANT_ADMIN, Authority.CUSTOMER_USER],
+          title: 'customer.customers',
+          breadcrumb: {
+            label: 'customer.customers',
+            icon: 'device_hub'
+          }
         },
         resolve: {
           entitiesTableConfig: CustomersTableConfigResolver
@@ -53,7 +68,7 @@ const routes: Routes = [
         path: ':customerId/users',
         component: EntitiesTableComponent,
         data: {
-          auth: [Authority.TENANT_ADMIN],
+          auth: [Authority.TENANT_ADMIN, Authority.CUSTOMER_USER],
           title: 'user.customer-users',
           breadcrumb: {
             label: 'user.customer-users',
@@ -68,7 +83,7 @@ const routes: Routes = [
         path: ':customerId/devices',
         component: EntitiesTableComponent,
         data: {
-          auth: [Authority.TENANT_ADMIN],
+          auth: [Authority.TENANT_ADMIN, Authority.CUSTOMER_USER],
           title: 'customer.devices',
           devicesType: 'customer',
           breadcrumb: {
@@ -84,7 +99,7 @@ const routes: Routes = [
         path: ':customerId/assets',
         component: EntitiesTableComponent,
         data: {
-          auth: [Authority.TENANT_ADMIN],
+          auth: [Authority.TENANT_ADMIN, Authority.CUSTOMER_USER],
           title: 'customer.assets',
           assetsType: 'customer',
           breadcrumb: {
@@ -109,7 +124,7 @@ const routes: Routes = [
             path: '',
             component: EntitiesTableComponent,
             data: {
-              auth: [Authority.TENANT_ADMIN],
+              auth: [Authority.TENANT_ADMIN, Authority.CUSTOMER_USER],
               title: 'customer.dashboards',
               dashboardsType: 'customer'
             },

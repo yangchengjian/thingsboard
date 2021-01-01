@@ -16,7 +16,7 @@
 
 import { Injectable } from '@angular/core';
 
-import { Resolve, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
 
 import {
   DateEntityTableColumn,
@@ -32,12 +32,25 @@ import { CustomerService } from '@app/core/http/customer.service';
 import { CustomerComponent } from '@modules/home/pages/customer/customer.component';
 import { CustomerTabsComponent } from '@home/pages/customer/customer-tabs.component';
 
+import { Observable, of } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { selectAuth } from '@core/auth/auth.selectors';
+import { selectAuthUser } from '@core/auth/auth.selectors';
+import { map, mergeMap, take, tap } from 'rxjs/operators';
+import { AuthService } from '@core/auth/auth.service';
+import { Authority } from '@app/shared/models/authority.enum';
+
 @Injectable()
 export class CustomersTableConfigResolver implements Resolve<EntityTableConfig<Customer>> {
 
   private readonly config: EntityTableConfig<Customer> = new EntityTableConfig<Customer>();
 
-  constructor(private customerService: CustomerService,
+  private customerId: string;
+
+  constructor(private store: Store<AppState>,
+              private authService: AuthService,
+              private customerService: CustomerService,
               private translate: TranslateService,
               private datePipe: DatePipe,
               private router: Router) {
@@ -57,6 +70,12 @@ export class CustomersTableConfigResolver implements Resolve<EntityTableConfig<C
     );
 
     this.config.cellActionDescriptors.push(
+      {
+        name: this.translate.instant('customer.manage-customers'),
+        icon: 'device_hub',
+        isEnabled: (customer) => !customer.additionalInfo || !customer.additionalInfo.isPublic,
+        onAction: ($event, entity) => this.manageCustomers($event, entity)
+      },
       {
         name: this.translate.instant('customer.manage-customer-users'),
         icon: 'account_circle',
@@ -103,9 +122,7 @@ export class CustomersTableConfigResolver implements Resolve<EntityTableConfig<C
     this.config.deleteEntitiesTitle = count => this.translate.instant('customer.delete-customers-title', {count});
     this.config.deleteEntitiesContent = () => this.translate.instant('customer.delete-customers-text');
 
-    this.config.entitiesFetchFunction = pageLink => this.customerService.getCustomers(pageLink);
     this.config.loadEntity = id => this.customerService.getCustomer(id.id);
-    this.config.saveEntity = customer => this.customerService.saveCustomer(customer);
     this.config.deleteEntity = id => this.customerService.deleteCustomer(id.id);
     this.config.onEntityAction = action => this.onCustomerAction(action);
     this.config.deleteEnabled = (customer) => customer && (!customer.additionalInfo || !customer.additionalInfo.isPublic);
@@ -113,10 +130,58 @@ export class CustomersTableConfigResolver implements Resolve<EntityTableConfig<C
     this.config.detailsReadonly = (customer) => customer && customer.additionalInfo && customer.additionalInfo.isPublic;
   }
 
-  resolve(): EntityTableConfig<Customer> {
-    this.config.tableTitle = this.translate.instant('customer.customers');
+  // resolve(route: ActivatedRouteSnapshot): EntityTableConfig<Customer> {
+  //   this.config.tableTitle = this.translate.instant('customer.customers');
 
-    return this.config;
+  //   const routeParams = route.params;
+  //   this.customerId = routeParams.customerId;
+  //   console.log('routeParams.customerId: ' + routeParams.customerId);
+  //   if(this.customerId === undefined) {
+  //     this.config.entitiesFetchFunction = pageLink => this.customerService.getCustomers(pageLink);
+  //     this.config.saveEntity = customer => this.customerService.saveCustomer(customer);
+  //   } else {
+  //     this.config.entitiesFetchFunction = pageLink => this.customerService.getCustomersByParentId(this.customerId, pageLink);
+  //     this.config.saveEntity = customer => this.customerService.saveCustomerAfterAddParentId(this.customerId, customer);
+  //   }
+  //   return this.config;
+  // }
+  resolve(route: ActivatedRouteSnapshot): Observable<EntityTableConfig<Customer>> {
+    const routeParams = route.params;
+    this.customerId = routeParams.customerId;
+    return this.store.pipe(select(selectAuthUser), take(1)).pipe(
+      tap((authUser) => {
+          if (this.customerId !== undefined) {
+            this.config.entitiesFetchFunction = pageLink => this.customerService.getCustomersByParentId(this.customerId, pageLink);
+            this.config.saveEntity = customer => this.customerService.saveCustomerAfterAddParentId(this.customerId, customer);
+          } else {
+            if (authUser.authority === Authority.TENANT_ADMIN) {
+              this.config.entitiesFetchFunction = pageLink => this.customerService.getCustomersByParentId(authUser.tenantId, pageLink);
+              this.config.saveEntity = customer => this.customerService.saveCustomerAfterAddParentId(authUser.tenantId, customer);
+            } else if(authUser.authority === Authority.CUSTOMER_USER) {
+              this.config.entitiesFetchFunction = pageLink => this.customerService.getCustomersByParentId(authUser.customerId, pageLink);
+              this.config.saveEntity = customer => this.customerService.saveCustomerAfterAddParentId(authUser.customerId, customer);
+            }
+          }
+      }),
+      mergeMap(() =>
+        this.customerId ? this.customerService.getCustomer(this.customerId) : of(null as Customer)
+      ),
+      map((parentCustomer) => {
+        if (parentCustomer) {
+          this.config.tableTitle = parentCustomer.title + ': ' + this.translate.instant('customer.manage-customers');
+        } else {
+          this.config.tableTitle = this.translate.instant('customer.manage-customers');
+        }
+        return this.config;
+      })
+    );
+  }
+
+  manageCustomers($event: Event, customer: Customer) {
+    if ($event) {
+      $event.stopPropagation();
+    }
+    this.router.navigateByUrl(`customers/${customer.id.id}/childs`);
   }
 
   manageCustomerUsers($event: Event, customer: Customer) {
@@ -149,6 +214,9 @@ export class CustomersTableConfigResolver implements Resolve<EntityTableConfig<C
 
   onCustomerAction(action: EntityAction<Customer>): boolean {
     switch (action.action) {
+      case 'manageCustomers':
+        this.manageCustomers(action.event, action.entity);
+        return true;
       case 'manageUsers':
         this.manageCustomerUsers(action.event, action.entity);
         return true;

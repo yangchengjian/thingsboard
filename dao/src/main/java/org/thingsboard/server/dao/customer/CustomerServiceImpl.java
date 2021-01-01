@@ -139,6 +139,7 @@ public class CustomerServiceImpl extends AbstractEntityService implements Custom
             return publicCustomerOpt.get();
         } else {
             Customer publicCustomer = new Customer();
+            publicCustomer.setParentId(tenantId);
             publicCustomer.setTenantId(tenantId);
             publicCustomer.setTitle(PUBLIC_CUSTOMER_TITLE);
             try {
@@ -148,6 +149,21 @@ public class CustomerServiceImpl extends AbstractEntityService implements Custom
             }
             return customerDao.save(tenantId, publicCustomer);
         }
+    }
+
+    @Override
+    public PageData<Customer> findCustomersByParentId(TenantId tenantId, PageLink pageLink) {
+        log.trace("Executing findCustomersByParentId, tenantId [{}], pageLink [{}]", tenantId, pageLink);
+        Validator.validateId(tenantId, "Incorrect tenantId " + tenantId);
+        Validator.validatePageLink(pageLink);
+        return customerDao.findCustomersByParentId(tenantId.getId(), pageLink);
+    }
+
+    @Override
+    public void deleteCustomersByParentId(TenantId tenantId) {
+        log.trace("Executing deleteCustomersByParentId, tenantId [{}]", tenantId);
+        Validator.validateId(tenantId, "Incorrect tenantId " + tenantId);
+        customersByParentRemover.removeEntities(tenantId, tenantId);
     }
 
     @Override
@@ -170,11 +186,11 @@ public class CustomerServiceImpl extends AbstractEntityService implements Custom
 
                 @Override
                 protected void validateCreate(TenantId tenantId, Customer customer) {
-                    DefaultTenantProfileConfiguration profileConfiguration =
-                            (DefaultTenantProfileConfiguration)tenantProfileCache.get(tenantId).getProfileData().getConfiguration();
-                    long maxCustomers = profileConfiguration.getMaxCustomers();
+                    // DefaultTenantProfileConfiguration profileConfiguration =
+                    //         (DefaultTenantProfileConfiguration)tenantProfileCache.get(tenantId).getProfileData().getConfiguration();
+                    // long maxCustomers = profileConfiguration.getMaxCustomers();
 
-                    validateNumberOfEntitiesPerTenant(tenantId, customerDao, maxCustomers, EntityType.CUSTOMER);
+                    // validateNumberOfEntitiesPerTenant(tenantId, customerDao, maxCustomers, EntityType.CUSTOMER);
                     customerDao.findCustomersByTenantIdAndTitle(customer.getTenantId().getId(), customer.getTitle()).ifPresent(
                             c -> {
                                 throw new DataValidationException("Customer with such title already exists!");
@@ -206,14 +222,28 @@ public class CustomerServiceImpl extends AbstractEntityService implements Custom
                     }
                     if (customer.getTenantId() == null) {
                         throw new DataValidationException("Customer should be assigned to tenant!");
-                    } else {
-                        Tenant tenant = tenantDao.findById(tenantId, customer.getTenantId().getId());
-                        if (tenant == null) {
-                            throw new DataValidationException("Customer is referencing to non-existent tenant!");
-                        }
+                    // } else {
+                    //     Tenant tenant = tenantDao.findById(tenantId, customer.getTenantId().getId());
+                    //     if (tenant == null) {
+                    //         throw new DataValidationException("Customer is referencing to non-existent tenant!");
+                    //     }
                     }
                 }
             };
+
+    private PaginatedRemover<TenantId, Customer> customersByParentRemover =
+            new PaginatedRemover<TenantId, Customer>() {
+
+                @Override
+                protected PageData<Customer> findEntities(TenantId tenantId, TenantId id, PageLink pageLink) {
+                    return customerDao.findCustomersByParentId(id.getId(), pageLink);
+                }
+
+                @Override
+                protected void removeEntity(TenantId tenantId, Customer entity) {
+                    deleteCustomer(tenantId, new CustomerId(entity.getUuidId()));
+                }
+            }; 
 
     private PaginatedRemover<TenantId, Customer> customersByTenantRemover =
             new PaginatedRemover<TenantId, Customer>() {

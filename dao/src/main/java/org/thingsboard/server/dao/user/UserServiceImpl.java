@@ -444,8 +444,8 @@ public class UserServiceImpl extends AbstractEntityService implements UserServic
                         Customer customer = customerDao.findById(tenantId, user.getCustomerId().getId());
                         if (customer == null) {
                             throw new DataValidationException("User is referencing to non-existent customer!");
-                        } else if (!customer.getTenantId().getId().equals(tenantId.getId())) {
-                            throw new DataValidationException("User can't be assigned to customer from different tenant!");
+                        // } else if (!customer.getTenantId().getId().equals(tenantId.getId())) {
+                        //     throw new DataValidationException("User can't be assigned to customer from different tenant!");
                         }
                     }
                 }

@@ -126,7 +126,7 @@ export class TimeseriesTableWidgetComponent extends PageComponent implements OnI
   private defaultPageSize = 10;
   private defaultSortOrder = '-0';
   private hideEmptyLines = false;
-  private showTimestamp = true;
+  public showTimestamp = true;
   private dateFormatFilter: string;
 
   private searchAction: WidgetAction = {
@@ -366,8 +366,16 @@ export class TimeseriesTableWidgetComponent extends PageComponent implements OnI
     return header.index;
   }
 
-  public trackByRowIndex(index: number) {
+  public trackByRowTimestamp(index: number) {
     return index;
+  }
+
+  public trackByActionCellDescriptionId(index: number, action: WidgetActionDescriptor) {
+    return action.id;
+  }
+
+  public trackBySourcesIndex(index: number, source: TimeseriesTableSource) {
+    return source.datasource.entityId;
   }
 
   public cellStyle(source: TimeseriesTableSource, index: number, value: any): any {
@@ -538,7 +546,7 @@ class TimeseriesDatasource implements DataSource<TimeseriesRow> {
         }
       }
     } else {
-      rows = Object.values(rowsMap);
+      rows = Object.keys(rowsMap).map(itm => rowsMap[itm]);
     }
     return rows;
   }

@@ -433,7 +433,57 @@
         "no-telemetry-text": "No telemetry found"
     },
     "api-usage": {
-        "api-usage": "Api Usage"
+        "api-usage": "Api Usage",
+        "data-points": "Data points",
+        "data-points-storage-days": "Data points storage days",
+        "email": "Email",
+        "email-messages": "Email messages",
+        "email-messages-daily-activity": "Email messages daily activity",
+        "email-messages-hourly-activity": "Email messages hourly activity",
+        "email-messages-monthly-activity": "Email messages monthly activity",
+        "exceptions": "Exceptions",
+        "executions": "Executions",
+        "javascript": "JavaScript",
+        "javascript-executions": "JavaScript executions",
+        "javascript-functions": "JavaScript functions",
+        "javascript-functions-daily-activity": "JavaScript functions daily activity",
+        "javascript-functions-hourly-activity": "JavaScript functions hourly activity",
+        "javascript-functions-monthly-activity": "JavaScript functions monthly activity",
+        "latest-error": "Latest Error",
+        "messages": "Messages",
+        "permanent-failures": "${entityName} Permanent Failures",
+        "permanent-timeouts": "${entityName} Permanent Timeouts",
+        "processing-failures": "${entityName} Processing Failures",
+        "processing-failures-and-timeouts": "Processing Failures and Timeouts",
+        "processing-timeouts": "${entityName} Processing Timeouts",
+        "queue-stats": "Queue Stats",
+        "rule-chain": "Rule Chain",
+        "rule-engine": "Rule Engine",
+        "rule-engine-daily-activity": "Rule Engine daily activity",
+        "rule-engine-executions": "Rule Engine executions",
+        "rule-engine-hourly-activity": "Rule Engine hourly activity",
+        "rule-engine-monthly-activity": "Rule Engine monthly activity",
+        "rule-engine-statistics": "Rule Engine Statistics",
+        "rule-node": "Rule Node",
+        "sms": "SMS",
+        "sms-messages": "SMS messages",
+        "sms-messages-daily-activity": "SMS messages daily activity",
+        "sms-messages-hourly-activity": "SMS messages hourly activity",
+        "sms-messages-monthly-activity": "SMS messages monthly activity",
+        "successful": "${entityName} Successful",
+        "telemetry": "Telemetry",
+        "telemetry-persistence": "Telemetry persistence",
+        "telemetry-persistence-daily-activity": "Telemetry persistence daily activity",
+        "telemetry-persistence-hourly-activity": "Telemetry persistence hourly activity",
+        "telemetry-persistence-monthly-activity": "Telemetry persistence monthly activity",
+        "transport": "Transport",
+        "transport-daily-activity": "Transport daily activity",
+        "transport-data-points": "Transport data points",
+        "transport-hourly-activity": "Transport hourly activity",
+        "transport-messages": "Transport messages",
+        "transport-monthly-activity": "Transport monthly activity",
+        "view-details": "View details",
+        "view-statistics": "View statistics"
     },
     "audit-log": {
         "audit": "Audit",
@@ -477,7 +527,9 @@
         "type-assigned-from-tenant": "Assigned from Tenant",
         "type-assigned-to-tenant": "Assigned to Tenant",
         "type-provision-success": "Device provisioned",
-        "type-provision-failure": "Device provisioning was failed"
+        "type-provision-failure": "Device provisioning was failed",
+        "type-timeseries-updated": "Telemetry updated",
+        "type-timeseries-deleted": "Telemetry deleted"
     },
     "confirm-on-exit": {
         "message": "You have unsaved changes. Are you sure you want to leave this page?",
@@ -2433,7 +2485,7 @@
             "zh_TW": "繁體中文",
             "en_US": "English",
             "it_IT": "Italiano",
-            "ko_KR": "한글",
+            "ko_KR": "한국어",
             "ru_RU": "Русский",
             "es_ES": "Español",
             "ja_JA": "日本語",
@@ -2445,7 +2497,8 @@
             "ro_RO": "Română",
             "lv_LV": "Latviešu",
             "ka_GE": "ქართული",
-            "pt_BR": "Português do Brasil"
+            "pt_BR": "Português do Brasil",
+            "sl_SI": "Slovenščina"
         }
     }
 }

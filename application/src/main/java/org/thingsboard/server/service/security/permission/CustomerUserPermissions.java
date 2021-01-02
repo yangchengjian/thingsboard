@@ -43,8 +43,11 @@ public class CustomerUserPermissions extends AbstractPermissions {
     }
 
     private static final PermissionChecker customerEntityPermissionChecker =
-            new PermissionChecker.GenericPermissionChecker(Operation.READ, Operation.READ_CREDENTIALS,
-                    Operation.READ_ATTRIBUTES, Operation.READ_TELEMETRY, Operation.RPC_CALL, Operation.CLAIM_DEVICES) {
+            new PermissionChecker.GenericPermissionChecker(
+                    Operation.CREATE, Operation.READ, Operation.WRITE, Operation.DELETE, 
+                    Operation.READ_ATTRIBUTES, Operation.WRITE_ATTRIBUTES,
+                    Operation.READ_TELEMETRY, Operation.WRITE_TELEMETRY, 
+                    Operation.READ_CREDENTIALS, Operation.RPC_CALL, Operation.CLAIM_DEVICES) {
 
                 @Override
                 public boolean hasPermission(SecurityUser user, Operation operation, EntityId entityId, HasTenantId entity) {
@@ -58,15 +61,15 @@ public class CustomerUserPermissions extends AbstractPermissions {
                     if (!(entity instanceof HasCustomerId)) {
                         return false;
                     }
-                    if (!operation.equals(Operation.CLAIM_DEVICES) && !user.getCustomerId().equals(((HasCustomerId) entity).getCustomerId())) {
-                        return false;
-                    }
+                    // if (!operation.equals(Operation.CLAIM_DEVICES) && !user.getCustomerId().equals(((HasCustomerId) entity).getCustomerId())) {
+                    //     return false;
+                    // }
                     return true;
                 }
             };
 
     private static final PermissionChecker customerPermissionChecker =
-            new PermissionChecker.GenericPermissionChecker(Operation.READ, Operation.READ_ATTRIBUTES, Operation.READ_TELEMETRY) {
+            new PermissionChecker.GenericPermissionChecker(Operation.CREATE, Operation.READ, Operation.WRITE, Operation.READ_ATTRIBUTES, Operation.READ_TELEMETRY) {
 
                 @Override
                 public boolean hasPermission(SecurityUser user, Operation operation, EntityId entityId, HasTenantId entity) {
@@ -82,14 +85,15 @@ public class CustomerUserPermissions extends AbstractPermissions {
             };
 
     private static final PermissionChecker customerDashboardPermissionChecker =
-            new PermissionChecker.GenericPermissionChecker<DashboardId, DashboardInfo>(Operation.READ, Operation.READ_ATTRIBUTES, Operation.READ_TELEMETRY) {
+            new PermissionChecker.GenericPermissionChecker<DashboardId, DashboardInfo>(Operation.READ, Operation.READ_ATTRIBUTES, Operation.READ_TELEMETRY,
+                    Operation.ASSIGN_TO_CUSTOMER, Operation.UNASSIGN_FROM_CUSTOMER) {
 
                 @Override
                 public boolean hasPermission(SecurityUser user, Operation operation, DashboardId dashboardId, DashboardInfo dashboard) {
 
-                    // if (!super.hasPermission(user, operation, dashboardId, dashboard)) {
-                    //     return false;
-                    // }
+                    if (!super.hasPermission(user, operation, dashboardId, dashboard)) {
+                        return false;
+                    }
                     if (!user.getTenantId().equals(dashboard.getTenantId())) {
                         return false;
                     }

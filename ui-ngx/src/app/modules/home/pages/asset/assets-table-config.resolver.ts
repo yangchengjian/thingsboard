@@ -113,9 +113,13 @@ export class AssetsTableConfigResolver implements Resolve<EntityTableConfig<Asse
     this.customerId = routeParams.customerId;
     return this.store.pipe(select(selectAuthUser), take(1)).pipe(
       tap((authUser) => {
-        if (authUser.authority === Authority.CUSTOMER_USER) {
-          this.config.componentsData.assetScope = 'customer_user';
-          this.customerId = authUser.customerId;
+        if (this.customerId === undefined) {
+          if (authUser.authority === Authority.TENANT_ADMIN) {
+            this.config.componentsData.assetScope = 'tenant';
+          } else if (authUser.authority === Authority.CUSTOMER_USER) {
+            this.config.componentsData.assetScope = 'customer_user';
+            this.customerId = authUser.customerId;
+          }
         }
       }),
       mergeMap(() =>
@@ -136,9 +140,9 @@ export class AssetsTableConfigResolver implements Resolve<EntityTableConfig<Asse
         this.config.cellActionDescriptors = this.configureCellActions(this.config.componentsData.assetScope);
         this.config.groupActionDescriptors = this.configureGroupActions(this.config.componentsData.assetScope);
         this.config.addActionDescriptors = this.configureAddActions(this.config.componentsData.assetScope);
-        this.config.addEnabled = this.config.componentsData.assetScope !== 'customer_user';
-        this.config.entitiesDeleteEnabled = this.config.componentsData.assetScope === 'tenant';
-        this.config.deleteEnabled = () => this.config.componentsData.assetScope === 'tenant';
+        // this.config.addEnabled = this.config.componentsData.assetScope !== 'customer_user';
+        // this.config.entitiesDeleteEnabled = this.config.componentsData.assetScope === 'tenant';
+        // this.config.deleteEnabled = () => this.config.componentsData.assetScope === 'tenant';
         return this.config;
       })
     );
@@ -154,16 +158,19 @@ export class AssetsTableConfigResolver implements Resolve<EntityTableConfig<Asse
     if (assetScope === 'tenant') {
       columns.push(
         new EntityTableColumn<AssetInfo>('customerTitle', 'customer.customer', '25%'),
-        new EntityTableColumn<AssetInfo>('customerIsPublic', 'asset.public', '60px',
-          entity => {
-            return checkBoxCell(entity.customerIsPublic);
-          }, () => ({}), false),
+        // new EntityTableColumn<AssetInfo>('customerIsPublic', 'asset.public', '60px',
+        //   entity => {
+        //     return checkBoxCell(entity.customerIsPublic);
+        //   }, () => ({}), false),
       );
     }
     return columns;
   }
 
   configureEntityFunctions(assetScope: string): void {
+    this.config.entitiesFetchFunction = pageLink =>
+        this.assetService.getTenantAssetInfos(pageLink, this.config.componentsData.assetType);
+      this.config.deleteEntity = id => this.assetService.deleteAsset(id.id);
     if (assetScope === 'tenant') {
       this.config.entitiesFetchFunction = pageLink =>
         this.assetService.getTenantAssetInfos(pageLink, this.config.componentsData.assetType);
@@ -177,75 +184,75 @@ export class AssetsTableConfigResolver implements Resolve<EntityTableConfig<Asse
 
   configureCellActions(assetScope: string): Array<CellActionDescriptor<AssetInfo>> {
     const actions: Array<CellActionDescriptor<AssetInfo>> = [];
-    if (assetScope === 'tenant') {
-      actions.push(
-        {
-          name: this.translate.instant('asset.make-public'),
-          icon: 'share',
-          isEnabled: (entity) => (!entity.customerId || entity.customerId.id === NULL_UUID),
-          onAction: ($event, entity) => this.makePublic($event, entity)
-        },
-        {
-          name: this.translate.instant('asset.assign-to-customer'),
-          icon: 'assignment_ind',
-          isEnabled: (entity) => (!entity.customerId || entity.customerId.id === NULL_UUID),
-          onAction: ($event, entity) => this.assignToCustomer($event, [entity.id])
-        },
-        {
-          name: this.translate.instant('asset.unassign-from-customer'),
-          icon: 'assignment_return',
-          isEnabled: (entity) => (entity.customerId && entity.customerId.id !== NULL_UUID && !entity.customerIsPublic),
-          onAction: ($event, entity) => this.unassignFromCustomer($event, entity)
-        },
-        {
-          name: this.translate.instant('asset.make-private'),
-          icon: 'reply',
-          isEnabled: (entity) => (entity.customerId && entity.customerId.id !== NULL_UUID && entity.customerIsPublic),
-          onAction: ($event, entity) => this.unassignFromCustomer($event, entity)
-        }
-      );
-    }
-    if (assetScope === 'customer') {
-      actions.push(
-        {
-          name: this.translate.instant('asset.unassign-from-customer'),
-          icon: 'assignment_return',
-          isEnabled: (entity) => (entity.customerId && entity.customerId.id !== NULL_UUID && !entity.customerIsPublic),
-          onAction: ($event, entity) => this.unassignFromCustomer($event, entity)
-        },
-        {
-          name: this.translate.instant('asset.make-private'),
-          icon: 'reply',
-          isEnabled: (entity) => (entity.customerId && entity.customerId.id !== NULL_UUID && entity.customerIsPublic),
-          onAction: ($event, entity) => this.unassignFromCustomer($event, entity)
-        }
-      );
-    }
+    // if (assetScope === 'tenant') {
+    //   actions.push(
+    //     {
+    //       name: this.translate.instant('asset.make-public'),
+    //       icon: 'share',
+    //       isEnabled: (entity) => (!entity.customerId || entity.customerId.id === NULL_UUID),
+    //       onAction: ($event, entity) => this.makePublic($event, entity)
+    //     },
+    //     {
+    //       name: this.translate.instant('asset.assign-to-customer'),
+    //       icon: 'assignment_ind',
+    //       isEnabled: (entity) => (!entity.customerId || entity.customerId.id === NULL_UUID),
+    //       onAction: ($event, entity) => this.assignToCustomer($event, [entity.id])
+    //     },
+    //     {
+    //       name: this.translate.instant('asset.unassign-from-customer'),
+    //       icon: 'assignment_return',
+    //       isEnabled: (entity) => (entity.customerId && entity.customerId.id !== NULL_UUID && !entity.customerIsPublic),
+    //       onAction: ($event, entity) => this.unassignFromCustomer($event, entity)
+    //     },
+    //     {
+    //       name: this.translate.instant('asset.make-private'),
+    //       icon: 'reply',
+    //       isEnabled: (entity) => (entity.customerId && entity.customerId.id !== NULL_UUID && entity.customerIsPublic),
+    //       onAction: ($event, entity) => this.unassignFromCustomer($event, entity)
+    //     }
+    //   );
+    // }
+    // if (assetScope === 'customer') {
+    //   actions.push(
+    //     {
+    //       name: this.translate.instant('asset.unassign-from-customer'),
+    //       icon: 'assignment_return',
+    //       isEnabled: (entity) => (entity.customerId && entity.customerId.id !== NULL_UUID && !entity.customerIsPublic),
+    //       onAction: ($event, entity) => this.unassignFromCustomer($event, entity)
+    //     },
+    //     {
+    //       name: this.translate.instant('asset.make-private'),
+    //       icon: 'reply',
+    //       isEnabled: (entity) => (entity.customerId && entity.customerId.id !== NULL_UUID && entity.customerIsPublic),
+    //       onAction: ($event, entity) => this.unassignFromCustomer($event, entity)
+    //     }
+    //   );
+    // }
     return actions;
   }
 
   configureGroupActions(assetScope: string): Array<GroupActionDescriptor<AssetInfo>> {
     const actions: Array<GroupActionDescriptor<AssetInfo>> = [];
-    if (assetScope === 'tenant') {
-      actions.push(
-        {
-          name: this.translate.instant('asset.assign-assets'),
-          icon: 'assignment_ind',
-          isEnabled: true,
-          onAction: ($event, entities) => this.assignToCustomer($event, entities.map((entity) => entity.id))
-        }
-      );
-    }
-    if (assetScope === 'customer') {
-      actions.push(
-        {
-          name: this.translate.instant('asset.unassign-assets'),
-          icon: 'assignment_return',
-          isEnabled: true,
-          onAction: ($event, entities) => this.unassignAssetsFromCustomer($event, entities)
-        }
-      );
-    }
+    // if (assetScope === 'tenant') {
+    //   actions.push(
+    //     {
+    //       name: this.translate.instant('asset.assign-assets'),
+    //       icon: 'assignment_ind',
+    //       isEnabled: true,
+    //       onAction: ($event, entities) => this.assignToCustomer($event, entities.map((entity) => entity.id))
+    //     }
+    //   );
+    // }
+    // if (assetScope === 'customer') {
+    //   actions.push(
+    //     {
+    //       name: this.translate.instant('asset.unassign-assets'),
+    //       icon: 'assignment_return',
+    //       isEnabled: true,
+    //       onAction: ($event, entities) => this.unassignAssetsFromCustomer($event, entities)
+    //     }
+    //   );
+    // }
     return actions;
   }
 
@@ -270,11 +277,17 @@ export class AssetsTableConfigResolver implements Resolve<EntityTableConfig<Asse
     if (assetScope === 'customer') {
       actions.push(
         {
-          name: this.translate.instant('asset.assign-new-asset'),
-          icon: 'add',
+          name: this.translate.instant('asset.add-asset-text'),
+          icon: 'insert_drive_file',
           isEnabled: () => true,
-          onAction: ($event) => this.addAssetsToCustomer($event)
+          onAction: ($event) => this.config.table.addEntity($event)
         }
+        // {
+        //   name: this.translate.instant('asset.assign-new-asset'),
+        //   icon: 'add',
+        //   isEnabled: () => true,
+        //   onAction: ($event) => this.addAssetsToCustomer($event)
+        // }
       );
     }
     return actions;

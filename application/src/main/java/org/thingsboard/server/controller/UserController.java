@@ -63,7 +63,7 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController extends BaseController {
 
     public static final String USER_ID = "userId";
-    public static final String YOU_DON_T_HAVE_PERMISSION_TO_PERFORM_THIS_OPERATION = "You don't have permission to perform this operation!";
+    public static final String YOU_DON_T_HAVE_PERMISSION_TO_PERFORM_THIS_OPERATION = "[FROM user] You don't have permission to perform this operation!";
     public static final String ACTIVATE_URL_PATTERN = "%s/api/noauth/activate?activateToken=%s";
 
     @Value("${security.user_token_access_enabled}")

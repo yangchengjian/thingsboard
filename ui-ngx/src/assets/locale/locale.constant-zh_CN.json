@@ -152,9 +152,9 @@
         "max-failed-login-attempts": "账号锁定前，可尝试的最大失败登录次数",
         "minimum-max-failed-login-attempts-range": "可尝试的最大失败登录次数不能为负",
         "user-lockout-notification-email": "在用户账号被锁的情况下，发送通知到该邮箱",
-        "domain-name": "Domain name",
-        "domain-name-unique": "Domain name and protocol need to unique.",
-        "error-verification-url": "A domain name shouldn't contain symbols '/' and ':'. Example: dgrow.shop",
+        "domain-name": "域名",
+        "domain-name-unique": "域名和协议必须唯一",
+        "error-verification-url": "域名不应包含 '/' 和 ':'. 例如: dgrow.shop",
         "oauth2": {
           "access-token-uri": "Access token URI",
           "access-token-uri-required": "Access token URI is required.",
@@ -433,7 +433,57 @@
         "no-telemetry-text": "未发现遥测"
     },
     "api-usage": {
-        "api-usage": "使用统计"
+        "api-usage": "Api Usage",
+        "data-points": "Data points",
+        "data-points-storage-days": "Data points storage days",
+        "email": "Email",
+        "email-messages": "Email messages",
+        "email-messages-daily-activity": "Email messages daily activity",
+        "email-messages-hourly-activity": "Email messages hourly activity",
+        "email-messages-monthly-activity": "Email messages monthly activity",
+        "exceptions": "Exceptions",
+        "executions": "Executions",
+        "javascript": "JavaScript",
+        "javascript-executions": "JavaScript executions",
+        "javascript-functions": "JavaScript functions",
+        "javascript-functions-daily-activity": "JavaScript functions daily activity",
+        "javascript-functions-hourly-activity": "JavaScript functions hourly activity",
+        "javascript-functions-monthly-activity": "JavaScript functions monthly activity",
+        "latest-error": "Latest Error",
+        "messages": "Messages",
+        "permanent-failures": "${entityName} Permanent Failures",
+        "permanent-timeouts": "${entityName} Permanent Timeouts",
+        "processing-failures": "${entityName} Processing Failures",
+        "processing-failures-and-timeouts": "Processing Failures and Timeouts",
+        "processing-timeouts": "${entityName} Processing Timeouts",
+        "queue-stats": "Queue Stats",
+        "rule-chain": "Rule Chain",
+        "rule-engine": "Rule Engine",
+        "rule-engine-daily-activity": "Rule Engine daily activity",
+        "rule-engine-executions": "Rule Engine executions",
+        "rule-engine-hourly-activity": "Rule Engine hourly activity",
+        "rule-engine-monthly-activity": "Rule Engine monthly activity",
+        "rule-engine-statistics": "Rule Engine Statistics",
+        "rule-node": "Rule Node",
+        "sms": "SMS",
+        "sms-messages": "SMS messages",
+        "sms-messages-daily-activity": "SMS messages daily activity",
+        "sms-messages-hourly-activity": "SMS messages hourly activity",
+        "sms-messages-monthly-activity": "SMS messages monthly activity",
+        "successful": "${entityName} Successful",
+        "telemetry": "Telemetry",
+        "telemetry-persistence": "Telemetry persistence",
+        "telemetry-persistence-daily-activity": "Telemetry persistence daily activity",
+        "telemetry-persistence-hourly-activity": "Telemetry persistence hourly activity",
+        "telemetry-persistence-monthly-activity": "Telemetry persistence monthly activity",
+        "transport": "Transport",
+        "transport-daily-activity": "Transport daily activity",
+        "transport-data-points": "Transport data points",
+        "transport-hourly-activity": "Transport hourly activity",
+        "transport-messages": "Transport messages",
+        "transport-monthly-activity": "Transport monthly activity",
+        "view-details": "View details",
+        "view-statistics": "View statistics"
     },
     "audit-log": {
         "audit": "审计",
@@ -477,7 +527,9 @@
         "type-assigned-from-tenant": "从租户分配",
         "type-assigned-to-tenant": "分配到租户",
         "type-provision-success": "设备已设置",
-        "type-provision-failure": "设备设置失败"
+        "type-provision-failure": "设备设置失败",
+	"type-timeseries-updated": "Telemetry updated",
+        "type-timeseries-deleted": "Telemetry deleted"
     },
     "confirm-on-exit": {
         "message": "您有未保存的更改。确定要离开此页吗？",
@@ -2446,7 +2498,8 @@
             "ro_RO": "Română",
             "lv_LV": "Latviešu",
             "ka_GE": "ქართული",
-            "pt_BR": "Português do Brasil"
+            "pt_BR": "Português do Brasil",
+            "sl_SI": "Slovenščina"
         }
     }
 }

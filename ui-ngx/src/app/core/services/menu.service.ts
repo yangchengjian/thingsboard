@@ -412,20 +412,6 @@ export class MenuService {
       },
       {
         id: guid(),
-        name: 'device.devices',
-        type: 'link',
-        path: '/devices',
-        icon: 'devices_other'
-      },
-      {
-        id: guid(),
-        name: 'entity-view.entity-views',
-        type: 'link',
-        path: '/entityViews',
-        icon: 'view_quilt'
-      },
-      {
-        id: guid(),
         name: 'asset.assets',
         type: 'link',
         path: '/assets',
@@ -437,6 +423,29 @@ export class MenuService {
         type: 'link',
         path: '/dashboards',
         icon: 'dashboard'
+      },
+      {
+        id: guid(),
+        name: 'device.management',
+        type: 'toggle',
+        path: '/devices',
+        icon: 'devices_other',
+        pages: [
+          {
+            id: guid(),
+            name: 'device.devices',
+            type: 'link',
+            path: '/devices',
+            icon: 'devices_other'
+          },
+          {
+            id: guid(),
+            name: 'entity-view.entity-views',
+            type: 'link',
+            path: '/entityViews',
+            icon: 'view_quilt'
+          },
+        ]
       },
     );
     return sections;
@@ -455,27 +464,7 @@ export class MenuService {
         ]
       },
       {
-        name: 'device.view-devices',
-        places: [
-          {
-            name: 'device.devices',
-            icon: 'devices_other',
-            path: '/devices'
-          }
-        ]
-      },
-      {
-        name: 'entity-view.view-entity-views',
-        places: [
-          {
-            name: 'entity-view.entity-views',
-            icon: 'view_quilt',
-            path: '/entityViews'
-          }
-        ]
-      },
-      {
-        name: 'asset.view-assets',
+        name: 'asset.management',
         places: [
           {
             name: 'asset.assets',
@@ -485,12 +474,27 @@ export class MenuService {
         ]
       },
       {
-        name: 'dashboard.view-dashboards',
+        name: 'dashboard.management',
         places: [
           {
             name: 'dashboard.dashboards',
             icon: 'dashboard',
             path: '/dashboards'
+          }
+        ]
+      },
+      {
+        name: 'device.management',
+        places: [
+          {
+            name: 'device.devices',
+            icon: 'devices_other',
+            path: '/devices'
+          },
+          {
+            name: 'entity-view.entity-views',
+            icon: 'view_quilt',
+            path: '/entityViews'
           }
         ]
       },

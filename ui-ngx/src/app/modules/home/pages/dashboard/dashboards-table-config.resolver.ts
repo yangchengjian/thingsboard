@@ -110,7 +110,9 @@ export class DashboardsTableConfigResolver implements Resolve<EntityTableConfig<
       tap((authUser) => {
         if (authUser.authority === Authority.CUSTOMER_USER) {
           this.config.componentsData.dashboardScope = 'customer_user';
-          this.config.componentsData.customerId = authUser.customerId;
+          if (this.config.componentsData.customerId === undefined) {
+            this.config.componentsData.customerId = authUser.customerId;
+          }
         }
       }),
       mergeMap(() =>

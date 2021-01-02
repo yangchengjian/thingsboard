@@ -97,8 +97,9 @@ public class AssetController extends BaseController {
             }
 
             asset.setTenantId(getCurrentUser().getTenantId());
+            asset.setCustomerId(getCurrentUser().getCustomerId());
 
-           checkEntity(asset.getId(), asset, Resource.ASSET);
+            checkEntity(asset.getId(), asset, Resource.ASSET);
 
             Asset savedAsset = checkNotNull(assetService.saveAsset(asset));
 
@@ -114,7 +115,7 @@ public class AssetController extends BaseController {
         }
     }
 
-    @PreAuthorize("hasAuthority('TENANT_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('TENANT_ADMIN', 'CUSTOMER_USER')")
     @RequestMapping(value = "/asset/{assetId}", method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.OK)
     public void deleteAsset(@PathVariable(ASSET_ID) String strAssetId) throws ThingsboardException {

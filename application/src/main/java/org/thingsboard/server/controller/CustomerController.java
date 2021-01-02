@@ -104,7 +104,7 @@ public class CustomerController extends BaseController {
         try {
             customer.setTenantId(getCurrentUser().getTenantId());
 
-            // checkEntity(customer.getId(), customer, Resource.CUSTOMER);
+            checkEntity(customer.getId(), customer, Resource.CUSTOMER);
 
             log.info("customer: [{}]", customer);
 

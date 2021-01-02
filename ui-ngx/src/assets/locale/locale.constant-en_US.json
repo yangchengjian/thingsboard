@@ -8,7 +8,7 @@
         "refresh-token-expired": "Session has expired",
         "refresh-token-failed": "Unable to refresh session",
         "permission-denied": "Permission Denied",
-        "permission-denied-text": "You don't have permission to perform this operation!"
+        "permission-denied-text": "[FROM Access] You don't have permission to perform this operation!"
     },
     "action": {
         "activate": "Activate",

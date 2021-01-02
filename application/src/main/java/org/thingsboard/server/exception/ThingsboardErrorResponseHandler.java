@@ -54,7 +54,7 @@ public class ThingsboardErrorResponseHandler implements AccessDeniedHandler {
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             response.setStatus(HttpStatus.FORBIDDEN.value());
             mapper.writeValue(response.getWriter(),
-                    ThingsboardErrorResponse.of("You don't have permission to perform this operation!",
+                    ThingsboardErrorResponse.of("[FROM Handle] You don't have permission to perform this operation!",
                             ThingsboardErrorCode.PERMISSION_DENIED, HttpStatus.FORBIDDEN));
         }
     }
@@ -130,7 +130,7 @@ public class ThingsboardErrorResponseHandler implements AccessDeniedHandler {
     private void handleAccessDeniedException(HttpServletResponse response) throws IOException {
         response.setStatus(HttpStatus.FORBIDDEN.value());
         mapper.writeValue(response.getWriter(),
-                ThingsboardErrorResponse.of("You don't have permission to perform this operation!",
+                ThingsboardErrorResponse.of("[FROM handleAccessDenied] You don't have permission to perform this operation!",
                         ThingsboardErrorCode.PERMISSION_DENIED, HttpStatus.FORBIDDEN));
 
     }

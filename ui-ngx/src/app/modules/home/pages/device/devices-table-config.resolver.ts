@@ -122,9 +122,15 @@ export class DevicesTableConfigResolver implements Resolve<EntityTableConfig<Dev
     this.customerId = routeParams.customerId;
     return this.store.pipe(select(selectAuthUser), take(1)).pipe(
       tap((authUser) => {
-        if (authUser.authority === Authority.CUSTOMER_USER) {
+        if (this.customerId === undefined) {
+          if (authUser.authority === Authority.TENANT_ADMIN) {
+            this.config.componentsData.deviceScope = 'tenant';
+          } else if (authUser.authority === Authority.CUSTOMER_USER) {
+            this.config.componentsData.deviceScope = 'customer_user';
+            this.customerId = authUser.customerId;
+          }
+        } else {
           this.config.componentsData.deviceScope = 'customer_user';
-          this.customerId = authUser.customerId;
         }
       }),
       mergeMap(() =>

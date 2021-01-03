@@ -1,0 +1,7 @@
+FROM thingsboard/tb:latest
+
+USER root
+COPY thingsboard.deb /
+RUN dpkg -i thingsboard.deb
+
+COPY thingsboard.conf /usr/share/thingsboard/conf/

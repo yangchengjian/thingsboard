@@ -15,6 +15,7 @@
 ///
 
 import { Type } from '@angular/core';
+import { AuthService } from '@core/auth/auth.service';
 import { DeviceService } from '@core/http/device.service';
 import { AssetService } from '@core/http/asset.service';
 import { AttributeService } from '@core/http/attribute.service';
@@ -37,6 +38,7 @@ import { BroadcastService } from "@core/services/broadcast.service";
 
 export const ServicesMap = new Map<string, Type<any>>(
   [
+   ['authService', AuthService],
    ['broadcastService', BroadcastService],
    ['deviceService', DeviceService],
    ['alarmService', AlarmService],

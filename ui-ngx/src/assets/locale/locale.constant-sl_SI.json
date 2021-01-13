@@ -154,7 +154,7 @@
     "user-lockout-notification-email": "V primeru zaklepa uporabniškega računa, pošlji obvestilo na e-pošto",
     "domain-name": "Domain name",
     "domain-name-unique": "Domain name and protocol need to unique.",
-    "error-verification-url": "A domain name shouldn't contain symbols '/' and ':'. Example: thingsboard.io",
+    "error-verification-url": "A domain name shouldn't contain symbols '/' and ':'. Example: www.dgrow.shop",
     "oauth2": {
       "access-token-uri": "Access token URI",
       "access-token-uri-required": "Access token URI is required.",

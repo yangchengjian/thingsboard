@@ -144,6 +144,29 @@ export class EntityService {
   private getEntitiesByIdsObservable(fetchEntityFunction: (entityId: string) => Observable<BaseData<EntityId>>,
                                      entityIds: Array<string>): Observable<Array<BaseData<EntityId>>> {
     const tasks: Observable<BaseData<EntityId>>[] = [];
+
+    const authUser = getCurrentAuthUser(this.store);
+    console.log('-----------------authUser: ' + JSON.stringify(authUser));
+    if (authUser.authority == 'CUSTOMER_USER') {
+      const customerId = authUser.customerId;
+      const pageLink = new PageLink(100, 0, null, null);
+      let entitiesObservable: Observable<PageData<BaseData<EntityId>>>;
+      entitiesObservable = this.customerService.getCustomersByParentId(customerId, pageLink);
+      if (entitiesObservable) {
+        entitiesObservable.pipe(
+          // expand((data) => {
+          //   if (data.hasNext) {
+          //     pageLink.page += 1;
+          //     this.customerService.getCustomersByParentId(customerId, pageLink);
+          //   } else {
+          //     return EMPTY;
+          //   }
+          // }),
+          map((data) => console.log('-----------------data: ' + data))
+        );
+      }
+    }
+    
     entityIds.forEach((entityId) => {
       tasks.push(fetchEntityFunction(entityId));
     });

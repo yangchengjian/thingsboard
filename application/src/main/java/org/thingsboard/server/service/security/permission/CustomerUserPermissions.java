@@ -61,9 +61,6 @@ public class CustomerUserPermissions extends AbstractPermissions {
                     if (!(entity instanceof HasCustomerId)) {
                         return false;
                     }
-                    // if (!operation.equals(Operation.CLAIM_DEVICES) && !user.getCustomerId().equals(((HasCustomerId) entity).getCustomerId())) {
-                    //     return false;
-                    // }
                     return true;
                 }
             };
@@ -74,9 +71,6 @@ public class CustomerUserPermissions extends AbstractPermissions {
                 @Override
                 public boolean hasPermission(SecurityUser user, Operation operation, EntityId entityId, HasTenantId entity) {
                     if (!super.hasPermission(user, operation, entityId, entity)) {
-                        return false;
-                    }
-                    if (!user.getCustomerId().equals(entityId)) {
                         return false;
                     }
                     return true;
@@ -109,12 +103,6 @@ public class CustomerUserPermissions extends AbstractPermissions {
 
         @Override
         public boolean hasPermission(SecurityUser user, Operation operation, UserId userId, User userEntity) {
-            // if (!Authority.CUSTOMER_USER.equals(userEntity.getAuthority())) {
-            //     return false;
-            // }
-            // if (!user.getId().equals(userId)) {
-            //     return false;
-            // }
             return true;
         }
 

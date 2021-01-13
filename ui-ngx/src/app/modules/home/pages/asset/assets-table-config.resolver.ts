@@ -187,23 +187,23 @@ export class AssetsTableConfigResolver implements Resolve<EntityTableConfig<Asse
     if (assetScope === 'tenant') {
       actions.push(
         {
+          name: this.translate.instant('asset.assign-to-customer'),
+          icon: 'assignment_ind',
+          isEnabled: (entity) => (!entity.customerId || entity.customerId.id === NULL_UUID),
+          onAction: ($event, entity) => this.assignToCustomer($event, [entity.id])
+        },
+        {
+          name: this.translate.instant('asset.unassign-from-customer'),
+          icon: 'assignment_return',
+          isEnabled: (entity) => (entity.customerId && entity.customerId.id !== NULL_UUID && !entity.customerIsPublic),
+          onAction: ($event, entity) => this.unassignFromCustomer($event, entity)
+        },
+        {
           name: this.translate.instant('asset.make-public'),
           icon: 'share',
           isEnabled: (entity) => (!entity.customerId || entity.customerId.id === NULL_UUID),
           onAction: ($event, entity) => this.makePublic($event, entity)
         },
-        // {
-        //   name: this.translate.instant('asset.assign-to-customer'),
-        //   icon: 'assignment_ind',
-        //   isEnabled: (entity) => (!entity.customerId || entity.customerId.id === NULL_UUID),
-        //   onAction: ($event, entity) => this.assignToCustomer($event, [entity.id])
-        // },
-        // {
-        //   name: this.translate.instant('asset.unassign-from-customer'),
-        //   icon: 'assignment_return',
-        //   isEnabled: (entity) => (entity.customerId && entity.customerId.id !== NULL_UUID && !entity.customerIsPublic),
-        //   onAction: ($event, entity) => this.unassignFromCustomer($event, entity)
-        // },
         {
           name: this.translate.instant('asset.make-private'),
           icon: 'reply',

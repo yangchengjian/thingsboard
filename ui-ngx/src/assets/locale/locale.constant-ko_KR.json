@@ -154,7 +154,7 @@
         "user-lockout-notification-email": "계정이 잠길 경우 이메일로 안내 발송",
         "domain-name": "도메인 이름",
         "domain-name-unique": "도메인 이름과 프로토콜은 중복되지 않아야 합니다.",
-        "error-verification-url": "도메인 이름은 '/'이나 ':'와 같은 문자를 포함할 수 없습니다. 예: thingsboard.io",
+        "error-verification-url": "도메인 이름은 '/'이나 ':'와 같은 문자를 포함할 수 없습니다. 예: www.dgrow.shop",
         "oauth2": {
           "access-token-uri": "액세스 토큰 URI",
           "access-token-uri-required": "Access token URI를 입력하세요.",

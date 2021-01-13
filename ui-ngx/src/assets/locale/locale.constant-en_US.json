@@ -154,7 +154,7 @@
         "user-lockout-notification-email": "In case user account lockout, send notification to email",
         "domain-name": "Domain name",
         "domain-name-unique": "Domain name and protocol need to unique.",
-        "error-verification-url": "A domain name shouldn't contain symbols '/' and ':'. Example: thingsboard.io",
+        "error-verification-url": "A domain name shouldn't contain symbols '/' and ':'. Example: www.dgrow.shop",
         "oauth2": {
           "access-token-uri": "Access token URI",
           "access-token-uri-required": "Access token URI is required.",

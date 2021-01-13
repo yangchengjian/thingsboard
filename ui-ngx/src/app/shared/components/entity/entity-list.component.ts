@@ -26,18 +26,22 @@ import {
   ViewChild
 } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { filter, map, mergeMap, share, tap } from 'rxjs/operators';
+import { EMPTY, Observable } from 'rxjs';
+import { concatMap, expand, filter, map, mergeMap, share, tap, toArray } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
+import { CustomerService } from '@core/http/customer.service';
 import { AppState } from '@app/core/core.state';
 import { TranslateService } from '@ngx-translate/core';
 import { EntityType } from '@shared/models/entity-type.models';
 import { BaseData } from '@shared/models/base-data';
 import { EntityId } from '@shared/models/id/entity-id';
 import { EntityService } from '@core/http/entity.service';
+import { getCurrentAuthUser } from '@core/auth/auth.selectors';
 import { MatAutocomplete } from '@angular/material/autocomplete';
 import { MatChipList } from '@angular/material/chips';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { PageData } from '@shared/models/page/page-data';
+import { PageLink } from '@shared/models/page/page-link';
 
 @Component({
   selector: 'tb-entity-list',
@@ -91,6 +95,7 @@ export class EntityListComponent implements ControlValueAccessor, OnInit, AfterV
 
   constructor(private store: Store<AppState>,
               public translate: TranslateService,
+              private customerService: CustomerService,
               private entityService: EntityService,
               private fb: FormBuilder) {
     this.entityListFormGroup = this.fb.group({
@@ -156,12 +161,50 @@ export class EntityListComponent implements ControlValueAccessor, OnInit, AfterV
     this.searchText = '';
     if (value != null && value.length > 0) {
       this.modelValue = [...value];
-      this.entityService.getEntities(this.entityType, value).subscribe(
-        (entities) => {
-          this.entities = entities;
-          this.entityListFormGroup.get('entities').setValue(this.entities);
+      const authUser = getCurrentAuthUser(this.store);
+      if (authUser.authority == 'CUSTOMER_USER') {
+        const customerId = authUser.customerId;
+        var childrenId = [];
+
+        const pageLink = new PageLink(100, 0, null, null);
+        let entitiesObservable: Observable<PageData<BaseData<EntityId>>>;
+        entitiesObservable = this.customerService.getCustomersByParentId(customerId, pageLink);
+        if (entitiesObservable) {
+          const children = entitiesObservable.pipe(
+            expand((data) => {
+              if (data.hasNext) {
+                pageLink.page += 1;
+                return this.customerService.getCustomersByParentId(customerId, pageLink);
+              } else {
+                return EMPTY;
+              }
+            }),
+            map((data) => data.data),
+            concatMap((data) => data),
+            toArray()
+          );
+          children.subscribe(
+            (entities) => {
+              entities.forEach((c) => {
+                childrenId.push(c.id.id);
+              });
+              value = value.filter(function(v){ return childrenId.indexOf(v) > -1 });
+              this.entityService.getEntities(this.entityType, value).subscribe(
+                (entities) => {
+                  this.entities = entities;
+                  this.entityListFormGroup.get('entities').setValue(this.entities);
+                }
+              );
+          });
         }
-      );
+      } else {
+        this.entityService.getEntities(this.entityType, value).subscribe(
+          (entities) => {
+            this.entities = entities;
+            this.entityListFormGroup.get('entities').setValue(this.entities);
+          }
+        );
+      }
     } else {
       this.entities = [];
       this.entityListFormGroup.get('entities').setValue(this.entities);

@@ -1,5 +1,5 @@
 ///
-/// Copyright © 2016-2020 The Thingsboard Authors
+/// Copyright © 2016-2021 The Thingsboard Authors
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -30,6 +30,7 @@ import { Datasource, DatasourceData } from '@shared/models/widget.models';
 import _ from 'lodash';
 import { mapProviderSchema, providerSets } from '@home/components/widget/lib/maps/schemes';
 import { addCondition, mergeSchemes } from '@core/schema-utils';
+import L, {Projection} from "leaflet";
 
 export function getProviderSchema(mapProvider: MapProviders, ignoreImageMap = false) {
   const providerSchema = _.cloneDeep(mapProviderSchema);
@@ -442,4 +443,22 @@ export function createLoadingDiv(loadingText: string): JQuery<HTMLElement> {
         <span>${loadingText}</span>
     </div>
   `);
+}
+
+export function checkLngLat(point: L.LatLng, southWest: L.LatLng, northEast: L.LatLng, offset = 0): L.LatLng {
+  const maxLngMap = northEast.lng - offset;
+  const minLngMap = southWest.lng + offset;
+  const maxLatMap = northEast.lat - offset;
+  const minLatMap = southWest.lat + offset;
+  if (point.lng > maxLngMap) {
+    point.lng = maxLngMap;
+  } else if (point.lng < minLngMap) {
+    point.lng = minLngMap;
+  }
+  if (point.lat > maxLatMap) {
+    point.lat = maxLatMap;
+  } else if (point.lat < minLatMap) {
+    point.lat = minLatMap;
+  }
+  return point;
 }

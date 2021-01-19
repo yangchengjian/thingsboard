@@ -60,16 +60,16 @@
         "hide": "Hide"
     },
     "aggregation": {
-        "aggregation": "聚合",
-        "function": "数据聚合功能",
-        "limit": "最大值",
-        "group-interval": "分组间隔",
-        "min": "最少值",
-        "max": "最大值",
-        "avg": "平均值",
-        "sum": "求和",
-        "count": "计数",
-        "none": "空"
+        "aggregation": "Aggregation",
+        "function": "Data aggregation function",
+        "limit": "Max values",
+        "group-interval": "Grouping interval",
+        "min": "Min",
+        "max": "Max",
+        "avg": "Average",
+        "sum": "Sum",
+        "count": "Count",
+        "none": "None"
     },
     "admin": {
         "general": "常规",
@@ -2259,7 +2259,8 @@
         "target-dashboard-state-required": "目标应用状态必填",
         "set-entity-from-widget": "从部件中设置实体",
         "target-dashboard": "目标应用",
-        "open-right-layout": "打开右侧布局 (移动端视图)"
+        "open-right-layout": "打开右侧布局 (移动端视图)",
+        "open-new-browser-tab": "Open in a new browser tab"
     },
     "widgets-bundle": {
         "current": "当前包",
@@ -2346,12 +2347,12 @@
         "icon-size": "图标大小"
     },
     "widget-type": {
-        "import": "导入部件类型",
-        "export": "导出部件类型",
-        "export-failed-error": "无法导出部件类型： {{error}}",
-        "create-new-widget-type": "创建新的部件类型",
-        "widget-type-file": "部件类型文件",
-        "invalid-widget-type-file-error": "无法导入部件类型：无效的部件类型数据结构。"
+        "import": "Import widget type",
+        "export": "Export widget type",
+        "export-failed-error": "Unable to export widget type: {{error}}",
+        "create-new-widget-type": "Create new widget type",
+        "widget-type-file": "Widget type file",
+        "invalid-widget-type-file-error": "Unable to import widget type: Invalid widget type data structure."
     },
     "widgets": {
         "date-range-navigator": {
@@ -2459,10 +2460,10 @@
         }
     },
     "icon": {
-        "icon": "图标",
-        "select-icon": "选择图标",
-        "material-icons": "素材图标",
-        "show-all": "显示所有图标"
+        "icon": "Icon",
+        "select-icon": "Select icon",
+        "material-icons": "Material icons",
+        "show-all": "Show all icons"
     },
     "custom": {
         "widget-action": {

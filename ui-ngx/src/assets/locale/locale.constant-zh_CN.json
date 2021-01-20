@@ -55,21 +55,21 @@
         "continue": "继续",
         "discard-changes": "放弃修改",
         "download": "下载",
-        "next-with-label": "Next: {{label}}",
-        "read-more": "Read more",
-        "hide": "Hide"
+        "next-with-label": "下一: {{label}}",
+        "read-more": "更多",
+        "hide": "隐藏"
     },
     "aggregation": {
-        "aggregation": "Aggregation",
-        "function": "Data aggregation function",
-        "limit": "Max values",
-        "group-interval": "Grouping interval",
-        "min": "Min",
-        "max": "Max",
-        "avg": "Average",
-        "sum": "Sum",
-        "count": "Count",
-        "none": "None"
+        "aggregation": "聚合",
+        "function": "数据聚合功能",
+        "limit": "最大值",
+        "group-interval": "分组间隔",
+        "min": "最少值",
+        "max": "最大值",
+        "avg": "平均值",
+        "sum": "求和",
+        "count": "计数",
+        "none": "空"
     },
     "admin": {
         "general": "常规",
@@ -2347,12 +2347,12 @@
         "icon-size": "图标大小"
     },
     "widget-type": {
-        "import": "Import widget type",
-        "export": "Export widget type",
-        "export-failed-error": "Unable to export widget type: {{error}}",
-        "create-new-widget-type": "Create new widget type",
-        "widget-type-file": "Widget type file",
-        "invalid-widget-type-file-error": "Unable to import widget type: Invalid widget type data structure."
+        "import": "导入部件类型",
+        "export": "导出部件类型",
+        "export-failed-error": "导出部件失败: {{error}}",
+        "create-new-widget-type": "创建新的部件类型",
+        "widget-type-file": "部件类型文件",
+        "invalid-widget-type-file-error": "无法导入部件类型: 部件类型数据结构不可用"
     },
     "widgets": {
         "date-range-navigator": {
@@ -2460,10 +2460,10 @@
         }
     },
     "icon": {
-        "icon": "Icon",
-        "select-icon": "Select icon",
-        "material-icons": "Material icons",
-        "show-all": "Show all icons"
+        "icon": "图标",
+        "select-icon": "选择图标",
+        "material-icons": "Material图表",
+        "show-all": "所有图标"
     },
     "custom": {
         "widget-action": {

@@ -1,7 +1,7 @@
 {
   "widgetsBundle": {
     "alias": "control_widgets",
-    "title": "Control widgets",
+    "title": "控制",
     "image": null
   },
   "widgetTypes": [

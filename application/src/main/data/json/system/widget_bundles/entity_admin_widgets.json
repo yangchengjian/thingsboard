@@ -1,7 +1,7 @@
 {
   "widgetsBundle": {
     "alias": "entity_admin_widgets",
-    "title": "Entity admin widgets",
+    "title": "实体",
     "image": null
   },
   "widgetTypes": [

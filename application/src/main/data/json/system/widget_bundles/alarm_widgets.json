@@ -1,7 +1,7 @@
 {
   "widgetsBundle": {
     "alias": "alarm_widgets",
-    "title": "Alarm widgets",
+    "title": "警告",
     "image": null
   },
   "widgetTypes": [

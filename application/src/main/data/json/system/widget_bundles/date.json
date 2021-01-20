@@ -1,7 +1,7 @@
 {
   "widgetsBundle": {
     "alias": "date",
-    "title": "Date",
+    "title": "日期",
     "image": null
   },
   "widgetTypes": [

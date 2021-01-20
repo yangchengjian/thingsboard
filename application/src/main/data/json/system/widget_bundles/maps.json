@@ -1,7 +1,7 @@
 {
   "widgetsBundle": {
     "alias": "maps_v2",
-    "title": "Maps",
+    "title": "地图",
     "image": null
   },
   "widgetTypes": [

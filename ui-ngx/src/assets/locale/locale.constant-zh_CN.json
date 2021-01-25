@@ -1700,7 +1700,7 @@
         "drop-file-csv": "拖拽一个CSV文件或者点击以选择一个文件上传。",
         "column-value": "值",
         "column-title": "标题",
-        "column-example": "Example value data",
+        "column-example": "值数据示例",
         "column-key": "属性/遥测 键",
         "csv-delimiter": "CSV分隔符",
         "csv-first-line-header": "第一行包含列名。",

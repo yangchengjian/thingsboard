@@ -2149,6 +2149,7 @@
         "description": "Description",
         "default-dashboard": "Default dashboard",
         "always-fullscreen": "Always fullscreen",
+        "is-editable": "Is editable",
         "select-user": "Select user",
         "no-users-matching": "No users matching '{{entity}}' were found.",
         "user-required": "User is required",

@@ -2149,6 +2149,7 @@
         "description": "描述",
         "default-dashboard": "默认面板",
         "always-fullscreen": "始终全屏",
+        "is-editable": "是否可编辑",
         "select-user": "选择用户",
         "no-users-matching": "没有找到符合 '{{entity}}' 的用户。",
         "user-required": "用户必填",

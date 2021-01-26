@@ -216,7 +216,7 @@
                        [userCallbacks]="editCallbacks">
             </fc-canvas>
           </div>
-          <section fxLayout="row" class="layout-wrap tb-footer-buttons" fxLayoutAlign="start end">
+          <section *ngIf="editable" fxLayout="row" class="layout-wrap tb-footer-buttons" fxLayoutAlign="start end">
             <button [disabled]="isLoading$ | async"
                     mat-fab color="accent" class="tb-btn-footer"
                     [ngClass]="{'tb-hide': !objectsSelected()}"

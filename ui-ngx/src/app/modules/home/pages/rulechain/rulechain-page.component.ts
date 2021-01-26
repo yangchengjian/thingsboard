@@ -79,6 +79,9 @@ import { EntityType } from '@shared/models/entity-type.models';
 import { DebugEventType, EventType } from '@shared/models/event.models';
 import Timeout = NodeJS.Timeout;
 
+import { AuthState } from '@app/core/auth/auth.models';
+import { getCurrentAuthState } from '@core/auth/auth.selectors';
+
 @Component({
   selector: 'tb-rulechain-page',
   templateUrl: './rulechain-page.component.html',
@@ -87,6 +90,9 @@ import Timeout = NodeJS.Timeout;
 })
 export class RuleChainPageComponent extends PageComponent
   implements AfterViewInit, OnInit, OnDestroy, HasDirtyFlag, ISearchableComponent {
+
+  authState: AuthState = getCurrentAuthState(this.store);
+  editable = this.authState.dashboardEditable;
 
   get isDirty(): boolean {
     return this.isDirtyValue || this.isImport;

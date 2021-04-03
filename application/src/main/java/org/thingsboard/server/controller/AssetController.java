@@ -121,13 +121,17 @@ public class AssetController extends BaseController {
     public void deleteAsset(@PathVariable(ASSET_ID) String strAssetId) throws ThingsboardException {
         checkParameter(ASSET_ID, strAssetId);
         try {
+
             AssetId assetId = new AssetId(toUUID(strAssetId));
             Asset asset = checkAssetId(assetId, Operation.DELETE);
-            assetService.deleteAsset(getTenantId(), assetId);
 
             logEntityAction(assetId, asset,
                     asset.getCustomerId(),
                     ActionType.DELETED, null, strAssetId);
+
+            Thread.sleep(3 * 1000);
+
+            assetService.deleteAsset(getTenantId(), assetId);
 
         } catch (Exception e) {
             logEntityAction(emptyId(EntityType.ASSET),

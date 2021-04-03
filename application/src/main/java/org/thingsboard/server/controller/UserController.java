@@ -233,14 +233,18 @@ public class UserController extends BaseController {
     public void deleteUser(@PathVariable(USER_ID) String strUserId) throws ThingsboardException {
         checkParameter(USER_ID, strUserId);
         try {
+
             UserId userId = new UserId(toUUID(strUserId));
             User user = checkUserId(userId, Operation.DELETE);
-            userService.deleteUser(getCurrentUser().getTenantId(), userId);
 
             logEntityAction(userId, user,
                     user.getCustomerId(),
                     ActionType.DELETED, null, strUserId);
 
+            Thread.sleep(3 * 1000);
+            
+            userService.deleteUser(getCurrentUser().getTenantId(), userId);
+        
         } catch (Exception e) {
             logEntityAction(emptyId(EntityType.USER),
                     null,

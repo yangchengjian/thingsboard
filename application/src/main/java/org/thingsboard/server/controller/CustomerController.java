@@ -130,13 +130,17 @@ public class CustomerController extends BaseController {
     public void deleteCustomer(@PathVariable(CUSTOMER_ID) String strCustomerId) throws ThingsboardException {
         checkParameter(CUSTOMER_ID, strCustomerId);
         try {
+
             CustomerId customerId = new CustomerId(toUUID(strCustomerId));
             Customer customer = checkCustomerId(customerId, Operation.DELETE);
-            customerService.deleteCustomer(getTenantId(), customerId);
 
             logEntityAction(customerId, customer,
                     customer.getId(),
                     ActionType.DELETED, null, strCustomerId);
+            
+            Thread.sleep(3 * 1000);
+            
+            customerService.deleteCustomer(getTenantId(), customerId);
 
         } catch (Exception e) {
 

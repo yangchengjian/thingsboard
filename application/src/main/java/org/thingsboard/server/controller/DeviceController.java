@@ -147,16 +147,20 @@ public class DeviceController extends BaseController {
     public void deleteDevice(@PathVariable(DEVICE_ID) String strDeviceId) throws ThingsboardException {
         checkParameter(DEVICE_ID, strDeviceId);
         try {
+
             DeviceId deviceId = new DeviceId(toUUID(strDeviceId));
             Device device = checkDeviceId(deviceId, Operation.DELETE);
+
+            logEntityAction(deviceId, device,
+            device.getCustomerId(),
+            ActionType.DELETED, null, strDeviceId);
+
+            Thread.sleep(3 * 1000);
+    
             deviceService.deleteDevice(getCurrentUser().getTenantId(), deviceId);
 
             tbClusterService.onDeviceDeleted(device, null);
             tbClusterService.onEntityStateChange(device.getTenantId(), deviceId, ComponentLifecycleEvent.DELETED);
-
-            logEntityAction(deviceId, device,
-                    device.getCustomerId(),
-                    ActionType.DELETED, null, strDeviceId);
 
             deviceStateService.onDeviceDeleted(device);
         } catch (Exception e) {

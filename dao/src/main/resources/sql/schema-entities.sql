@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS asset (
     search_text varchar(255),
     tenant_id uuid,
     type varchar(255),
-    CONSTRAINT asset_name_unq_key UNIQUE (tenant_id, name)
+    CONSTRAINT asset_name_unq_key UNIQUE (tenant_id, customer_id, name)
 );
 
 CREATE TABLE IF NOT EXISTS audit_log (

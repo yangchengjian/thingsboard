@@ -46,7 +46,7 @@ public class CustomerUserPermissions extends AbstractPermissions {
             new PermissionChecker.GenericPermissionChecker(
                     Operation.CREATE, Operation.READ, Operation.WRITE, Operation.DELETE, 
                     Operation.READ_ATTRIBUTES, Operation.WRITE_ATTRIBUTES,
-                    Operation.READ_TELEMETRY, Operation.WRITE_TELEMETRY, 
+                    Operation.READ_TELEMETRY, Operation.WRITE_TELEMETRY, Operation.UNASSIGN_FROM_CUSTOMER,
                     Operation.READ_CREDENTIALS, Operation.RPC_CALL, Operation.CLAIM_DEVICES) {
 
                 @Override
@@ -66,7 +66,7 @@ public class CustomerUserPermissions extends AbstractPermissions {
             };
 
     private static final PermissionChecker customerPermissionChecker =
-            new PermissionChecker.GenericPermissionChecker(Operation.CREATE, Operation.READ, Operation.WRITE, Operation.READ_ATTRIBUTES, Operation.READ_TELEMETRY) {
+            new PermissionChecker.GenericPermissionChecker(Operation.CREATE, Operation.READ, Operation.WRITE, Operation.READ_ATTRIBUTES, Operation.WRITE_ATTRIBUTES, Operation.READ_TELEMETRY) {
 
                 @Override
                 public boolean hasPermission(SecurityUser user, Operation operation, EntityId entityId, HasTenantId entity) {

@@ -23,7 +23,7 @@ import { Component } from '@angular/core';
 })
 export class LogoComponent {
 
-  logo = 'assets/logo_title_white.svg';
+  logo = 'assets/logo_white.svg';
 
   gotoThingsboard(): void {
     window.open('https://www.dgrow.shop', '_blank');

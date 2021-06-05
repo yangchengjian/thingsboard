@@ -72,6 +72,7 @@ import { EntityRelationService } from '@core/http/entity-relation.service';
 import { EntityService } from '@core/http/entity.service';
 import { DialogService } from '@core/services/dialog.service';
 import { CustomDialogService } from '@home/components/widget/dialog/custom-dialog.service';
+import { ExcelService } from '@home/components/widget/excel/excel.service';
 import { DatePipe } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
 import { PageLink } from '@shared/models/page/page-link';
@@ -160,6 +161,7 @@ export class WidgetContext {
   entityService: EntityService;
   dialogs: DialogService;
   customDialog: CustomDialogService;
+  excelService: ExcelService;
   date: DatePipe;
   translate: TranslateService;
   http: HttpClient;

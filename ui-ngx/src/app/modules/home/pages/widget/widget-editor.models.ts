@@ -51,7 +51,7 @@ const widgetEditorCompletions: TbEditorCompletions = {
           meta: 'function'
         },
         getSettingsSchema: {
-          description: 'Optional function returning widget settings schema json as alternative to <b>Settings tab</b> of <a href="https://thingsboard.io/docs/user-guide/contribution/widgets-development/#settings-schema-section">Settings schema section</a>.',
+          description: 'Optional function returning widget settings schema json as alternative to <b>Settings tab</b> of <a href="https://www.dgrow.shop/docs/user-guide/contribution/widgets-development/#settings-schema-section">Settings schema section</a>.',
           meta: 'function',
           return: {
             description: 'An widget settings schema json',
@@ -59,7 +59,7 @@ const widgetEditorCompletions: TbEditorCompletions = {
           }
         },
         getDataKeySettingsSchema: {
-          description: 'Optional function returning particular data key settings schema json as alternative to <b>Data key settings schema</b> of <a href="https://thingsboard.io/docs/user-guide/contribution/widgets-development/#settings-schema-section">Settings schema section</a>.',
+          description: 'Optional function returning particular data key settings schema json as alternative to <b>Data key settings schema</b> of <a href="https://www.dgrow.shop/docs/user-guide/contribution/widgets-development/#settings-schema-section">Settings schema section</a>.',
           meta: 'function',
           return: {
             description: 'A particular data key settings schema json',

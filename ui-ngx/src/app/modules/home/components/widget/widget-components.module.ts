@@ -25,6 +25,7 @@ import { SharedHomeComponentsModule } from '@home/components/shared-home-compone
 import { TimeseriesTableWidgetComponent } from '@home/components/widget/lib/timeseries-table-widget.component';
 import { EntitiesHierarchyWidgetComponent } from '@home/components/widget/lib/entities-hierarchy-widget.component';
 import { CustomDialogService } from '@home/components/widget/dialog/custom-dialog.service';
+import { ExcelService } from '@home/components/widget/excel/excel.service';
 import { RpcWidgetsModule } from '@home/components/widget/lib/rpc/rpc-widgets.module';
 import {
   DateRangeNavigatorPanelComponent,
@@ -84,6 +85,7 @@ import { JsonInputWidgetComponent } from '@home/components/widget/lib/json-input
   ],
   providers: [
     CustomDialogService,
+    ExcelService,
     ImportExportService
   ]
 })

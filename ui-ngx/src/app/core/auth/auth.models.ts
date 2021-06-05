@@ -26,6 +26,7 @@ export interface AuthPayload extends SysParamsState {
   authUser: AuthUser;
   userDetails: User;
   forceFullscreen: boolean;
+  dashboardEditable: boolean;
 }
 
 export interface AuthState extends AuthPayload {

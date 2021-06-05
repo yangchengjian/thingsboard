@@ -74,6 +74,7 @@ export class UserComponent extends EntityComponent<User> {
             description: [entity && entity.additionalInfo ? entity.additionalInfo.description : ''],
             defaultDashboardId: [entity && entity.additionalInfo ? entity.additionalInfo.defaultDashboardId : null],
             defaultDashboardFullscreen: [entity && entity.additionalInfo ? entity.additionalInfo.defaultDashboardFullscreen : false],
+	    defaultDashboardEditable: [entity && entity.additionalInfo ? entity.additionalInfo.defaultDashboardEditable : false],
             homeDashboardId: [entity && entity.additionalInfo ? entity.additionalInfo.homeDashboardId : null],
             homeDashboardHideToolbar: [entity && entity.additionalInfo &&
             isDefinedAndNotNull(entity.additionalInfo.homeDashboardHideToolbar) ? entity.additionalInfo.homeDashboardHideToolbar : true]
@@ -92,6 +93,8 @@ export class UserComponent extends EntityComponent<User> {
         {defaultDashboardId: entity.additionalInfo ? entity.additionalInfo.defaultDashboardId : null}});
     this.entityForm.patchValue({additionalInfo:
         {defaultDashboardFullscreen: entity.additionalInfo ? entity.additionalInfo.defaultDashboardFullscreen : false}});
+    this.entityForm.patchValue({additionalInfo:
+	{defaultDashboardEditable: entity.additionalInfo ? entity.additionalInfo.defaultDashboardEditable : false}});
     this.entityForm.patchValue({additionalInfo:
         {homeDashboardId: entity.additionalInfo ? entity.additionalInfo.homeDashboardId : null}});
     this.entityForm.patchValue({additionalInfo:

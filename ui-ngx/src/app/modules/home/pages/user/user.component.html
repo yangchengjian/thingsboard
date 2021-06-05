@@ -94,6 +94,9 @@
             <mat-checkbox fxFlex formControlName="defaultDashboardFullscreen">
               {{ 'user.always-fullscreen' | translate }}
             </mat-checkbox>
+            <mat-checkbox fxFlex formControlName="defaultDashboardEditable">
+              {{ 'user.is-editable' | translate }}
+            </mat-checkbox>
           </section>
           <section fxFlex fxLayout="column" fxLayout.gt-sm="row">
             <tb-dashboard-autocomplete

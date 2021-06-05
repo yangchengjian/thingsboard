@@ -389,6 +389,10 @@ export class AuthService {
               if (this.userForceFullscreen(authPayload)) {
                 authPayload.forceFullscreen = true;
               }
+              console.log('this.userDashboardEditable: ' + this.userDashboardEditable(authPayload));
+              if (this.userDashboardEditable(authPayload)) {
+                authPayload.dashboardEditable = true;
+              }
               this.loadSystemParams(authPayload).subscribe(
                 (sysParams) => {
                   authPayload = {...authPayload, ...sysParams};
@@ -618,6 +622,12 @@ export class AuthService {
       (authPayload.userDetails && authPayload.userDetails.additionalInfo &&
         authPayload.userDetails.additionalInfo.defaultDashboardFullscreen &&
         authPayload.userDetails.additionalInfo.defaultDashboardFullscreen === true);
+  }
+
+  private userDashboardEditable(authPayload: AuthPayload): boolean {
+    return (authPayload.userDetails && authPayload.userDetails.additionalInfo &&
+        authPayload.userDetails.additionalInfo.defaultDashboardEditable &&
+        authPayload.userDetails.additionalInfo.defaultDashboardEditable === true);
   }
 
   private userHasProfile(authUser: AuthUser): boolean {

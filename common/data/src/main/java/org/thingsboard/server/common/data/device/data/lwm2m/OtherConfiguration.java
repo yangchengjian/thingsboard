@@ -16,6 +16,7 @@
 package org.thingsboard.server.common.data.device.data.lwm2m;
 
 import lombok.Data;
+import org.thingsboard.server.common.data.device.data.PowerMode;
 
 @Data
 public class OtherConfiguration {
@@ -23,7 +24,8 @@ public class OtherConfiguration {
     private Integer fwUpdateStrategy;
     private Integer swUpdateStrategy;
     private Integer clientOnlyObserveAfterConnect;
-    private String fwUpdateRecourse;
-    private String swUpdateRecourse;
+    private PowerMode powerMode;
+    private String fwUpdateResource;
+    private String swUpdateResource;
 
 }

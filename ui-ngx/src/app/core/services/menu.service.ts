@@ -228,13 +228,6 @@ export class MenuService {
       },
       {
         id: guid(),
-        name: 'rulechain.rulechains',
-        type: 'link',
-        path: '/ruleChains',
-        icon: 'settings_ethernet'
-      },
-      {
-        id: guid(),
         name: 'customer.customers',
         type: 'link',
         path: '/customers',
@@ -268,6 +261,13 @@ export class MenuService {
         type: 'link',
         path: '/entityViews',
         icon: 'view_quilt'
+      },
+      {
+        id: guid(),
+        name: 'rulechain.rulechains',
+        type: 'link',
+        path: '/ruleChains',
+        icon: 'settings_ethernet'
       },
       {
         id: guid(),
@@ -312,16 +312,6 @@ export class MenuService {
   private buildTenantAdminHome(authUser: any): Array<HomeSection> {
     const homeSections: Array<HomeSection> = [];
     homeSections.push(
-      {
-        name: 'rulechain.management',
-        places: [
-          {
-            name: 'rulechain.rulechains',
-            icon: 'settings_ethernet',
-            path: '/ruleChains'
-          }
-        ]
-      },
       {
         name: 'customer.management',
         places: [
@@ -371,6 +361,11 @@ export class MenuService {
       {
         name: 'dashboard.management',
         places: [
+          {
+            name: 'rulechain.rulechains',
+            icon: 'settings_ethernet',
+            path: '/ruleChains'
+          },
           {
             name: 'widget.widget-library',
             icon: 'now_widgets',

@@ -21,6 +21,7 @@ export interface AuthPayload {
   userDetails: User;
   userTokenAccessEnabled: boolean;
   allowedDashboardIds: string[];
+  dashboardEditable: boolean;
   forceFullscreen: boolean;
 }
 
@@ -31,6 +32,7 @@ export interface AuthState {
   userDetails: User;
   userTokenAccessEnabled: boolean;
   allowedDashboardIds: string[];
+  dashboardEditable: boolean;
   forceFullscreen: boolean;
   lastPublicDashboardId: string;
 }

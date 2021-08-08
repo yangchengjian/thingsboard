@@ -23,7 +23,9 @@ import { take } from 'rxjs/operators';
 import { HomeSection, MenuSection } from '@core/services/menu.models';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Authority } from '@shared/models/authority.enum';
+import { AuthState } from '@app/core/auth/auth.models';
 import { AuthUser } from '@shared/models/user.model';
+import { getCurrentAuthState } from '@core/auth/auth.selectors';
 import { guid } from '@core/utils';
 
 @Injectable({
@@ -33,6 +35,8 @@ export class MenuService {
 
   menuSections$: Subject<Array<MenuSection>> = new BehaviorSubject<Array<MenuSection>>([]);
   homeSections$: Subject<Array<HomeSection>> = new BehaviorSubject<Array<HomeSection>>([]);
+
+  authState: AuthState = getCurrentAuthState(this.store);
 
   constructor(private store: Store<AppState>, private authService: AuthService) {
     this.store.pipe(select(selectIsAuthenticated)).subscribe(
@@ -261,21 +265,27 @@ export class MenuService {
         type: 'link',
         path: '/entityViews',
         icon: 'view_quilt'
-      },
-      {
-        id: guid(),
-        name: 'rulechain.rulechains',
-        type: 'link',
-        path: '/ruleChains',
-        icon: 'settings_ethernet'
-      },
-      {
-        id: guid(),
-        name: 'widget.widget-library',
-        type: 'link',
-        path: '/widgets-bundles',
-        icon: 'now_widgets'
-      },
+      }
+    );
+    if (this.authState.dashboardEditable) {
+      sections.push(
+        {
+          id: guid(),
+          name: 'rulechain.rulechains',
+          type: 'link',
+          path: '/ruleChains',
+          icon: 'settings_ethernet'
+        },
+        {
+          id: guid(),
+          name: 'widget.widget-library',
+          type: 'link',
+          path: '/widgets-bundles',
+          icon: 'now_widgets'
+        }
+      );
+    }
+    sections.push(
       {
         id: guid(),
         name: 'dashboard.dashboards',
@@ -357,27 +367,46 @@ export class MenuService {
             path: '/entityViews'
           }
         ]
-      },
-      {
-        name: 'dashboard.management',
-        places: [
-          {
-            name: 'rulechain.rulechains',
-            icon: 'settings_ethernet',
-            path: '/ruleChains'
-          },
-          {
-            name: 'widget.widget-library',
-            icon: 'now_widgets',
-            path: '/widgets-bundles'
-          },
-          {
-            name: 'dashboard.dashboards',
-            icon: 'dashboard',
-            path: '/dashboards'
-          }
-        ]
-      },
+      }
+    );
+    if (this.authState.dashboardEditable) {
+      homeSections.push(
+        {
+          name: 'dashboard.management',
+          places: [
+            {
+              name: 'rulechain.rulechains',
+              icon: 'settings_ethernet',
+              path: '/ruleChains'
+            },
+            {
+              name: 'widget.widget-library',
+              icon: 'now_widgets',
+              path: '/widgets-bundles'
+            },
+            {
+              name: 'dashboard.dashboards',
+              icon: 'dashboard',
+              path: '/dashboards'
+            }
+          ]
+        }
+      );
+    } else {
+      homeSections.push(
+        {
+          name: 'dashboard.management',
+          places: [
+            {
+              name: 'dashboard.dashboards',
+              icon: 'dashboard',
+              path: '/dashboards'
+            }
+          ]
+        }
+      );
+    }
+    homeSections.push(
       {
         name: 'audit-log.audit',
         places: [

@@ -30,7 +30,7 @@ import org.thingsboard.server.common.msg.TbMsg;
 
 @Slf4j
 @RuleNode(type = ComponentType.ENRICHMENT,
-        name = "tenant details",
+        name = "租户详情",
         configClazz = TbGetTenantDetailsNodeConfiguration.class,
         nodeDescription = "Adds fields from Tenant details to the message body or metadata",
         nodeDetails = "If checkbox: <b>Add selected details to the message metadata</b> is selected, existing fields will be added to the message metadata instead of message data.<br><br>" +

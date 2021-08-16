@@ -41,7 +41,7 @@ import java.util.List;
 @Slf4j
 @RuleNode(
         type = ComponentType.ACTION,
-        name = "create relation",
+        name = "创建关联",
         configClazz = TbCreateRelationNodeConfiguration.class,
         nodeDescription = "Finds target Entity by entity name pattern and (entity type pattern for Asset, Device) and then create a relation to Originator Entity by type and direction." +
                 " If Selected entity type: Asset, Device or Customer will create new Entity if it doesn't exist and selected checkbox 'Create new entity if not exists'.<br>" +

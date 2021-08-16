@@ -25,7 +25,7 @@ import org.thingsboard.server.common.data.plugin.ComponentType;
 
 @RuleNode(
         type = ComponentType.ENRICHMENT,
-        name="related attributes",
+        name="关联属性",
         configClazz = TbGetRelatedAttrNodeConfiguration.class,
         nodeDescription = "Add Originators Related Entity Attributes or Latest Telemetry into Message Metadata",
         nodeDetails = "Related Entity found using configured relation direction and Relation Type. " +

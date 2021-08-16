@@ -39,7 +39,7 @@ import static org.thingsboard.rule.engine.api.TbRelationTypes.SUCCESS;
 @Slf4j
 @RuleNode(
         type = ComponentType.ACTION,
-        name = "delay",
+        name = "延迟",
         configClazz = TbMsgDelayNodeConfiguration.class,
         nodeDescription = "Delays incoming message",
         nodeDetails = "Delays messages for configurable period. Please note, this node acknowledges the message from the current queue (message will be removed from queue)",

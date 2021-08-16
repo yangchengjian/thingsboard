@@ -36,7 +36,7 @@ import java.util.Set;
 @Slf4j
 @RuleNode(
         type = ComponentType.ACTION,
-        name = "save attributes",
+        name = "保存属性",
         configClazz = TbMsgAttributesNodeConfiguration.class,
         nodeDescription = "Saves attributes data",
         nodeDetails = "Saves entity attributes based on configurable scope parameter. Expects messages with 'POST_ATTRIBUTES_REQUEST' message type",

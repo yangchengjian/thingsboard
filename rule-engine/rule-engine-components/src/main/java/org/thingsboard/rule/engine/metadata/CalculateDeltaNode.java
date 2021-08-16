@@ -45,7 +45,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Slf4j
 @RuleNode(type = ComponentType.ENRICHMENT,
-        name = "calculate delta", relationTypes = {"Success", "Failure", "Other"},
+        name = "计算增量", relationTypes = {"Success", "Failure", "Other"},
         configClazz = CalculateDeltaNodeConfiguration.class,
         nodeDescription = "Calculates and adds 'delta' value into message based on the incoming and previous value",
         nodeDetails = "Calculates delta and period based on the previous time-series reading and current data. " +

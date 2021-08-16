@@ -28,7 +28,7 @@ import static org.thingsboard.rule.engine.api.TbRelationTypes.SUCCESS;
 @Slf4j
 @RuleNode(
         type = ComponentType.ACTION,
-        name = "log",
+        name = "日志",
         configClazz = TbLogNodeConfiguration.class,
         nodeDescription = "Log incoming messages using JS script for transformation Message into String",
         nodeDetails = "Transform incoming Message with configured JS function to String and log final value into Thingsboard log file. " +

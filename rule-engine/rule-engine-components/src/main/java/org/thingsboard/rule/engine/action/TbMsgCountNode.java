@@ -36,7 +36,7 @@ import static org.thingsboard.rule.engine.api.TbRelationTypes.SUCCESS;
 @Slf4j
 @RuleNode(
         type = ComponentType.ACTION,
-        name = "message count",
+        name = "消息数量",
         configClazz = TbMsgCountNodeConfiguration.class,
         nodeDescription = "Count incoming messages",
         nodeDetails = "Count incoming messages for specified interval and produces POST_TELEMETRY_REQUEST msg with messages count",

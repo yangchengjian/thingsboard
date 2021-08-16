@@ -31,7 +31,7 @@ import org.thingsboard.server.common.msg.session.SessionMsgType;
 @Slf4j
 @RuleNode(
         type = ComponentType.FILTER,
-        name = "message type switch",
+        name = "消息类型转换",
         configClazz = EmptyNodeConfiguration.class,
         relationTypes = {"Post attributes", "Post telemetry", "RPC Request from Device", "RPC Request to Device", "Activity Event", "Inactivity Event",
                 "Connect Event", "Disconnect Event", "Entity Created", "Entity Updated", "Entity Deleted", "Entity Assigned",

@@ -29,7 +29,7 @@ import org.thingsboard.server.common.msg.TbMsg;
 @Slf4j
 @RuleNode(
         type = ComponentType.ACTION,
-        name = "assign to customer",
+        name = "分配给客户",
         configClazz = TbAssignToCustomerNodeConfiguration.class,
         nodeDescription = "Assign Message Originator Entity to Customer",
         nodeDetails = "Finds target Customer by customer name pattern and then assign Originator Entity to this customer. " +

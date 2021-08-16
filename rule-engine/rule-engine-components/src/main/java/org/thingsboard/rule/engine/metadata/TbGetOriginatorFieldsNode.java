@@ -38,7 +38,7 @@ import static org.thingsboard.rule.engine.api.TbRelationTypes.SUCCESS;
  */
 @Slf4j
 @RuleNode(type = ComponentType.ENRICHMENT,
-        name = "originator fields",
+        name = "发起者域",
         configClazz = TbGetOriginatorFieldsConfiguration.class,
         nodeDescription = "Add Message Originator fields values into Message Metadata",
         nodeDetails = "Will fetch fields values specified in mapping. If specified field is not part of originator fields it will be ignored.",

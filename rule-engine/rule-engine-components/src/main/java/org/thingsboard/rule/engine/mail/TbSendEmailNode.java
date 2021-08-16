@@ -39,7 +39,7 @@ import static org.thingsboard.common.util.DonAsynchron.withCallback;
 @Slf4j
 @RuleNode(
         type = ComponentType.EXTERNAL,
-        name = "send email",
+        name = "发送邮件",
         configClazz = TbSendEmailNodeConfiguration.class,
         nodeDescription = "Sends email message via SMTP server.",
         nodeDetails = "Expects messages with <b>SEND_EMAIL</b> type. Node works only with messages that " +

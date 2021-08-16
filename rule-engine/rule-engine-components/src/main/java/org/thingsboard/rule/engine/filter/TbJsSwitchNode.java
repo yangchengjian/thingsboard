@@ -29,7 +29,7 @@ import static org.thingsboard.common.util.DonAsynchron.withCallback;
 @Slf4j
 @RuleNode(
         type = ComponentType.FILTER,
-        name = "switch", customRelations = true,
+        name = "转换", customRelations = true,
         relationTypes = {},
         configClazz = TbJsSwitchNodeConfiguration.class,
         nodeDescription = "Route incoming Message to one or multiple output chains",

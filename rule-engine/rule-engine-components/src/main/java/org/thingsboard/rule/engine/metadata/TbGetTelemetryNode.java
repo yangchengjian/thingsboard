@@ -58,7 +58,7 @@ import static org.thingsboard.server.common.data.kv.Aggregation.NONE;
  */
 @Slf4j
 @RuleNode(type = ComponentType.ENRICHMENT,
-        name = "originator telemetry",
+        name = "发起者时序",
         configClazz = TbGetTelemetryNodeConfiguration.class,
         nodeDescription = "Add Message Originator Telemetry for selected time range into Message Metadata\n",
         nodeDetails = "The node allows you to select fetch mode: <b>FIRST/LAST/ALL</b> to fetch telemetry of certain time range that are added into Message metadata without any prefix. " +

@@ -33,7 +33,7 @@ import java.util.UUID;
 @Slf4j
 @RuleNode(
         type = ComponentType.ACTION,
-        name = "rpc call reply",
+        name = "RPC调用回复",
         configClazz = TbSendRpcReplyNodeConfiguration.class,
         nodeDescription = "Sends reply to RPC call from device",
         nodeDetails = "Expects messages with any message type. Will forward message body to the device.",

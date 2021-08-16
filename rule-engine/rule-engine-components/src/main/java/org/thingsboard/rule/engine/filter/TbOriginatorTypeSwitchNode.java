@@ -25,7 +25,7 @@ import org.thingsboard.server.common.msg.TbMsg;
 @Slf4j
 @RuleNode(
         type = ComponentType.FILTER,
-        name = "originator type switch",
+        name = "发起者类型转换",
         configClazz = EmptyNodeConfiguration.class,
         relationTypes = {"Device", "Asset", "Alarm", "Entity View", "Tenant", "Customer", "User", "Dashboard", "Rule chain", "Rule node"},
         nodeDescription = "Route incoming messages by Message Originator Type",

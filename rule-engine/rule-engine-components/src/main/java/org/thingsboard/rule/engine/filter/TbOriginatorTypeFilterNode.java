@@ -25,7 +25,7 @@ import org.thingsboard.server.common.msg.TbMsg;
 @Slf4j
 @RuleNode(
         type = ComponentType.FILTER,
-        name = "originator type",
+        name = "发起者类型",
         configClazz = TbOriginatorTypeFilterNodeConfiguration.class,
         relationTypes = {"True", "False"},
         nodeDescription = "Filter incoming messages by message Originator Type",

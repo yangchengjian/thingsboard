@@ -27,7 +27,7 @@ import org.thingsboard.server.common.msg.TbMsg;
 @Slf4j
 @RuleNode(
         type = ComponentType.FILTER,
-        name = "message type",
+        name = "消息类型",
         configClazz = TbMsgTypeFilterNodeConfiguration.class,
         relationTypes = {"True", "False"},
         nodeDescription = "Filter incoming messages by Message Type",

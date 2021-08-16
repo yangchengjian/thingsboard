@@ -33,7 +33,7 @@ import static org.thingsboard.common.util.DonAsynchron.withCallback;
 @Slf4j
 @RuleNode(
         type = ComponentType.EXTERNAL,
-        name = "rabbitmq",
+        name = "RabbitMQ",
         configClazz = TbRabbitMqNodeConfiguration.class,
         nodeDescription = "Publish messages to the RabbitMQ",
         nodeDetails = "Will publish message payload to RabbitMQ queue.",

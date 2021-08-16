@@ -46,7 +46,7 @@ import java.util.concurrent.TimeoutException;
 @Slf4j
 @RuleNode(
         type = ComponentType.EXTERNAL,
-        name = "mqtt",
+        name = "MQTT",
         configClazz = TbMqttNodeConfiguration.class,
         nodeDescription = "Publish messages to the MQTT broker",
         nodeDetails = "Will publish message payload to the MQTT broker with QoS <b>AT_LEAST_ONCE</b>.",

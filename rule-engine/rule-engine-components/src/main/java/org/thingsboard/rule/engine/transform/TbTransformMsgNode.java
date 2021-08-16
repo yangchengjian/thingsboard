@@ -29,7 +29,7 @@ import java.util.List;
 
 @RuleNode(
         type = ComponentType.TRANSFORMATION,
-        name = "script",
+        name = "脚本",
         configClazz = TbTransformMsgNodeConfiguration.class,
         nodeDescription = "Change Message payload, Metadata or Message type using JavaScript",
         nodeDetails = "JavaScript function receive 3 input parameters <br/> " +

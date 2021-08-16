@@ -46,7 +46,7 @@ import java.util.List;
 @Slf4j
 @RuleNode(
         type = ComponentType.FILTER,
-        name = "gps geofencing filter",
+        name = "地理围栏过滤",
         configClazz = TbGpsGeofencingFilterNodeConfiguration.class,
         relationTypes = {"True", "False"},
         nodeDescription = "Filter incoming messages by GPS based geofencing",

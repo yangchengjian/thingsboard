@@ -27,7 +27,7 @@ import org.thingsboard.server.common.msg.TbMsg;
 
 @RuleNode(
         type = ComponentType.ACTION,
-        name = "unassign from customer",
+        name = "取消分配给客户",
         configClazz = TbUnassignFromCustomerNodeConfiguration.class,
         nodeDescription = "Unassign Message Originator Entity from Customer",
         nodeDetails = "Finds target Entity Customer by Customer name pattern and then unassign Originator Entity from this customer.",

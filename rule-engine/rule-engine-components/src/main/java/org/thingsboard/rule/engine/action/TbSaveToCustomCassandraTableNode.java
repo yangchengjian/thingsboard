@@ -50,7 +50,7 @@ import static org.thingsboard.common.util.DonAsynchron.withCallback;
 
 @Slf4j
 @RuleNode(type = ComponentType.ACTION,
-        name = "save to custom table",
+        name = "保存到定制表",
         configClazz = TbSaveToCustomCassandraTableNodeConfiguration.class,
         nodeDescription = "Node stores data from incoming Message payload to the Cassandra database into the predefined custom table" +
                 " that should have <b>cs_tb_</b> prefix, to avoid the data insertion to the common TB tables.<br>" +

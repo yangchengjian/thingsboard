@@ -32,7 +32,7 @@ import java.util.Map;
 @Slf4j
 @RuleNode(
         type = ComponentType.FILTER,
-        name = "check existence fields",
+        name = "检查存在域",
         relationTypes = {"True", "False"},
         configClazz = TbCheckMessageNodeConfiguration.class,
         nodeDescription = "Checks the existence of the selected keys from message data and metadata.",

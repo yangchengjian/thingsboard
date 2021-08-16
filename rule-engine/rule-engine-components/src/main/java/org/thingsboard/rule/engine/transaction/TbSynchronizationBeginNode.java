@@ -31,7 +31,7 @@ import static org.thingsboard.rule.engine.api.TbRelationTypes.SUCCESS;
 @Slf4j
 @RuleNode(
         type = ComponentType.ACTION,
-        name = "synchronization start",
+        name = "同步开始",
         configClazz = EmptyNodeConfiguration.class,
         nodeDescription = "This Node is now deprecated. Use \"Checkpoint\" instead.",
         nodeDetails = "This node should be used together with \"synchronization end\" node. \n This node will put messages into queue based on message originator id. \n" +

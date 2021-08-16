@@ -45,7 +45,7 @@ import java.util.concurrent.TimeoutException;
 @Slf4j
 @RuleNode(
         type = ComponentType.ACTION,
-        name = "gps geofencing events",
+        name = "地理围栏事件",
         configClazz = TbGpsGeofencingActionNodeConfiguration.class,
         relationTypes = {"Success", "Entered", "Left", "Inside", "Outside"},
         nodeDescription = "Produces incoming messages using GPS based geofencing",

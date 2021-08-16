@@ -39,7 +39,7 @@ import java.util.List;
 @Slf4j
 @RuleNode(
         type = ComponentType.ACTION,
-        name = "create alarm", relationTypes = {"Created", "Updated", "False"},
+        name = "创建警告", relationTypes = {"Created", "Updated", "False"},
         configClazz = TbCreateAlarmNodeConfiguration.class,
         nodeDescription = "Create or Update Alarm",
         nodeDetails =

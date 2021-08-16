@@ -45,7 +45,7 @@ import java.util.Properties;
 @Slf4j
 @RuleNode(
         type = ComponentType.EXTERNAL,
-        name = "kafka",
+        name = "Kafka",
         configClazz = TbKafkaNodeConfiguration.class,
         nodeDescription = "Publish messages to Kafka server",
         nodeDetails = "Will send record via Kafka producer to Kafka server. " +

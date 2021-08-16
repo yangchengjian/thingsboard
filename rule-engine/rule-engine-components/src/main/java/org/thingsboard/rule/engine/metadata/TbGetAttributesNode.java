@@ -32,7 +32,7 @@ import org.thingsboard.server.common.msg.TbMsg;
  */
 @Slf4j
 @RuleNode(type = ComponentType.ENRICHMENT,
-          name = "originator attributes",
+          name = "发起者属性",
           configClazz = TbGetAttributesNodeConfiguration.class,
           nodeDescription = "Add Message Originator Attributes or Latest Telemetry into Message Metadata",
           nodeDetails = "If Attributes enrichment configured, <b>CLIENT/SHARED/SERVER</b> attributes are added into Message metadata " +

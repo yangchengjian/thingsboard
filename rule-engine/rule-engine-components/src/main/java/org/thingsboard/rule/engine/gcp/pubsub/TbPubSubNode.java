@@ -41,7 +41,7 @@ import static org.thingsboard.common.util.DonAsynchron.withCallback;
 @Slf4j
 @RuleNode(
         type = ComponentType.EXTERNAL,
-        name = "gcp pubsub",
+        name = "GCP pubsub",
         configClazz = TbPubSubNodeConfiguration.class,
         nodeDescription = "Publish message to the Google Cloud PubSub",
         nodeDetails = "Will publish message payload to the Google Cloud Platform PubSub topic. Outbound message will contain response fields " +

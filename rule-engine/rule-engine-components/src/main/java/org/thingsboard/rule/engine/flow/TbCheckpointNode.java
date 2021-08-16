@@ -32,7 +32,7 @@ import static org.thingsboard.common.util.DonAsynchron.withCallback;
 @Slf4j
 @RuleNode(
         type = ComponentType.ACTION,
-        name = "checkpoint",
+        name = "检查点",
         configClazz = TbCheckpointNodeConfiguration.class,
         nodeDescription = "transfers the message to another queue",
         nodeDetails = "After successful transfer incoming message is automatically acknowledged. Queue name is configurable.",

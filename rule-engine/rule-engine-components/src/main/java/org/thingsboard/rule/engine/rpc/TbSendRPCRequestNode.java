@@ -43,7 +43,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @RuleNode(
         type = ComponentType.ACTION,
-        name = "rpc call request",
+        name = "RPC调用请求",
         configClazz = TbSendRpcRequestNodeConfiguration.class,
         nodeDescription = "Sends RPC call to device",
         nodeDetails = "Expects messages with \"method\" and \"params\". Will forward response from device to next nodes." +

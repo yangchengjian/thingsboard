@@ -25,7 +25,7 @@ import org.thingsboard.server.common.data.plugin.ComponentType;
 
 @RuleNode(
         type = ComponentType.ENRICHMENT,
-        name="customer attributes",
+        name="客户属性",
         configClazz = TbGetEntityAttrNodeConfiguration.class,
         nodeDescription = "Add Originators Customer Attributes or Latest Telemetry into Message Metadata",
         nodeDetails = "If Attributes enrichment configured, server scope attributes are added into Message metadata. " +

@@ -36,7 +36,7 @@ import java.util.List;
 @Slf4j
 @RuleNode(
         type = ComponentType.ACTION,
-        name = "delete relation",
+        name = "删除关联",
         configClazz = TbDeleteRelationNodeConfiguration.class,
         nodeDescription = "Finds target Entity by entity name pattern and then delete a relation to Originator Entity by type and direction" +
                 " if 'Delete single entity' is set to true, otherwise rule node will delete all relations to the originator of the message by type and direction.",

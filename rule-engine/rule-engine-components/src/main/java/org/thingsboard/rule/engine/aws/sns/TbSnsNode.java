@@ -37,7 +37,7 @@ import static org.thingsboard.common.util.DonAsynchron.withCallback;
 @Slf4j
 @RuleNode(
         type = ComponentType.EXTERNAL,
-        name = "aws sns",
+        name = "AWS SNS",
         configClazz = TbSnsNodeConfiguration.class,
         nodeDescription = "Publish message to the AWS SNS",
         nodeDetails = "Will publish message payload to the AWS SNS topic. Outbound message will contain response fields " +

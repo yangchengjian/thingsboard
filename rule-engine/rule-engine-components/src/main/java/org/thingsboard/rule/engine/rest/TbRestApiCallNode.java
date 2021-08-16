@@ -28,7 +28,7 @@ import org.thingsboard.server.common.msg.TbMsg;
 @Slf4j
 @RuleNode(
         type = ComponentType.EXTERNAL,
-        name = "rest api call",
+        name = "REST接口调用",
         configClazz = TbRestApiCallNodeConfiguration.class,
         nodeDescription = "Invoke REST API calls to external REST server",
         nodeDetails = "Will invoke REST API call <code>GET | POST | PUT | DELETE</code> to external REST server. " +

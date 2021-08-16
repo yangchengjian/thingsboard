@@ -27,7 +27,7 @@ import static org.thingsboard.common.util.DonAsynchron.withCallback;
 @Slf4j
 @RuleNode(
         type = ComponentType.FILTER,
-        name = "script", relationTypes = {"True", "False"},
+        name = "脚本", relationTypes = {"True", "False"},
         configClazz = TbJsFilterNodeConfiguration.class,
         nodeDescription = "Filter incoming messages using JS script",
         nodeDetails = "Evaluate incoming Message with configured JS condition. " +

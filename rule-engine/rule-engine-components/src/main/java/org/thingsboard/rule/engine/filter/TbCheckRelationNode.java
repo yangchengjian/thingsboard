@@ -43,7 +43,7 @@ import static org.thingsboard.common.util.DonAsynchron.withCallback;
 @Slf4j
 @RuleNode(
         type = ComponentType.FILTER,
-        name = "check relation",
+        name = "检查关联",
         configClazz = TbCheckRelationNodeConfiguration.class,
         relationTypes = {"True", "False"},
         nodeDescription = "Checks the relation from the selected entity to the originator of the message by type and direction" +

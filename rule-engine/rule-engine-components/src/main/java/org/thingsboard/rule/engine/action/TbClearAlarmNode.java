@@ -34,7 +34,7 @@ import org.thingsboard.server.common.msg.TbMsg;
 @Slf4j
 @RuleNode(
         type = ComponentType.ACTION,
-        name = "clear alarm", relationTypes = {"Cleared", "False"},
+        name = "清楚警告", relationTypes = {"Cleared", "False"},
         configClazz = TbClearAlarmNodeConfiguration.class,
         nodeDescription = "Clear Alarm",
         nodeDetails =

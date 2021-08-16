@@ -41,7 +41,7 @@ import static org.thingsboard.common.util.DonAsynchron.withCallback;
 @Slf4j
 @RuleNode(
         type = ComponentType.EXTERNAL,
-        name = "aws sqs",
+        name = "AWS SQS",
         configClazz = TbSqsNodeConfiguration.class,
         nodeDescription = "Publish messages to the AWS SQS",
         nodeDetails = "Will publish message payload and metadata attributes to the AWS SQS queue. Outbound message will contain " +

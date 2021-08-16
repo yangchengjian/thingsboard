@@ -39,7 +39,7 @@ import javax.net.ssl.SSLException;
 @Slf4j
 @RuleNode(
         type = ComponentType.EXTERNAL,
-        name = "azure iot hub",
+        name = "Azure IoT Hub",
         configClazz = TbAzureIotHubNodeConfiguration.class,
         nodeDescription = "Publish messages to the Azure IoT Hub",
         nodeDetails = "Will publish message payload to the Azure IoT Hub with QoS <b>AT_LEAST_ONCE</b>.",

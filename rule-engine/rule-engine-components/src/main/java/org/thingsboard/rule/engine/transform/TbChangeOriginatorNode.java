@@ -39,7 +39,7 @@ import java.util.List;
 @Slf4j
 @RuleNode(
         type = ComponentType.TRANSFORMATION,
-        name = "change originator",
+        name = "修改发起者",
         configClazz = TbChangeOriginatorNodeConfiguration.class,
         nodeDescription = "Change Message Originator To Tenant/Customer/Related Entity/Alarm Originator",
         nodeDetails = "Related Entity found using configured relation direction and Relation Type. " +

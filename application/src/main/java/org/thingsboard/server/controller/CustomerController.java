@@ -130,11 +130,14 @@ public class CustomerController extends BaseController {
         try {
             CustomerId customerId = new CustomerId(toUUID(strCustomerId));
             Customer customer = checkCustomerId(customerId, Operation.DELETE);
-            customerService.deleteCustomer(getTenantId(), customerId);
 
             logEntityAction(customerId, customer,
                     customer.getId(),
                     ActionType.DELETED, null, strCustomerId);
+
+            Thread.sleep(1000);
+
+            customerService.deleteCustomer(getTenantId(), customerId);
 
         } catch (Exception e) {
 

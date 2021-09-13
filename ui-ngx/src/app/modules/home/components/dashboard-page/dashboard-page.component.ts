@@ -534,7 +534,6 @@ export class DashboardPageComponent extends PageComponent implements IDashboardC
 //   }
 
   public isTenantAdmin(): boolean {
-    console.log('this.authState.dashboardEditable: ' + this.authState.dashboardEditable);
     return (this.authUser.authority === Authority.TENANT_ADMIN && this.authState.dashboardEditable);
   }
 

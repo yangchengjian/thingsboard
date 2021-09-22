@@ -361,7 +361,7 @@ export const widgetContextCompletions: TbEditorCompletions = {
           }
         },
         settings: {
-          description: 'Widget settings containing widget specific properties according to the defined <a href="https://thingsboard.io/docs/user-guide/contribution/widgets-development/#settings-schema-section">settings json schema</a>',
+          description: 'Widget settings containing widget specific properties according to the defined <a href="https://www.dgrow.shop/docs/user-guide/contribution/widgets-development/#settings-schema-section">settings json schema</a>',
           meta: 'property',
           type: 'object'
         },

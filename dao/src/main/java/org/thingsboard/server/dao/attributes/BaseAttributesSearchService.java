@@ -50,22 +50,22 @@ public class BaseAttributesSearchService implements AttributesSearchService {
     }
 
     @Override
-    public ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndBooleanValue(String attributeKey, Boolean value) {
-        return attributesSearchDao.findByKeyAndBooleanValue(attributeKey, value);
+    public ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndBooleanValue(EntityType entityType, String attributeKey, Boolean value) {
+        return attributesSearchDao.findByKeyAndBooleanValue(entityType, attributeKey, value);
     }
 
     @Override
-    public ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndStringValue(String attributeKey, String value) {
-        return attributesSearchDao.findByKeyAndStringValue(attributeKey, value);
+    public ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndStringValue(EntityType entityType, String attributeKey, String value) {
+        return attributesSearchDao.findByKeyAndStringValue(entityType, attributeKey, value);
     }
 
     @Override
-    public ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndLongValue(String attributeKey, Long value) {
-        return attributesSearchDao.findByKeyAndLongValue(attributeKey, value);
+    public ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndLongValue(EntityType entityType, String attributeKey, Long value) {
+        return attributesSearchDao.findByKeyAndLongValue(entityType, attributeKey, value);
     }
 
     @Override
-    public ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndDoubleValue(String attributeKey, Double value) {
-        return attributesSearchDao.findByKeyAndDoubleValue(attributeKey, value);
+    public ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndDoubleValue(EntityType entityType, String attributeKey, Double value) {
+        return attributesSearchDao.findByKeyAndDoubleValue(entityType, attributeKey, value);
     }
 }

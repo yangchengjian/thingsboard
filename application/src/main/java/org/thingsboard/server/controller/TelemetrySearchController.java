@@ -110,28 +110,31 @@ public class TelemetrySearchController extends BaseController {
     @RequestMapping(value = "/attributes", method = RequestMethod.GET)
     @ResponseBody
     public DeferredResult<ResponseEntity> getAttributesByKeyAndValue(
+            @RequestParam(required = true) String entityType,
             @RequestParam(required = true) String attributeKey,
             @RequestParam(required = true) String attributeValue
     ) throws ThingsboardException {
+        log.info("getAttributesByKeyAndValue entityType: [{}]", entityType);
         log.info("getAttributesByKeyAndValue attributeKey: [{}]", attributeKey);
         log.info("getAttributesByKeyAndValue attributeValue: [{}]", attributeValue);
         SecurityUser user = getCurrentUser();
         TenantId tenantId = user.getTenantId();
-        String entityType = tenantId.getEntityType().toString();
+        String entityTypeStr = tenantId.getEntityType().toString();
         String entityIdStr = tenantId.getId().toString();
-        return accessValidator.validateEntityAndCallback(getCurrentUser(), Operation.READ_ATTRIBUTES, entityType, entityIdStr,
-                (result, t, e) -> getAttributesByKeyAndValueCallback(result, attributeKey, attributeValue));
+        return accessValidator.validateEntityAndCallback(getCurrentUser(), Operation.READ_ATTRIBUTES, entityTypeStr, entityIdStr,
+                (result, t, e) -> getAttributesByKeyAndValueCallback(result, entityType, attributeKey, attributeValue));
     }
 
-    private void getAttributesByKeyAndValueCallback(@Nullable DeferredResult<ResponseEntity> result, String attributeKey, String attributeValue) {
+    private void getAttributesByKeyAndValueCallback(@Nullable DeferredResult<ResponseEntity> result, String entityTypeStr, String attributeKey, String attributeValue) {
+        EntityType entityType = EntityType.valueOf(entityTypeStr);
         if (isBoolean(attributeValue)) {
-            Futures.addCallback(attributesSearchService.findByKeyAndBooleanValue(attributeKey, new Boolean(attributeValue)), getAttributesToResponseCallback(result), MoreExecutors.directExecutor());
+            Futures.addCallback(attributesSearchService.findByKeyAndBooleanValue(entityType, attributeKey, new Boolean(attributeValue)), getAttributesToResponseCallback(result), MoreExecutors.directExecutor());
         } else if (isLong(attributeValue)) {
-            Futures.addCallback(attributesSearchService.findByKeyAndLongValue(attributeKey, new Long(attributeValue)), getAttributesToResponseCallback(result), MoreExecutors.directExecutor());
+            Futures.addCallback(attributesSearchService.findByKeyAndLongValue(entityType, attributeKey, new Long(attributeValue)), getAttributesToResponseCallback(result), MoreExecutors.directExecutor());
         } else if (isDouble(attributeValue)) {
-            Futures.addCallback(attributesSearchService.findByKeyAndDoubleValue(attributeKey, new Double(attributeValue)), getAttributesToResponseCallback(result), MoreExecutors.directExecutor());
+            Futures.addCallback(attributesSearchService.findByKeyAndDoubleValue(entityType, attributeKey, new Double(attributeValue)), getAttributesToResponseCallback(result), MoreExecutors.directExecutor());
         } else {
-            Futures.addCallback(attributesSearchService.findByKeyAndStringValue(attributeKey, attributeValue), getAttributesToResponseCallback(result), MoreExecutors.directExecutor());
+            Futures.addCallback(attributesSearchService.findByKeyAndStringValue(entityType, attributeKey, attributeValue), getAttributesToResponseCallback(result), MoreExecutors.directExecutor());
         }
     }
 

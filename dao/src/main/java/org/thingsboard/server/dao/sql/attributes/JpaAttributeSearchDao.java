@@ -88,37 +88,41 @@ public class JpaAttributeSearchDao extends JpaAbstractDaoListeningExecutorServic
     }
 
     @Override
-    public ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndBooleanValue(String attributeKey, Boolean value) {
+    public ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndBooleanValue(EntityType entityType, String attributeKey, Boolean value) {
         return Futures.immediateFuture(
                 DaoUtil.convertDataList(Lists.newArrayList(
                         attributeSearchKvRepository.findAttributesByKeyAndBooleanValue(
+                                entityType,
                                 attributeKey,
                                 value))));
     }
 
     @Override
-    public ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndStringValue(String attributeKey, String value) {
+    public ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndStringValue(EntityType entityType, String attributeKey, String value) {
         return Futures.immediateFuture(
                 DaoUtil.convertDataList(Lists.newArrayList(
                         attributeSearchKvRepository.findAttributesByKeyAndStringValue(
+                                entityType,
                                 attributeKey,
                                 value))));
     }
 
     @Override
-    public ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndLongValue(String attributeKey, Long value) {
+    public ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndLongValue(EntityType entityType, String attributeKey, Long value) {
         return Futures.immediateFuture(
                 DaoUtil.convertDataList(Lists.newArrayList(
                         attributeSearchKvRepository.findAttributesByKeyAndLongValue(
+                                entityType,
                                 attributeKey,
                                 value))));
     }
 
     @Override
-    public ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndDoubleValue(String attributeKey, Double value) {
+    public ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndDoubleValue(EntityType entityType, String attributeKey, Double value) {
         return Futures.immediateFuture(
                 DaoUtil.convertDataList(Lists.newArrayList(
                         attributeSearchKvRepository.findAttributesByKeyAndDoubleValue(
+                                entityType,
                                 attributeKey,
                                 value))));
     }

@@ -30,11 +30,11 @@ import java.util.Optional;
  * @author Andrew Shvayka
  */
 public interface AttributesSearchDao {
-    ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndBooleanValue(String attributeKey, Boolean value);
+    ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndBooleanValue(EntityType entityType, String attributeKey, Boolean value);
 
-    ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndStringValue(String attributeKey, String value);
+    ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndStringValue(EntityType entityType, String attributeKey, String value);
 
-    ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndLongValue(String attributeKey, Long value);
+    ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndLongValue(EntityType entityType, String attributeKey, Long value);
 
-    ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndDoubleValue(String attributeKey, Double value);
+    ListenableFuture<List<AttributeSearchKvEntry>> findByKeyAndDoubleValue(EntityType entityType, String attributeKey, Double value);
 }

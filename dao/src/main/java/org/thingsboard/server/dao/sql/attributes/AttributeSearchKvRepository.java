@@ -29,24 +29,32 @@ import java.util.UUID;
 
 public interface AttributeSearchKvRepository extends CrudRepository<AttributeSearchKvEntity, AttributeKvCompositeKey> {
 
-    @Query("SELECT a FROM AttributeSearchKvEntity a WHERE a.id.attributeKey = :attributeKey " +
+    @Query("SELECT a FROM AttributeSearchKvEntity a WHERE a.id.entityType = :entityType " +
+            "AND a.id.attributeKey = :attributeKey " +
             "AND a.booleanValue = :value")
-    List<AttributeSearchKvEntity> findAttributesByKeyAndBooleanValue(@Param("attributeKey") String attributeKey,
-                                                                    @Param("value") Boolean value);
+    List<AttributeSearchKvEntity> findAttributesByKeyAndBooleanValue(@Param("entityType") EntityType entityType,
+                                                                     @Param("attributeKey") String attributeKey,
+                                                                     @Param("value") Boolean value);
 
-    @Query("SELECT a FROM AttributeSearchKvEntity a WHERE a.id.attributeKey = :attributeKey " +
+    @Query("SELECT a FROM AttributeSearchKvEntity a WHERE a.id.entityType = :entityType " +
+            "AND a.id.attributeKey = :attributeKey " +
             "AND a.strValue = :value")
-    List<AttributeSearchKvEntity> findAttributesByKeyAndStringValue(@Param("attributeKey") String attributeKey,
+    List<AttributeSearchKvEntity> findAttributesByKeyAndStringValue(@Param("entityType") EntityType entityType,
+                                                                    @Param("attributeKey") String attributeKey,
                                                                     @Param("value") String value);
 
-    @Query("SELECT a FROM AttributeSearchKvEntity a WHERE a.id.attributeKey = :attributeKey " +
+    @Query("SELECT a FROM AttributeSearchKvEntity a WHERE a.id.entityType = :entityType " +
+            "AND a.id.attributeKey = :attributeKey " +
             "AND a.longValue = :value")
-    List<AttributeSearchKvEntity> findAttributesByKeyAndLongValue(@Param("attributeKey") String attributeKey,
-                                                                    @Param("value") Long value);
+    List<AttributeSearchKvEntity> findAttributesByKeyAndLongValue(@Param("entityType") EntityType entityType,
+                                                                  @Param("attributeKey") String attributeKey,
+                                                                  @Param("value") Long value);
 
-    @Query("SELECT a FROM AttributeSearchKvEntity a WHERE a.id.attributeKey = :attributeKey " +
+    @Query("SELECT a FROM AttributeSearchKvEntity a WHERE a.id.entityType = :entityType " +
+            "AND a.id.attributeKey = :attributeKey " +
             "AND a.doubleValue = :value")
-    List<AttributeSearchKvEntity> findAttributesByKeyAndDoubleValue(@Param("attributeKey") String attributeKey,
-                                                                  @Param("value") Double value);
+    List<AttributeSearchKvEntity> findAttributesByKeyAndDoubleValue(@Param("entityType") EntityType entityType,
+                                                                    @Param("attributeKey") String attributeKey,
+                                                                    @Param("value") Double value);
 }
 

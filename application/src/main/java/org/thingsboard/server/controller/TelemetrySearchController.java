@@ -159,7 +159,7 @@ public class TelemetrySearchController extends BaseController {
     }
 
     private boolean isLong (String str) {
-        Pattern pattern = Pattern.compile("[0-9]*");
+        Pattern pattern = Pattern.compile("^[-\\+]?[0-9]*");
         return pattern.matcher(str).matches();
     }
 

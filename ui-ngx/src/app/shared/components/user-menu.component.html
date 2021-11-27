@@ -28,13 +28,17 @@
   </button>
   <mat-menu #userMenu="matMenu" xPosition="before">
     <div class="tb-user-menu-items" *ngIf="authority$ | async; let authority">
+      <button mat-menu-item (click)="logout()">
+        <mat-icon class="material-icons">exit_to_app</mat-icon>
+        <span translate>home.logout</span>
+      </button>
       <button mat-menu-item (click)="openProfile()">
         <mat-icon class="material-icons">account_circle</mat-icon>
         <span translate>home.profile</span>
       </button>
-      <button mat-menu-item (click)="logout()">
-        <mat-icon class="material-icons">exit_to_app</mat-icon>
-        <span translate>home.logout</span>
+      <button mat-menu-item (click)="openAbout()">
+        <mat-icon class="material-icons">info_outline</mat-icon>
+        <span>关于</span>
       </button>
     </div>
   </mat-menu>

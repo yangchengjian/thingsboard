@@ -105,6 +105,10 @@ export class UserMenuComponent implements OnInit, OnDestroy {
     this.router.navigate(['profile']);
   }
 
+   openAbout(): void {
+      window.open('https://www.dgrow.shop/about_dgrow_platform.html', "_blank");
+    }
+
   logout(): void {
     this.authService.logout();
   }

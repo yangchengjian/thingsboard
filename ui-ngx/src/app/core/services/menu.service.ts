@@ -295,13 +295,6 @@ export class MenuService {
       },
       {
         id: guid(),
-        name: 'admin.home-settings',
-        type: 'link',
-        path: '/settings/home',
-        icon: 'settings_applications'
-      },
-      {
-        id: guid(),
         name: 'audit-log.audit-logs',
         type: 'link',
         path: '/auditLogs',

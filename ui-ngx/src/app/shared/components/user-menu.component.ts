@@ -101,9 +101,9 @@ export class UserMenuComponent implements OnInit, OnDestroy {
     return name;
   }
 
-  openSettings(): void {
-    this.router.navigate(['/settings/home']);
-  }
+//   openSettings(): void {
+//     this.router.navigate(['/settings/home']);
+//   }
 
   openProfile(): void {
     this.router.navigate(['profile']);

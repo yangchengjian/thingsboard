@@ -19,8 +19,8 @@ import { Component, Input, NgZone, OnInit } from '@angular/core';
 import { WidgetContext } from '@home/models/widget-component.models';
 import { Store } from '@ngrx/store';
 import { AppState } from '@core/core.state';
-import { MenuService } from '@core/services/menu.service';
-import { HomeSection, HomeSectionPlace } from '@core/services/menu.models';
+import { HomeService } from '@core/services/home.service';
+import { HomeSection, HomeSectionPlace } from '@core/services/home.models';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 
@@ -36,7 +36,7 @@ interface NavigationCardsWidgetSettings {
 })
 export class NavigationCardsWidgetComponent extends PageComponent implements OnInit {
 
-  homeSections$ = this.menuService.homeSections();
+  homeSections$ = this.homeService.homeSections();
   showHomeSections$ = this.homeSections$.pipe(
     map((sections) => {
       return sections.filter((section) => this.sectionPlaces(section).length > 0);
@@ -51,7 +51,7 @@ export class NavigationCardsWidgetComponent extends PageComponent implements OnI
   ctx: WidgetContext;
 
   constructor(protected store: Store<AppState>,
-              private menuService: MenuService,
+              private homeService: HomeService,
               private ngZone: NgZone,
               private router: Router) {
     super(store);

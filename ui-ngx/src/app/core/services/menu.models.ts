@@ -23,20 +23,9 @@ export interface MenuSection extends HasUUID{
   type: MenuSectionType;
   path: string;
   icon: string;
+  divider?: boolean;
   notExact?: boolean;
   isMdiIcon?: boolean;
   height?: string;
   pages?: Array<MenuSection>;
-}
-
-export interface HomeSection {
-  name: string;
-  places: Array<HomeSectionPlace>;
-}
-
-export interface HomeSectionPlace {
-  name: string;
-  icon: string;
-  isMdiIcon?: boolean;
-  path: string;
 }

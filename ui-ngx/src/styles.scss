@@ -40,7 +40,7 @@ body, html {
 body {
   margin: 0;
   padding: 0;
-  background-color: #eee;
+  background-color: #f2f2f2;
   overflow: hidden;
 }
 
@@ -344,7 +344,7 @@ pre.tb-highlight {
 }
 
 .tb-fullscreen-parent {
-  background: #eee;
+  background: #f2f2f2;
   z-index: 0;
 }
 
@@ -550,7 +550,7 @@ mat-label {
   }
 
   mat-toolbar.mat-table-toolbar {
-    background: #fff;
+    background: #f2f2f2;
     padding: 0 24px;
     .mat-toolbar-tools {
       padding: 0;
@@ -947,7 +947,7 @@ mat-label {
     bottom: 0;
     left: 0;
     z-index: 6;
-    background-color: #eee;
+    background-color: #f2f2f2;
     opacity: 1;
   }
 

@@ -20,6 +20,8 @@ export * from './broadcast.service';
 export * from './dashboard-utils.service';
 export * from './dialog.service';
 export * from './dynamic-component-factory.service';
+export * from './home.models';
+export * from './home.service';
 export * from './item-buffer.service';
 export * from './menu.models';
 export * from './menu.service';

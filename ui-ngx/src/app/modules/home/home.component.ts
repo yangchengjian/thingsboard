@@ -47,7 +47,7 @@ export class HomeComponent extends PageComponent implements AfterViewInit, OnIni
   activeComponent: any;
   searchableComponent: ISearchableComponent;
 
-  sidenavMode: 'over' | 'push' | 'side' = 'over';
+  sidenavMode: 'over' | 'push' | 'side' = 'side';
   sidenavOpened = true;
 
   logo = 'assets/logo_title_white.svg';
@@ -82,18 +82,18 @@ export class HomeComponent extends PageComponent implements AfterViewInit, OnIni
     }));
 
     const isGtSm = this.breakpointObserver.isMatched(MediaBreakpoints['gt-sm']);
-    this.sidenavMode = isGtSm ? 'over' : 'over';
+    this.sidenavMode = isGtSm ? 'side' : 'side';
     this.sidenavOpened = true;
 
     this.breakpointObserver
       .observe(MediaBreakpoints['gt-sm'])
       .subscribe((state: BreakpointState) => {
           if (state.matches) {
-            this.sidenavMode = 'over';
-            this.sidenavOpened = false;
+            this.sidenavMode = 'side';
+            this.sidenavOpened = true;
           } else {
-            this.sidenavMode = 'over';
-            this.sidenavOpened = false;
+            this.sidenavMode = 'side';
+            this.sidenavOpened = true;
           }
         }
       );

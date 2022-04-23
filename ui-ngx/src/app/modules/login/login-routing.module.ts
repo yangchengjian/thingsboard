@@ -19,6 +19,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from '@core/guards/auth.guard';
+import { RegisterComponent } from './pages/login/register.component';
 import { ResetPasswordRequestComponent } from '@modules/login/pages/login/reset-password-request.component';
 import { ResetPasswordComponent } from '@modules/login/pages/login/reset-password.component';
 import { CreatePasswordComponent } from '@modules/login/pages/login/create-password.component';
@@ -29,6 +30,15 @@ const routes: Routes = [
     component: LoginComponent,
     data: {
       title: 'login.login',
+      module: 'public'
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'login/register',
+    component: RegisterComponent,
+    data: {
+      title: 'login.register',
       module: 'public'
     },
     canActivate: [AuthGuard]

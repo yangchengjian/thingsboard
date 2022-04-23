@@ -27,3 +27,15 @@ export interface LoginResponse {
   token: string;
   refreshToken: string;
 }
+
+
+export interface RegisterRequest {
+  username: string;
+  password: string;
+}
+
+export interface RegisterResponse {
+  token: string;
+  refreshToken: string;
+}
+

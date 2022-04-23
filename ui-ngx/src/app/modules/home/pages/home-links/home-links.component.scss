@@ -28,9 +28,15 @@
         font-size: 16px;
       }
     }
+    .tb-subtitle {
+      font-size: 12px;
+      @media #{$mat-gt-xmd} {
+        font-size: 10px;
+      }
+    }
     mat-card {
       padding: 0;
-      margin: 36px;
+      margin: 16px;
       mat-card-title {
         margin: 0;
         padding: 24px 16px 16px;

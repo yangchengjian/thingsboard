@@ -52,12 +52,11 @@ export class HomeLinksComponent implements OnInit {
   }
 
   private updateColumnCount() {
-    this.cols = 2;
     if (this.breakpointObserver.isMatched(MediaBreakpoints.lg)) {
-      this.cols = 3;
+      this.colsSub = 2;
     }
     if (this.breakpointObserver.isMatched(MediaBreakpoints['gt-lg'])) {
-      this.cols = 4;
+      this.colsSub = 2;
     }
   }
 

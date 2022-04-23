@@ -110,6 +110,13 @@ export class AuthService {
     );
   }
 
+  public register(loginRequest: LoginRequest): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>('/api/auth/login', loginRequest, defaultHttpOptions()).pipe(
+      tap((loginResponse: LoginResponse) => {
+          this.setUserFromJwtToken(loginResponse.token, loginResponse.refreshToken, true);
+        }
+      ));
+  }
 
   public login(loginRequest: LoginRequest): Observable<LoginResponse> {
     return this.http.post<LoginResponse>('/api/auth/login', loginRequest, defaultHttpOptions()).pipe(

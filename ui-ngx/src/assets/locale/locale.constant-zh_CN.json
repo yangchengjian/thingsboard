@@ -338,7 +338,7 @@
     "unlimited-level": "不限层级"
   },
   "api-usage": {
-    "api-usage": "Api 使用统计",
+    "api-usage": "使用统计",
     "data-points": "数据点",
     "data-points-storage-days": "日存储数据点数",
     "email": "Email",
@@ -575,6 +575,12 @@
       "row-double-click": "双击行时",
       "tooltip-tag-action": "Tooltip tag action"
     }
+  },
+  "solution": {
+    "management": "解决方案",
+    "bot-customer-service": "智能客服",
+    "bot-shopping-guide": "智能导购",
+    "bot-house-keeper": "智能管家"
   },
   "customer": {
     "add": "添加组织",

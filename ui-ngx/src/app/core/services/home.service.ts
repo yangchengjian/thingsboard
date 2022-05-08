@@ -136,11 +136,35 @@ export class HomeService {
     const homeSections: Array<HomeSection> = [];
     homeSections.push(
       {
+        name: 'solution.management',
+        places: [
+          {
+            name: 'solution.bot-customer-service',
+            icon: 'bot-customer-service',
+            isMdiIcon: true,
+            path: '/bot-customer-service'
+          },
+          {
+            name: 'solution.bot-shopping-guide',
+            icon: 'bot-shopping-guide',
+            isMdiIcon: true,
+            path: '/bot-shopping-guide'
+          },
+          {
+            name: 'solution.bot-house-keeper',
+            icon: 'bot-house-keeper',
+            isMdiIcon: true,
+            path: '/bot-house-keeper'
+          }
+        ]
+      },
+      {
         name: 'customer.management',
         places: [
           {
             name: 'customer.customers',
-            icon: 'supervisor_account',
+            icon: 'customer',
+            isMdiIcon: true,
             path: '/customers'
           }
         ]
@@ -150,23 +174,26 @@ export class HomeService {
         places: [
           {
             name: 'asset.assets',
-            icon: 'domain',
+            icon: 'asset',
+            isMdiIcon: true,
             path: '/assets'
           },
           {
             name: 'device.devices',
-            icon: 'devices_other',
+            icon: 'device',
+            isMdiIcon: true,
             path: '/devices'
           },
           {
             name: 'device-profile.device-profiles',
-            icon: 'mdi:alpha-d-box',
+            icon: 'device-profile',
             isMdiIcon: true,
             path: '/deviceProfiles'
           },
           {
             name: 'entity-view.entity-views',
-            icon: 'view_quilt',
+            icon: 'view',
+            isMdiIcon: true,
             path: '/entityViews'
           }
         ]
@@ -179,17 +206,20 @@ export class HomeService {
           places: [
             {
               name: 'rulechain.rulechains',
-              icon: 'settings_ethernet',
+              icon: 'chain',
+              isMdiIcon: true,
               path: '/ruleChains'
             },
             {
               name: 'widget.widget-library',
-              icon: 'now_widgets',
+              icon: 'widget',
+              isMdiIcon: true,
               path: '/widgets-bundles'
             },
             {
               name: 'dashboard.dashboards',
-              icon: 'dashboard',
+              icon: 'app',
+              isMdiIcon: true,
               path: '/dashboards'
             }
           ]
@@ -202,7 +232,8 @@ export class HomeService {
           places: [
             {
               name: 'dashboard.dashboards',
-              icon: 'dashboard',
+              icon: 'app',
+              isMdiIcon: true,
               path: '/dashboards'
             }
           ]
@@ -215,12 +246,14 @@ export class HomeService {
         places: [
           {
             name: 'audit-log.audit-logs',
-            icon: 'track_changes',
+            icon: 'log',
+            isMdiIcon: true,
             path: '/auditLogs'
           },
           {
             name: 'api-usage.api-usage',
-            icon: 'insert_chart',
+            icon: 'usage',
+            isMdiIcon: true,
             path: '/usage'
           }
         ]
@@ -236,27 +269,20 @@ export class HomeService {
         places: [
           {
             name: 'asset.assets',
-            icon: 'domain',
+            icon: 'asset',
+            isMdiIcon: true,
             path: '/assets'
-          }
-        ]
-      },
-      {
-        name: 'device.view-devices',
-        places: [
+          },
           {
             name: 'device.devices',
-            icon: 'devices_other',
+            icon: 'device',
+            isMdiIcon: true,
             path: '/devices'
-          }
-        ]
-      },
-      {
-        name: 'entity-view.management',
-        places: [
+          },
           {
             name: 'entity-view.entity-views',
-            icon: 'view_quilt',
+            icon: 'view',
+            isMdiIcon: true,
             path: '/entityViews'
           }
         ]
@@ -266,7 +292,8 @@ export class HomeService {
         places: [
           {
             name: 'dashboard.dashboards',
-            icon: 'dashboard',
+            icon: 'app',
+            isMdiIcon: true,
             path: '/dashboards'
           }
         ]

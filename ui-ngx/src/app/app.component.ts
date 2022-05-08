@@ -89,6 +89,60 @@ export class AppComponent implements OnInit {
       )
     );
 
+    this.matIconRegistry.addSvgIcon(
+      `customer`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/customer.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      `asset`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/asset.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      `device`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/device.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      `device-profile`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/device-profile.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      `view`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/view.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      `chain`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/chain.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      `widget`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/widget.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      `app`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/app.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      `log`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/log.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      `usage`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/usage.svg")
+    );
+
+    this.matIconRegistry.addSvgIcon(
+      `bot-customer-service`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/bot-customer-service.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      `bot-shopping-guide`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/bot-shopping-guide.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      `bot-house-keeper`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/bot-house-keeper.svg")
+    );
+
     this.storageService.testLocalStorage();
 
     this.setupTranslate();

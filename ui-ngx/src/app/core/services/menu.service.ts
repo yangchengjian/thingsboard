@@ -158,7 +158,8 @@ export class MenuService {
         name: 'customer.customers',
         type: 'link',
         path: '/customers',
-        icon: 'supervisor_account'
+        icon: 'customer',
+        isMdiIcon: true
       },
       {
         id: guid(),
@@ -166,28 +167,31 @@ export class MenuService {
         type: 'toggle',
         path: '/assets',
         height: '200px',
-        icon: 'domain',
+        icon: 'asset',
+        isMdiIcon: true,
         pages: [
           {
             id: guid(),
             name: 'asset.assets',
             type: 'link',
             path: '/assets',
-            icon: 'domain'
+            icon: 'asset',
+            isMdiIcon: true
           },
           {
             id: guid(),
             name: 'device.devices',
             type: 'link',
             path: '/devices',
-            icon: 'devices_other'
+            icon: 'device',
+            isMdiIcon: true
           },
           {
             id: guid(),
             name: 'device-profile.device-profiles',
             type: 'link',
             path: '/deviceProfiles',
-            icon: 'mdi:alpha-d-box',
+            icon: 'device-profile',
             isMdiIcon: true
           },
           {
@@ -195,7 +199,8 @@ export class MenuService {
             name: 'entity-view.entity-views',
             type: 'link',
             path: '/entityViews',
-            icon: 'view_quilt'
+            icon: 'view',
+            isMdiIcon: true
           }
         ]
       }
@@ -208,14 +213,16 @@ export class MenuService {
           type: 'link',
           divider: true,
           path: '/ruleChains',
-          icon: 'settings_ethernet'
+          icon: 'chain',
+          isMdiIcon: true
         },
         {
           id: guid(),
           name: 'widget.widget-library',
           type: 'link',
           path: '/widgets-bundles',
-          icon: 'now_widgets'
+          icon: 'widget',
+          isMdiIcon: true
         }
       );
     }
@@ -225,7 +232,8 @@ export class MenuService {
         name: 'dashboard.dashboards',
         type: 'link',
         path: '/dashboards',
-        icon: 'dashboards'
+        icon: 'app',
+        isMdiIcon: true
       },
       {
         id: guid(),
@@ -233,14 +241,16 @@ export class MenuService {
         type: 'link',
         divider: true,
         path: '/auditLogs',
-        icon: 'track_changes'
+        icon: 'log',
+        isMdiIcon: true
       },
       {
         id: guid(),
         name: 'api-usage.api-usage',
         type: 'link',
         path: '/usage',
-        icon: 'insert_chart',
+        icon: 'usage',
+        isMdiIcon: true,
         notExact: true
       }
     );
@@ -252,39 +262,35 @@ export class MenuService {
     sections.push(
       {
         id: guid(),
-        name: 'home.home',
-        type: 'link',
-        path: '/home',
-        notExact: true,
-        icon: 'home'
-      },
-      {
-        id: guid(),
         name: 'asset.assets',
         type: 'link',
         path: '/assets',
-        icon: 'domain'
+        icon: 'asset',
+        isMdiIcon: true
       },
       {
         id: guid(),
         name: 'device.devices',
         type: 'link',
         path: '/devices',
-        icon: 'devices_other'
+        icon: 'device',
+        isMdiIcon: true
       },
       {
         id: guid(),
         name: 'entity-view.entity-views',
         type: 'link',
         path: '/entityViews',
-        icon: 'view_quilt'
+        icon: 'view',
+        isMdiIcon: true
       },
       {
         id: guid(),
         name: 'dashboard.dashboards',
         type: 'link',
         path: '/dashboards',
-        icon: 'dashboard'
+        icon: 'app',
+        isMdiIcon: true
       }
     );
     return sections;

@@ -61,7 +61,7 @@ $tb-mat-indigo: (
 $tb-primary: mat-palette($tb-mat-indigo);
 $tb-accent: mat-palette($mat-deep-orange);
 
-$background: (background: map_get($mat-grey, 200));
+$background: (background: map_get($mat-grey, 100));
 
 $tb-theme-background: map_merge($mat-light-theme-background, $background);
 

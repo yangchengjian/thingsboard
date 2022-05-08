@@ -21,8 +21,15 @@
 }
 
 :host ::ng-deep {
+  .tb-home-title {
+    margin-left: 150px;
+    margin-top: 200px;
+    font-size: 36px;
+  }
   .tb-home-links {
-    .mat-headline {
+    margin-left: 100px;
+    margin-right: 100px;
+    .tb-headline {
       font-size: 18px;
       @media #{$mat-gt-xmd} {
         font-size: 16px;
@@ -41,11 +48,15 @@
         margin: 0;
         padding: 24px 16px 16px;
       }
+      mat-card-subtitle {
+        margin: 0;
+        padding: 24px 16px 16px;
+      }
       mat-card-title+mat-card-content {
         padding-top: 0;
       }
       mat-card-content {
-        margin: 36px;
+        margin: 16px;
       }
     }
     .tb-card-button {

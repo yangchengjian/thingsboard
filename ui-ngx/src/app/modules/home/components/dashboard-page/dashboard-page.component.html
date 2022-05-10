@@ -18,11 +18,11 @@
 <div class="tb-dashboard-page mat-content" style="padding-top: 150px;"
      fxFlex tb-fullscreen [fullscreen]="widgetEditMode || iframeMode || forceFullscreen || isFullscreen">
   <tb-hotkeys-cheatsheet #cheatSheetComponent></tb-hotkeys-cheatsheet>
-  <section class="tb-dashboard-toolbar"
+  <section class="tb-dashboard-toolbar tb-absolute-fill"
            [ngClass]="{ 'tb-dashboard-toolbar-opened': toolbarOpened,
                         'tb-dashboard-toolbar-closed': !toolbarOpened }">
     <tb-dashboard-toolbar [fxShow]="!widgetEditMode && !hideToolbar" [forceFullscreen]="forceFullscreen"
-                          [toolbarOpened]="toolbarOpened" (triggerClick)="openToolbar()">
+                          [toolbarOpened]="toolbarOpened" (triggerClick)="openToolbar()" color="white">
       <div class="tb-dashboard-action-panels" fxLayout="column" fxLayout.gt-sm="row"
            fxLayoutAlign="center stretch" fxLayoutAlign.gt-sm="space-between center">
         <div class="tb-dashboard-action-panel" fxFlex="auto" fxLayout="row-reverse"
@@ -56,6 +56,12 @@
                                [syncStateWithQueryParam]="syncStateWithQueryParam"
                                [states]="dashboardConfiguration.states">
           </tb-states-component>
+          <button mat-icon-button
+                  matTooltip="{{'home.home' | translate}}"
+                  matTooltipPosition="below"
+                  (click)="openDashboardState('default')">
+            <mat-icon>home</mat-icon>
+          </button>
         </div>
         <div class="tb-dashboard-action-panel" fxFlex="1 0 auto" fxLayout="row-reverse"
              fxLayoutAlign.gt-sm="start center" fxLayoutAlign="space-between center" fxLayoutGap="12px">

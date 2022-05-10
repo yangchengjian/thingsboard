@@ -28,7 +28,7 @@ tb-dashboard-page {
 div.tb-dashboard-page {
   &.mat-content {
     overflow: hidden;
-    background-color: #eee;
+    background-color: white;
   }
   section.tb-dashboard-title {
     position: relative;
@@ -56,11 +56,13 @@ div.tb-dashboard-page {
 
     &.tb-dashboard-toolbar-opened {
       right: 0;
-      // transition: right .3s cubic-bezier(.55, 0, .55, .2);
+      z-index: 12;
+      transition: right .3s cubic-bezier(.55, 0, .55, .2);
     }
 
     &.tb-dashboard-toolbar-closed {
       right: 18px;
+      z-index: 12;
       transition: right .3s cubic-bezier(.55, 0, .55, .2) .2s;
     }
   }

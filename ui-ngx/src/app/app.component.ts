@@ -90,6 +90,14 @@ export class AppComponent implements OnInit {
     );
 
     this.matIconRegistry.addSvgIcon(
+      `tenant`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/tenant.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      `tenant-profile`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/tenant-profile.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
       `customer`,
       this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/customer.svg")
     );
@@ -128,6 +136,22 @@ export class AppComponent implements OnInit {
     this.matIconRegistry.addSvgIcon(
       `usage`,
       this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/usage.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      `setting`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/setting.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      `email`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/email.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      `sms`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/sms.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      `security`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/security.svg")
     );
 
     this.matIconRegistry.addSvgIcon(

@@ -74,24 +74,18 @@ export class MenuService {
     sections.push(
       {
         id: guid(),
-        name: 'home.home',
-        type: 'link',
-        path: '/home',
-        icon: 'home'
-      },
-      {
-        id: guid(),
         name: 'tenant.tenants',
         type: 'link',
         path: '/tenants',
-        icon: 'supervisor_account'
+        icon: 'tenant',
+        isMdiIcon: true
       },
       {
         id: guid(),
         name: 'tenant-profile.tenant-profiles',
         type: 'link',
         path: '/tenantProfiles',
-        icon: 'mdi:alpha-t-box',
+        icon: 'tenant-profile',
         isMdiIcon: true
       },
       {
@@ -99,7 +93,8 @@ export class MenuService {
         name: 'widget.widget-library',
         type: 'link',
         path: '/widgets-bundles',
-        icon: 'now_widgets'
+        icon: 'widget',
+        isMdiIcon: true
       },
       {
         id: guid(),
@@ -107,42 +102,48 @@ export class MenuService {
         type: 'toggle',
         path: '/settings',
         height: '200px',
-        icon: 'settings',
+        icon: 'setting',
+        isMdiIcon: true,
         pages: [
           {
             id: guid(),
             name: 'admin.general',
             type: 'link',
             path: '/settings/general',
-            icon: 'settings_applications'
+            icon: 'setting',
+            isMdiIcon: true
           },
           {
             id: guid(),
             name: 'admin.outgoing-mail',
             type: 'link',
             path: '/settings/outgoing-mail',
-            icon: 'mail'
+            icon: 'email',
+            isMdiIcon: true
           },
           {
             id: guid(),
             name: 'admin.sms-provider',
             type: 'link',
             path: '/settings/sms-provider',
-            icon: 'sms'
+            icon: 'sms',
+            isMdiIcon: true
           },
           {
             id: guid(),
             name: 'admin.security-settings',
             type: 'link',
             path: '/settings/security-settings',
-            icon: 'security'
+            icon: 'security',
+            isMdiIcon: true
           },
           {
             id: guid(),
             name: 'admin.oauth2.oauth2',
             type: 'link',
             path: '/settings/oauth2',
-            icon: 'security'
+            icon: 'security',
+            isMdiIcon: true
           }
         ]
       }

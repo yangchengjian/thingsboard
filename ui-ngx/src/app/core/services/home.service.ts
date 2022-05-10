@@ -77,12 +77,13 @@ export class HomeService {
         places: [
           {
             name: 'tenant.tenants',
-            icon: 'supervisor_account',
+            icon: 'tenant',
+            isMdiIcon: true,
             path: '/tenants'
           },
           {
             name: 'tenant-profile.tenant-profiles',
-            icon: 'mdi:alpha-t-box',
+            icon: 'tenant-profile',
             isMdiIcon: true,
             path: '/tenantProfiles'
           },
@@ -93,7 +94,8 @@ export class HomeService {
         places: [
           {
             name: 'widget.widget-library',
-            icon: 'now_widgets',
+            icon: 'widget',
+            isMdiIcon: true,
             path: '/widgets-bundles'
           }
         ]
@@ -103,27 +105,32 @@ export class HomeService {
         places: [
           {
             name: 'admin.general',
-            icon: 'settings_applications',
+            icon: 'setting',
+            isMdiIcon: true,
             path: '/settings/general'
           },
           {
             name: 'admin.outgoing-mail',
-            icon: 'mail',
+            icon: 'email',
+            isMdiIcon: true,
             path: '/settings/outgoing-mail'
           },
           {
             name: 'admin.sms-provider',
             icon: 'sms',
+            isMdiIcon: true,
             path: '/settings/sms-provider'
           },
           {
             name: 'admin.security-settings',
             icon: 'security',
+            isMdiIcon: true,
             path: '/settings/security-settings'
           },
           {
             name: 'admin.oauth2.oauth2',
             icon: 'security',
+            isMdiIcon: true,
             path: '/settings/oauth2'
           }
         ]

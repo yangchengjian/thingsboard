@@ -142,29 +142,29 @@ export class HomeService {
   private buildTenantAdminHome(authUser: any): Array<HomeSection> {
     const homeSections: Array<HomeSection> = [];
     homeSections.push(
-      {
-        name: 'solution.management',
-        places: [
-          {
-            name: 'solution.bot-customer-service',
-            icon: 'bot-customer-service',
-            isMdiIcon: true,
-            path: '/bot-customer-service'
-          },
-          {
-            name: 'solution.bot-shopping-guide',
-            icon: 'bot-shopping-guide',
-            isMdiIcon: true,
-            path: '/bot-shopping-guide'
-          },
-          {
-            name: 'solution.bot-house-keeper',
-            icon: 'bot-house-keeper',
-            isMdiIcon: true,
-            path: '/bot-house-keeper'
-          }
-        ]
-      },
+//       {
+//         name: 'solution.management',
+//         places: [
+//           {
+//             name: 'solution.bot-customer-service',
+//             icon: 'bot-customer-service',
+//             isMdiIcon: true,
+//             path: '/bot-customer-service'
+//           },
+//           {
+//             name: 'solution.bot-shopping-guide',
+//             icon: 'bot-shopping-guide',
+//             isMdiIcon: true,
+//             path: '/bot-shopping-guide'
+//           },
+//           {
+//             name: 'solution.bot-house-keeper',
+//             icon: 'bot-house-keeper',
+//             isMdiIcon: true,
+//             path: '/bot-house-keeper'
+//           }
+//         ]
+//       },
       {
         name: 'customer.management',
         places: [
